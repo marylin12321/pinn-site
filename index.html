@@ -17,45 +17,82 @@ body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Ro
        background-color: #F4F1EA;
        background-image: radial-gradient(640px 320px at 8% -40px, #EDDFC9 0%, transparent 60%),
                          radial-gradient(560px 300px at 105% 240px, #E6D8CB 0%, transparent 60%); }
+body::after { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .05;
+       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='0.55'/></svg>"); }
 .wrap { max-width: 600px; margin: 0 auto; padding: 34px 18px 52px; }
 header { text-align: center; margin-bottom: 6px; }
-.avatar { width: 88px; height: 88px; margin: 0 auto; border-radius: 50%;
+.avatar { width: 92px; height: 92px; margin: 0 auto; border-radius: 50%;
           display: flex; align-items: center; justify-content: center;
           font-size: 30px; font-weight: 800; letter-spacing: 1px; color: #fff;
-          background: linear-gradient(135deg, #7A8B6F 0%, #E08A2E 48%, #C9962B 72%, #D89A94 100%);
-          box-shadow: 0 0 0 4px #fff, 0 12px 26px rgba(80, 64, 48, .22); }
-header h1 { font-size: 31px; margin: 14px 0 2px; letter-spacing: -0.02em; }
+          border: 5px solid transparent;
+          background: linear-gradient(#2E2A26, #2E2A26) padding-box,
+                      conic-gradient(from 40deg, #7A8B6F, #E08A2E, #C9962B, #D89A94, #7A8B6F) border-box;
+          box-shadow: 0 0 0 4px #fff, 0 12px 26px rgba(80, 64, 48, .22);
+          animation: glow 3.2s ease-in-out infinite; }
+@keyframes glow { 50% { box-shadow: 0 0 0 4px #fff, 0 0 36px rgba(224, 138, 46, .5); } }
+header h1 { font-size: 32px; margin: 14px 0 2px; letter-spacing: -0.02em; }
 header .sub { margin: 0; color: #5c554e; font-size: 16px; }
 .pill { display: inline-block; margin-top: 12px; background: #fff;
         border: 1px solid #E2D9C9; border-radius: 999px; padding: 7px 15px;
         font-size: 13.5px; font-weight: 600; color: #6b6259; }
+.stats { display: flex; gap: 10px; margin: 18px 0 4px; }
+.stats div { flex: 1; background: #fff; border-radius: 14px; padding: 10px 6px;
+             box-shadow: 0 4px 14px rgba(80, 64, 48, .07); }
+.stats b { display: block; font-size: 20px; letter-spacing: -0.02em; }
+.stats span { font-size: 12px; color: #8a827a; font-weight: 600; }
+.tick { overflow: hidden; background: #2E2A26; color: #F4F1EA; border-radius: 12px;
+        font-size: 12.5px; font-weight: 800; letter-spacing: .14em; padding: 11px 0;
+        margin: 18px 0 24px; }
+.tick-in { display: inline-block; white-space: nowrap; animation: tick 24s linear infinite; }
+@keyframes tick { to { transform: translateX(-50%); } }
 nav.chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-            margin: 20px 0 26px; }
+            margin: 0 0 24px; }
 nav.chips a { text-decoration: none; font-size: 14px; font-weight: 600; color: #2E2A26;
               background: #fff; border: 1px solid #E0D6C4; border-radius: 999px;
               padding: 9px 15px; box-shadow: 0 2px 8px rgba(80, 64, 48, .06); }
 section.mondo { background: #fff; border-radius: 22px; overflow: hidden;
                 margin: 0 0 20px; box-shadow: 0 12px 32px rgba(80, 64, 48, .10);
                 scroll-margin-top: 14px; }
-.mondo .bar { height: 8px; background: linear-gradient(90deg, var(--acc), var(--btn)); }
-.mondo .body { padding: 20px 20px 18px; }
-.row { display: flex; gap: 13px; align-items: flex-start; }
-.ico { flex: none; width: 54px; height: 54px; border-radius: 16px; background: var(--sf);
-       display: flex; align-items: center; justify-content: center; font-size: 29px; }
-section.mondo h2 { margin: 3px 0 3px; font-size: 21px; letter-spacing: -0.02em; }
+.mondo .cover { position: relative; overflow: hidden; color: #fff;
+                background: linear-gradient(115deg, var(--btn) 0%, var(--btn) 58%, var(--acc) 135%);
+                padding: 20px 20px 18px; display: flex; gap: 13px; align-items: center; }
+.mondo .ghost { position: absolute; right: 10px; top: 50%; transform: translateY(-54%);
+                font-size: 66px; font-weight: 800; letter-spacing: -0.04em;
+                color: rgba(255, 255, 255, .16); }
+.cico { flex: none; width: 54px; height: 54px; border-radius: 16px;
+        background: rgba(255, 255, 255, .16);
+        display: flex; align-items: center; justify-content: center; font-size: 29px; }
+.mondo .num { font-size: 12px; font-weight: 800; letter-spacing: .2em;
+              color: rgba(255, 255, 255, .8); }
+section.mondo h2 { margin: 2px 0 0; font-size: 22px; letter-spacing: -0.02em;
+                   text-shadow: 0 2px 12px rgba(0, 0, 0, .25); }
+.mondo .body { padding: 18px 20px; }
 section.mondo .tag { margin: 0; color: #5c554e; font-size: 15px; }
-section.mondo .boards { display: flex; flex-wrap: wrap; gap: 6px; margin: 14px 0 16px; }
+section.mondo .boards { display: flex; flex-wrap: wrap; gap: 6px; margin: 13px 0 15px; }
 section.mondo .boards span { font-size: 12.5px; background: var(--sf); color: var(--tx);
                              border-radius: 999px; padding: 5px 11px; font-weight: 600; }
-a.btn { display: flex; align-items: center; justify-content: center; gap: 9px;
-        background: var(--btn); color: #fff; font-weight: 700; font-size: 17px;
-        text-decoration: none; border-radius: 14px; padding: 15px;
+a.btn { display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        background: var(--btn); color: #fff; text-decoration: none;
+        border-radius: 14px; padding: 13px 16px;
         box-shadow: 0 8px 18px rgba(0, 0, 0, .16); }
+a.btn .bl b { display: block; font-size: 16.5px; }
+a.btn .bl i { display: block; font-style: normal; font-size: 13px; opacity: .78; }
+a.btn .arr { font-size: 24px; transition: transform .15s; }
 a.btn:active { transform: scale(0.99); }
-a.btn .arr { font-weight: 400; }
+a.btn:active .arr { transform: translateX(5px); }
 .soon { margin: 13px 0 0; font-size: 13.5px; color: #8a827a; text-align: center; }
 footer { background: #2E2A26; color: #CDC5B9; border-radius: 18px; padding: 18px;
          text-align: center; font-size: 12.5px; margin-top: 26px; }
+footer nav a { color: #F4F1EA; text-decoration: none; font-weight: 600; margin: 0 7px; }
+@media (hover: hover) {
+  .mondo { transition: transform .2s; }
+  .mondo:hover { transform: translateY(-2px); }
+  a.btn:hover .arr { transform: translateX(5px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .tick-in, .avatar { animation: none; }
+}
 </style>
 </head>
 <body>
@@ -65,18 +102,25 @@ footer { background: #2E2A26; color: #CDC5B9; border-radius: 18px; padding: 18px
   <h1>Quattro Mondi</h1>
   <p class="sub">Idee per Casa, Cucina, Soldi e Famiglia.</p>
   <span class="pill">✨ Nuove idee ogni settimana · gratis</span>
+  <div class="stats">
+    <div><b>4</b><span>mondi</span></div>
+    <div><b>20</b><span>board</span></div>
+    <div><b>100%</b><span>gratis</span></div>
+  </div>
 </header>
+<div class="tick"><div class="tick-in">NUOVE IDEE OGNI SETTIMANA ✦ 100% GRATIS ✦ CASA · CUCINA · SOLDI · FAMIGLIA ✦ NUOVE IDEE OGNI SETTIMANA ✦ 100% GRATIS ✦ CASA · CUCINA · SOLDI · FAMIGLIA ✦ </div></div>
 <nav class="chips"><a href="#casa">🏠 Casa & Organizzazione</a><a href="#cibo">🍳 Cibo & Ricette</a><a href="#finanza">💰 Finanza Personale & Printable</a><a href="#parenting">🧸 Parenting & Baby Gear</a></nav>
 <section class="mondo" id="casa" style="--acc:#7A8B6F;
       --btn:#4F6146; --sf:#F4EDE4; --tx:#2E2A26">
-  <div class="bar"></div>
+  <div class="cover">
+    <span class="cico">🏠</span>
+    <div><div class="num">01 · MONDO CASA</div><h2>Casa & Organizzazione</h2></div>
+    <span class="ghost">01</span>
+  </div>
   <div class="body">
-  <div class="row"><span class="ico">🏠</span><div>
-  <h2>Casa & Organizzazione</h2>
   <p class="tag">Idee semplici per organizzare casa, piccoli spazi e pulizie senza stress.</p>
-  </div></div>
   <div class="boards"><span>Organizzazione Pratica</span><span>Piccoli Spazi</span><span>Idee Arredamento</span><span>Pulizie & Routine</span><span>DIY Casa</span></div>
-  <a class="btn" href="https://pinterest.com/tuttoinordine/">Vai al profilo Pinterest <span class="arr">→</span></a>
+  <a class="btn" href="https://pinterest.com/tuttoinordine/"><span class="bl"><b>Vai al profilo Pinterest</b><i>@tuttoinordine</i></span><span class="arr">→</span></a>
   <p class="soon">🔜 Qui arriveranno i prodotti consigliati del mondo Casa & Organizzazione.</p>
   </div>
   <!-- AFFILIATI-CASA: aggiungi qui i blocchi prodotto (link con #adv in chiaro) -->
@@ -84,14 +128,15 @@ footer { background: #2E2A26; color: #CDC5B9; border-radius: 18px; padding: 18px
 </section>
 <section class="mondo" id="cibo" style="--acc:#E08A2E;
       --btn:#9A5B0F; --sf:#FBF3E7; --tx:#33211A">
-  <div class="bar"></div>
+  <div class="cover">
+    <span class="cico">🍳</span>
+    <div><div class="num">02 · MONDO CUCINA</div><h2>Cibo & Ricette</h2></div>
+    <span class="ghost">02</span>
+  </div>
   <div class="body">
-  <div class="row"><span class="ico">🍳</span><div>
-  <h2>Cibo & Ricette</h2>
   <p class="tag">Ricette sane e gustose, meal prep e dolci fatti in casa.</p>
-  </div></div>
   <div class="boards"><span>Ricette Veloci</span><span>Meal Prep & Batch Cooking</span><span>Dolci Fatti in Casa</span><span>Cene della Settimana</span><span>Idee Salute</span></div>
-  <a class="btn" href="https://pinterest.com/coloridigusto/">Vai al profilo Pinterest <span class="arr">→</span></a>
+  <a class="btn" href="https://pinterest.com/coloridigusto/"><span class="bl"><b>Vai al profilo Pinterest</b><i>@coloridigusto</i></span><span class="arr">→</span></a>
   <p class="soon">🔜 Qui arriveranno i prodotti consigliati del mondo Cibo & Ricette.</p>
   </div>
   <!-- AFFILIATI-CIBO: aggiungi qui i blocchi prodotto (link con #adv in chiaro) -->
@@ -99,14 +144,15 @@ footer { background: #2E2A26; color: #CDC5B9; border-radius: 18px; padding: 18px
 </section>
 <section class="mondo" id="finanza" style="--acc:#C9962B;
       --btn:#12263F; --sf:#F7F9FB; --tx:#12263F">
-  <div class="bar"></div>
+  <div class="cover">
+    <span class="cico">💰</span>
+    <div><div class="num">03 · MONDO SOLDI</div><h2>Finanza Personale & Printable</h2></div>
+    <span class="ghost">03</span>
+  </div>
   <div class="body">
-  <div class="row"><span class="ico">💰</span><div>
-  <h2>Finanza Personale & Printable</h2>
   <p class="tag">Budget, risparmi e debiti sotto controllo, un passo alla volta.</p>
-  </div></div>
   <div class="boards"><span>Budget & Risparmio</span><span>Printable Finanziari</span><span>Debiti & Debt Payoff</span><span>Abitudini & Soldi</span><span>Side Income</span></div>
-  <a class="btn" href="https://pinterest.com/contiinordine/">Vai al profilo Pinterest <span class="arr">→</span></a>
+  <a class="btn" href="https://pinterest.com/contiinordine/"><span class="bl"><b>Vai al profilo Pinterest</b><i>@contiinordine</i></span><span class="arr">→</span></a>
   <p class="soon">🔜 Qui arriveranno i prodotti consigliati del mondo Finanza Personale & Printable.</p>
   </div>
   <!-- AFFILIATI-FINANZA: aggiungi qui i blocchi prodotto (link con #adv in chiaro) -->
@@ -114,21 +160,23 @@ footer { background: #2E2A26; color: #CDC5B9; border-radius: 18px; padding: 18px
 </section>
 <section class="mondo" id="parenting" style="--acc:#E3B7B0;
       --btn:#8E5A54; --sf:#FAF6F1; --tx:#3B332E">
-  <div class="bar"></div>
+  <div class="cover">
+    <span class="cico">🧸</span>
+    <div><div class="num">04 · MONDO FAMIGLIA</div><h2>Parenting & Baby Gear</h2></div>
+    <span class="ghost">04</span>
+  </div>
   <div class="body">
-  <div class="row"><span class="ico">🧸</span><div>
-  <h2>Parenting & Baby Gear</h2>
   <p class="tag">Idee gentle per bimbi, camerette e routine senza schermi.</p>
-  </div></div>
   <div class="boards"><span>Camere & Nursery</span><span>Routine & Consigli</span><span>Attività Senza Schermo</span><span>Baby Gear & Lista Nascita</span><span>Primi Anni di Vita</span></div>
-  <a class="btn" href="https://pinterest.com/piccolipassi/">Vai al profilo Pinterest <span class="arr">→</span></a>
+  <a class="btn" href="https://pinterest.com/piccolipassi/"><span class="bl"><b>Vai al profilo Pinterest</b><i>@piccolipassi</i></span><span class="arr">→</span></a>
   <p class="soon">🔜 Qui arriveranno i prodotti consigliati del mondo Parenting & Baby Gear.</p>
   </div>
   <!-- AFFILIATI-PARENTING: aggiungi qui i blocchi prodotto (link con #adv in chiaro) -->
   <!-- EMAIL-PARENTING: incolla qui il form MailerLite/Brevo quando hai la landing -->
 </section>
 <footer>
-  Trasparenza: se un giorno troverai link affiliati, saranno sempre segnalati come #adv.
+  <nav><a href="#">↑ Torna su</a> · <a href="#casa">Casa</a> · <a href="#cibo">Cucina</a> · <a href="#finanza">Soldi</a> · <a href="#parenting">Famiglia</a></nav>
+  <p>Trasparenza: se un giorno troverai link affiliati, saranno sempre segnalati come #adv.</p>
 </footer>
 </div>
 </body>
