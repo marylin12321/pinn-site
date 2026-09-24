@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://marylin12321.github.io/pinn-site/sitemap.xml
