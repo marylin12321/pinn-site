@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Quattro Mondi — Ricette Veloci</title>
+    <link>https://marylin12321.github.io/pinn-site/guide/</link>
+    <description>Guide Ricette Veloci (Quattro Mondi)</description>
+    <item>
+      <title>Pasta veloce in 15 minuti con 5 ingredienti: la formula</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c02.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c02.html</guid>
+      <description>Pasta corta, una proteina, un grasso buono e due sapori: la formula delle cene in 15 minuti.</description>
+      <pubDate>Thu, 24 Sep 2026 08:44:34 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" medium="image" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>
