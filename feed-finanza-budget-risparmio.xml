@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Quattro Mondi — Budget &amp; Risparmio</title>
+    <link>https://marylin12321.github.io/pinn-site/guide/</link>
+    <description>Guide Budget &amp; Risparmio (Quattro Mondi)</description>
+    <item>
+      <title>Metodo 50/30/20: il budget mensile che funziona davvero</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/fin-c01.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/fin-c01.html</guid>
+      <description>50% bisogni, 30% desideri, 20% risparmio: come dividere lo stipendio ogni mese senza tabelle complicate.</description>
+      <pubDate>Thu, 24 Sep 2026 07:41:28 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/finanza.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/finanza.jpg" medium="image" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>

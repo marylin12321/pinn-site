@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Quattro Mondi — Meal Prep &amp; Batch Cooking</title>
+    <link>https://marylin12321.github.io/pinn-site/guide/</link>
+    <description>Guide Meal Prep &amp; Batch Cooking (Quattro Mondi)</description>
+    <item>
+      <title>Meal prep della domenica in 90 minuti: metodo completo</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c01.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c01.html</guid>
+      <description>Tre ricette, una lista unica, cotture in parallelo: in 90 minuti prepari 5 giorni di pranzi e cene.</description>
+      <pubDate>Thu, 24 Sep 2026 07:41:28 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" medium="image" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Quattro Mondi — Organizzazione Pratica</title>
+    <link>https://marylin12321.github.io/pinn-site/guide/</link>
+    <description>Guide Organizzazione Pratica (Quattro Mondi)</description>
+    <item>
+      <title>Organizzare la dispensa in 6 passi (senza impazzire)</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/casa-c01.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/casa-c01.html</guid>
+      <description>Svuota, classifica, etichetta e riempi a strati: il metodo in 6 passi per una dispensa che resta in ordine da sola.</description>
+      <pubDate>Thu, 24 Sep 2026 07:32:17 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/casa.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/casa.jpg" medium="image" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>
