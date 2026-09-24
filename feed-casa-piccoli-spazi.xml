@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Quattro Mondi — Piccoli Spazi</title>
+    <link>https://marylin12321.github.io/pinn-site/guide/</link>
+    <description>Guide Piccoli Spazi (Quattro Mondi)</description>
+    <item>
+      <title>Ingresso sempre in ordine con 3 attrezzi</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/casa-c09.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/casa-c09.html</guid>
+      <description>Ganci alla portata, vassoio per le chiavi, portaombrelli stretto: l'ingresso resta in ordine da solo.</description>
+      <pubDate>Thu, 24 Sep 2026 08:59:56 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/casa.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/casa.jpg" medium="image" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>

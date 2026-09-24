@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Quattro Mondi — Cene della Settimana</title>
+    <link>https://marylin12321.github.io/pinn-site/guide/</link>
+    <description>Guide Cene della Settimana (Quattro Mondi)</description>
+    <item>
+      <title>Cene in 30 minuti per tutta la settimana: lo schema</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c05.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c05.html</guid>
+      <description>Cinque sere, cinque formule fisse: niente più ore davanti al frigo aperto a chiedersi cosa cucinare.</description>
+      <pubDate>Thu, 24 Sep 2026 09:00:31 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" medium="image" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>
