@@ -85,8 +85,8 @@ csv:
   colonne: ["Title", "Media URL", "Pinterest board", "Thumbnail", "Description", "Link", "Publish date", "Keywords"]
   data_formato: "%Y-%m-%dT%H:%M:%S"   # formato ufficiale con orario (UTC)
   encoding: "utf-8"
-  # Media URL DEVE essere un URL pubblico (niente path locali): impostare
-  # media_base_url per nicchia (opzione a costo zero: GitHub Pages, vedi docs/05).
+  # Media URL DEVE essere un URL pubblico (niente path locali): la radice è
+  # hosting.sito_pubblico qui sotto (GitHub Pages, costo zero, vedi docs/05).
 
 hosting:
   # Le immagini dei pin devono stare su un URL pubblico (Pinterest rifiuta URL locali).
@@ -108,9 +108,10 @@ hosting:
   sotto_cartella: "pin"        # usata solo se specchio_immagini: true
 
   # Radice pubblica del sito: L'UNICA fonte per URL di guide, pin, feed,
-  # printable e sitemap (letta da src/url_base.py). Prima era sparso in
-  # ogni config/nicchie/*.yaml come media_base_url e sei moduli se ne ricavavano
-  # la radice togliendo l'ultimo pezzo dell'URL.
+  # printable e sitemap (letta da src/url_base.py, controllata da src/verifica.py).
+  # Prima era sparso in ogni config/nicchie/*.yaml come `media_base_url` e sei
+  # moduli se ne ricavavano la radice togliendo l'ultimo pezzo dell'URL: sei
+  # copie di una regola fragile. La chiave è stata tolta dai 4 config il 27/09/2026.
   sito_pubblico: "https://marylin12321.github.io/pinn-site/"
 
 utm:

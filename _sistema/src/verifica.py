@@ -68,6 +68,20 @@ def esegui(reale: bool = True) -> bool:
     else:
         _ok("regole", f"split CSV a {regole['righe_csv_max']} righe/file.")
 
+    # hosting: la radice del sito è l'unica fonte degli URL di tutto il sistema
+    # (guide, pin, feed, stampabili, sitemap, Media URL del CSV). Si controlla
+    # qui una volta sola: prima viveva in ogni config di nicchia come
+    # `media_base_url`, cioè quattro copie di una cosa che non le leggeva
+    # nessuno, con il rischio che una delle quattro restasse indietro.
+    sito = str((sistema.get("hosting") or {}).get("sito_pubblico") or "").strip()
+    if not sito:
+        _fail("hosting", "hosting.sito_pubblico non è impostato in config/system.yaml — "
+                         "senza la radice del sito tutti gli URL sono sbagliati.")
+    elif not sito.startswith(("http://", "https://")):
+        _fail("hosting", f"hosting.sito_pubblico non è un URL valido: {sito}")
+    else:
+        _ok("hosting", sito if sito.endswith("/") else sito + "/")
+
     # disclosure: le diciture commerciali devono contenere una parola AGCOM ammessa
     disc = sistema["disclosure"]
     agcom = re.compile(r"#adv|pubblicit|advertising", re.I)
@@ -135,17 +149,6 @@ def esegui(reale: bool = True) -> bool:
                 livello = _fail if reale else _warn
                 livello("link", f"{nid}/{p.get('id')}: link Amazon SENZA tag '{tracking}' — "
                                 "vendite non attribuite! Ricrealo con la SiteStripe (link lungo).")
-
-        # media_base_url (hosting immagini)
-        base = (cfg.get("media_base_url") or "").strip()
-        if reale and not base:
-            _fail("hosting", f"{nid}: media_base_url vuoto — i Media URL del CSV saranno morti. "
-                             "Imposta l'URL GitHub Pages (docs/05).")
-        elif base:
-            if not base.startswith(("http://", "https://")):
-                _fail("hosting", f"{nid}: media_base_url non è un URL valido: {base}")
-            else:
-                _ok("hosting", f"{nid}: {base}")
 
         # foto di sfondo + crediti.
         # In CI assets/backgrounds non c'è di proposito (16 MB di foto non stanno

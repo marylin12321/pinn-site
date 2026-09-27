@@ -10,19 +10,21 @@ così lo stesso URL fa da hosting immagini E da landing unica per i 4 profili.
 Setup (una tantum, vedi docs/05-operazioni.md):
   1. crea repo PUBBLICO su GitHub (es. "pinn-site")
   2. git clone https://github.com/<tuoutente>/pinn-site.git ~/pinn-site
-  3. metti il path in config/system.yaml → hosting.repo_locale
+  3. in config/system.yaml → hosting:
+       repo_locale:   "/home/<tuo-utente>/pinn-site"
+       sito_pubblico: "https://<tuo-utente>.github.io/pinn-site/"
   4. GitHub: Settings → Pages → Source: main / (root)
-  5. in ogni config/nicchie/*.yaml:
-       media_base_url: "https://<tuoutente>.github.io/pinn-site/pin"
 
-Uso (ogni ciclo, dopo `genera`):
+Uso (ogni ciclo, dopo il build):
   python3 tools/pubblica_immagini.py              # copia + commit + push
   python3 tools/pubblica_immagini.py --dry-run    # cosa farebbe, senza farlo
   python3 tools/pubblica_immagini.py --no-push    # copia+commit, push a mano
   python3 tools/pubblica_immagini.py --solo casa  # solo una nicchia
   python3 tools/pubblica_immagini.py --check      # verifica che le URL rispondano
 
-Dopo la pubblicazione:  python3 src/main.py esporta   (CSV con Media URL già vivi)
+Prima di committare ricostruisce il sito in una directory temporanea con le
+sole sorgenti spedite in CI e lo confronta byte per byte con quello locale
+(--no-verifica-ci per saltarlo): non scoprire alle 08:15 che la pipeline è rotta.
 """
 from __future__ import annotations
 
