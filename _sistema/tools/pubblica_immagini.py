@@ -41,6 +41,11 @@ ROOT = Path(__file__).resolve().parent.parent
 IMMAGINI = ROOT / "output" / "immagini"
 ESTENSIONI = (".png", ".jpg", ".jpeg", ".webp")
 
+# Font da copiare nelle sorgenti per la CI: sono gli unici tre che il codice
+# carica. Copiare tutta la cartella (13 font, 3,2 MB) gonfierebbe il repo
+# pubblico senza motivo: gli altri non sono usati da nessun template.
+FONT_USATI = ("Poppins-Regular.ttf", "Poppins-Bold.ttf", "Lato-Regular.ttf")
+
 
 def _git(repo: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess:
     r = subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True)
@@ -134,7 +139,8 @@ def main() -> int:
     # l'unico font usato da tutto il sistema e' Poppins-Bold (156 KB).
     # Gli sfondi pesanti (16 MB di foto) restano fuori: le cover delle guide
     # si generano in locale e in CI si riusano le JPEG gia' committate.
-    for _p in sorted((ROOT / "assets" / "fonts").glob("*.ttf")):
+    for _nome in FONT_USATI:
+        _p = ROOT / "assets" / "fonts" / _nome
         _rel = Path("_sistema") / "assets" / "fonts" / _p.name
         _dst = repo_path / _rel
         if not _dst.exists() or _dst.read_bytes() != _p.read_bytes():
