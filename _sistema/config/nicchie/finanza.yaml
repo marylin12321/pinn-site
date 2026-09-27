@@ -1,0 +1,411 @@
+# ============================================================
+# NICCHIA: FINANZA PERSONALE — contenuti, prodotti, board, design
+# - contenuti: pin di valore (generati sempre, anche senza link)
+# - prodotti: tipo affiliate = link Amazon col tuo tag (SiteStripe, MAI shortener);
+#   digitale/pod/email = tuoi (Etsy/Gumroad/landing) — da compilare quando pronti
+# - handle: account Pinterest dedicato (firma sui pin) — nomi board IDENTICI su Pinterest
+# ============================================================
+nicchia:
+  id: finanza
+  nome: Finanza Personale & Printable
+  handle: '@contiinordine'  # account Pinterest dedicato (firma sui pin)
+  lingua: it
+  boards:
+  - Budget & Risparmio
+  - Printable Finanziari
+  - Debiti & Debt Payoff
+  - Abitudini & Soldi
+  - Side Income
+design:
+  font_display: DMSerifDisplay-Regular
+  font_bold: Poppins-ExtraBold
+  font_body: Lato-Regular
+  font_body_bold: Lato-Bold
+  font_accento: Poppins-SemiBold
+  palette:
+    sfondo: '#F7F9FB'
+    superficie: '#E8EEF4'
+    testo: '#12263F'
+    banda: '#1E7A5F'
+    accento: '#C9962B'
+    accento2: '#0E4C76'
+    chiaro: '#FFFFFF'
+  layout:
+  - fullbleed
+  - split
+  - lista
+  - mockup
+  - collage
+media_base_url: https://marylin12321.github.io/pinn-site/pin
+link_valore_default: ''
+utm:
+  attivo: true
+  campagna: finanza
+contenuti:
+- id: fin-c01
+  copy_custom:
+    titolo: 'Budget 50/30/20: la regola in 5 passi'
+    descrizione: 'La regola è semplice: 50% bisogni, 30% desideri, 20% risparmio. Traccia le uscite e rivedi a fine mese. Salvalo e rileggilo quando fai i conti.'
+    sottotitolo: 'budget mensile'
+  foto: 001_pexels_5466785.jpg
+  tema: Metodo 50/30/20 per il budget mensile
+  kw:
+  - budget 50/30/20
+  - budget mensile
+  overlay: Budget 50/30/20
+  board: Budget & Risparmio
+  passi:
+  - 50% bisogni
+  - 30% desideri
+  - 20% risparmio
+  - Traccia le uscite
+  - Rivedi a fine mese
+- id: fin-c02
+  tema: 'Debit snowball vs avalanche: quale scegliere'
+  kw:
+  - snowball debiti
+  - ripagare debiti
+  overlay: Snowball o Avalanche?
+  board: Debiti & Debt Payoff
+  passi:
+  - Elenca tutti i debiti
+  - 'Snowball: importo minore prima'
+  - 'Avalanche: interesse maggiore prima'
+  - Paghi il minimo sulle altre
+  - Celebri ogni debito chiuso
+- id: fin-c03
+  tema: 'Risparmio automatico: regola dei 24 ore'
+  kw:
+  - risparmio automatico
+  - risparmiare soldi
+  overlay: Risparmio Senza Pensieri
+  board: Abitudini & Soldi
+- id: fin-c04
+  tema: 'Cash stuffing: metodi in busta per gestire il budget'
+  kw:
+  - cash stuffing
+  - budget in busta
+  overlay: Cash Stuffing Guide
+  board: Budget & Risparmio
+- id: fin-c05
+  tema: Sfida del risparmio in 52 settimane
+  kw:
+  - sfida risparmio 52 settimane
+  - savings challenge
+  overlay: 52 Settimane di Risparmio
+  board: Printable Finanziari
+- id: fin-c06
+  tema: Tuo primo piano di escape dal paycheck to paycheck
+  kw:
+  - vivere payday to payday
+  - gestire lo stipendio
+  overlay: Esci dal Paycheck-to-Paycheck
+  board: Abitudini & Soldi
+  passi:
+  - Conta tutte le uscite
+  - Taglia 3 abbonamenti
+  - Fondo emergenza 500€
+  - Automatizza il trasferito
+  - 30 giorni di prova
+- id: fin-c07
+  tema: 'Side income: 7 idee lecite da casa'
+  kw:
+  - lavori extra
+  - guadagni extra
+  overlay: 7 Side Income Leali
+  board: Side Income
+- id: fin-c08
+  tema: 'Zero based budget: parti da zero ogni mese'
+  kw:
+  - zero based budget
+  - budget zeri
+  overlay: Zero-Based Budget
+  board: Budget & Risparmio
+- id: fin-c09
+  tema: 'Tracciare le spese: il metodo dei 5 minuti la sera'
+  kw:
+  - tracciare spese
+  - quaderno spese
+  overlay: 5 Minuti di Spese
+  board: Abitudini & Soldi
+- id: fin-c10
+  tema: 'Piano per il rimborso delle tasse: come prepararsi'
+  kw:
+  - piano rimborso tasse
+  - tasse rimborso
+  overlay: Piano Rimborso Tasse
+  board: Printable Finanziari
+prodotti:
+- id: fin-p01
+  tipo: digitale
+  titolo: Budget Planner mensile stampabile
+  kw:
+  - budget planner stampabile
+  programma: Etsy shop (tu)
+  link: ''
+  board: Printable Finanziari
+  overlay: Il Tuo Budget in 1 Pagina
+  idee:
+  - 12 mesi
+  - A4 e Letter
+  - PDF subito
+- id: fin-p02
+  tipo: digitale
+  titolo: Debt Payoff Tracker (6 design)
+  kw:
+  - debt tracker stampabile
+  programma: Etsy shop (tu)
+  link: ''
+  board: Debiti & Debt Payoff
+  overlay: 6 Tracker per Uscire dai Debiti
+  idee:
+  - snowball e avalanche
+  - 6 grafiche
+  - fill digitale
+- id: fin-p03
+  tipo: digitale
+  titolo: Sfida 52 settimane — worksheet completa
+  kw:
+  - sfida 52 settimane stampabile
+  programma: Payhip (tu, fee 5%)
+  link: ''
+  board: Printable Finanziari
+  overlay: 52 Settimane, 1 Obiettivo
+  idee:
+  - 52 caselle
+  - 2 versioni
+  - obiettivo personalizzabile
+- id: fin-p04
+  tipo: digitale
+  titolo: 'Bundle completo: Budget + Debt + Risparmio'
+  kw:
+  - bundle budget planner
+  programma: Payhip (tu, fee 5%)
+  link: ''
+  board: Budget & Risparmio
+  overlay: Il Bundle Completo
+  idee:
+  - 3 planner insieme
+  - prezzo bundle
+  - aggiornamenti gratis
+- id: fin-p05
+  tipo: affiliate
+  titolo: Rocket Money — gestione abbonamenti
+  kw:
+  - app gestione abbonamenti
+  programma: Rocket Money (Impact) 4-10$ / referral
+  link: ''
+  board: Abitudini & Soldi
+  overlay: Trova i Soldi Bloccati
+  idee:
+  - cancella abbonamenti
+  - negozia bollette
+  - alert spese
+- id: fin-p06
+  tipo: affiliate
+  titolo: Monarch Money — budgeting app
+  kw:
+  - app budget personale
+  programma: Monarch Money 20$ / abbonamento
+  link: ''
+  board: Budget & Risparmio
+  overlay: Il tuo Budget, Tutto Qui
+  idee:
+  - obiettivi condivisi
+  - automatic categories
+  - 30 gg prova
+- id: fin-p07
+  copy_custom:
+    titolo: 'Agenda Kakebo 2026: serve davvero?'
+    descrizione: 'Il metodo giapponese per far quadrare i conti su carta: sezioni predefinite, rilegatura solida, segnalibri. Costa intorno ai 12€. Vedi se fa per te →'
+    sottotitolo: 'agenda finanza personale'
+  foto: prod-8844087448.jpg
+  tipo: affiliate
+  titolo: Agenda finanziaria cartacea
+  kw:
+  - agenda finanza personale
+  programma: Amazon Associates 5% (Casa/Cancelletti)
+  link: https://www.amazon.it/dp/8844087448?tag=quattromondi-21
+  board: Printable Finanziari
+  overlay: Soldi su Carta
+  idee:
+  - rilegatura solida
+  - sezioni predefinite
+  - segnalibri
+- id: fin-p08
+  tipo: affiliate
+  titolo: Cofanetto portavalori per cash stuffing
+  kw:
+  - portavalori cash stuffing
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B09QPJY6L2?tag=quattromondi-21
+  board: Budget & Risparmio
+  overlay: Il tuo Cash System
+  idee:
+  - comparti etichettati
+  - chiusura a scatto
+  - porto via
+- id: fin-p09
+  tipo: email
+  titolo: Calcolatore obiettivo risparmio + tracker gratuito
+  kw:
+  - calcolatore risparmio gratis
+  programma: MailerLite (landing)
+  link: ''
+  board: Budget & Risparmio
+  overlay: 'Obiettivo Risparmio: Gratis'
+  idee:
+  - PDF + foglio
+  - 1 campo email
+  - risposta automatica
+- id: fin-p10
+  tipo: email
+  titolo: 'Checklist: 12 abbonamenti da rivedere subito'
+  kw:
+  - checklist abbonamenti
+  programma: MailerLite (landing)
+  link: ''
+  board: Abitudini & Soldi
+  overlay: 12 Abbonamenti da Tagliare
+  idee:
+  - lista pronta
+  - risparmio medio 40€/mese
+  - gratuita
+- id: fin-p11
+  tipo: pod
+  titolo: Tazza 'Debt Free is my love language'
+  kw:
+  - tazza motivazionale
+  programma: Etsy + Printful
+  link: ''
+  board: Side Income
+  overlay: Debt Free Energy
+  idee:
+  - ceramica 330ml
+  - 2 colori
+  - regalo AFP
+- id: fin-p12
+  tipo: email
+  titolo: Piano 30 giorni per uscire dal paycheck to paycheck
+  kw:
+  - piano 30 giorni soldi
+  programma: MailerLite (landing)
+  link: ''
+  board: Abitudini & Soldi
+  overlay: 30 Giorni, Nuovo Budget
+  idee:
+  - email-day plan
+  - azioni da 5 minuti
+  - gratis
+- id: fin-p13
+  tipo: affiliate
+  titolo: Padre Ricco Padre Povero, educazione finanziaria base
+  kw:
+  - educazione finanziaria libro
+  - mentalità ricchezza risparmio
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/8871527747?tag=quattromondi-21
+  board: Abitudini & Soldi
+  overlay: Cambia mentalità, costruisci ricchezza vera
+  idee:
+  - classico mondiale finanza personale italiano
+  - distingue attivi e passivi esempi semplici
+  - da abbinare a printable budget mensile
+- id: fin-p14
+  tipo: affiliate
+  titolo: La Psicologia dei Soldi, comportamento e risparmio
+  kw:
+  - psicologia del denaro libro
+  - risparmiare investire abitudini
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/8836005187?tag=quattromondi-21
+  board: Abitudini & Soldi
+  overlay: Il comportamento batte i numeri sempre
+  idee:
+  - 19 storie brevi ricchezza avidità felicità
+  - Hoepli edizione italiana molto citata
+  - ideale per pin abitudini denaro quotidiane
+- id: fin-p15
+  tipo: affiliate
+  titolo: L'Uomo più Ricco di Babilonia, classico risparmio
+  kw:
+  - uomo più ricco Babilonia
+  - regole risparmio classico
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/8871525523?tag=quattromondi-21
+  board: Budget & Risparmio
+  overlay: Paga prima te stesso ogni mese
+  idee:
+  - parabole antiche risparmio e debiti
+  - regola 10 per cento e 7 cure borsa magra
+  - edizione Gribaudi economica da regalare
+- id: fin-p16
+  tipo: affiliate
+  titolo: Diario dei conti mensili, budget casa non datato
+  kw:
+  - diario spese mensili italiano
+  - budget planner famiglia
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0991DBS6C?tag=quattromondi-21
+  board: Printable Finanziari
+  overlay: Traccia spese, trova risparmi nascosti
+  idee:
+  - 12 mesi non datati entrate uscite risparmi
+  - pagine settimanali e mensili strutturate
+  - compagno cartaceo dei printable finanziari
+- id: fin-p17
+  tipo: affiliate
+  titolo: Evidenziatori STABILO BOSS Pastel per budget journaling
+  kw:
+  - evidenziatori pastel journaling
+  - penne budget planner colori
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B01LXOQ1KJ?tag=quattromondi-21
+  board: Printable Finanziari
+  overlay: Colora il budget, resta costante
+  idee:
+  - astuccio 6 colori pastel assortiti
+  - punta scalpello anti-dry 4 ore
+  - per budget journal tracker e debt payoff
+- id: fin-p18
+  tipo: affiliate
+  titolo: 4 Ore alla Settimana, side income e libertà
+  kw:
+  - lavorare meno guadagnare online
+  - side income libro italiano
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/8860521475?tag=quattromondi-21
+  board: Side Income
+  overlay: Lavora meno, vivi di più
+  idee:
+  - metodo Ferriss delega automazione muse
+  - base freelance entrate semi-passive
+  - edizione Cairo italiano molto recensita
+- id: fin-p19
+  tipo: affiliate
+  titolo: Kit sfida 100 buste risparmio 5050 euro
+  kw:
+  - sfida 100 buste risparmio
+  - savings challenge binder italiano
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0CJ6FXSQD?tag=quattromondi-21
+  board: Debiti & Debt Payoff
+  overlay: 100 buste, 5050 euro risparmiati
+  idee:
+  - raccoglitore A5 100 tasche numerate
+  - tracker laminato fondo emergenza debiti
+  - metodo gamificato virale su Pinterest
+- id: fin-p20
+  tipo: affiliate
+  titolo: Salvadanaio in legno fatto a mano
+  kw:
+  - salvadanaio legno adulti
+  - salvadanaio risparmio obiettivo
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B09L6XM9C9?tag=quattromondi-21
+  board: Budget & Risparmio
+  overlay: Vedi i risparmi crescere ogni giorno
+  idee:
+  - legno robusto con tappo
+  - solo deposito anti-tentazione
+  - per sfida contanti e cash stuffing

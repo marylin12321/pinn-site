@@ -1,0 +1,407 @@
+# ============================================================
+# NICCHIA: PARENTING — contenuti, prodotti, board, design
+# - contenuti: pin di valore (generati sempre, anche senza link)
+# - prodotti: tipo affiliate = link Amazon col tuo tag (SiteStripe, MAI shortener);
+#   digitale/pod/email = tuoi (Etsy/Gumroad/landing) — da compilare quando pronti
+# - handle: account Pinterest dedicato (firma sui pin) — nomi board IDENTICI su Pinterest
+# ============================================================
+nicchia:
+  id: parenting
+  nome: Parenting & Baby Gear
+  handle: '@piccolipassi'  # account Pinterest dedicato (firma sui pin)
+  lingua: it
+  boards:
+  - Camere & Nursery
+  - Routine & Consigli
+  - Attività Senza Schermo
+  - Baby Gear & Lista Nascita
+  - Primi Anni di Vita
+design:
+  font_display: Poppins-Bold
+  font_bold: Poppins-ExtraBold
+  font_body: Lato-Regular
+  font_body_bold: Lato-Bold
+  font_accento: PatrickHand-Regular
+  palette:
+    sfondo: '#FAF6F1'
+    superficie: '#EFE7DE'
+    testo: '#3B332E'
+    banda: '#A8BDA4'
+    accento: '#E3B7B0'
+    accento2: '#BFD3DE'
+    chiaro: '#FFFFFF'
+  layout:
+  - fullbleed
+  - split
+  - lista
+  - mockup
+  - collage
+media_base_url: https://marylin12321.github.io/pinn-site/pin
+link_valore_default: ''
+utm:
+  attivo: true
+  campagna: parenting
+contenuti:
+- id: par-c01
+  tema: Attività senza schermo per bambini di 2-4 anni
+  kw:
+  - attività senza schermo
+  - attività bambini casa
+  overlay: Screen-Free in 5 Mosse
+  board: Attività Senza Schermo
+  passi:
+  - Cassetta sensoriale
+  - Corsa ostacoli indoor
+  - Pittura al bicchiere
+  - Bancarella cuoco
+  - Libro della sera
+- id: par-c02
+  tema: 'Camera montessori: preparare lo spazio giusto'
+  kw:
+  - camera montessori
+  - ambiente montessori
+  overlay: Camera Montessori
+  board: Camere & Nursery
+  passi:
+  - Tutto al loro livello
+  - Tappeto di gioco
+  - Mensole basse
+  - Luce calda
+  - Pochi giocattoli in vista
+- id: par-c03
+  tema: 'Lista della nascita minimalista: cosa serve davvero'
+  kw:
+  - lista nascita minimalista
+  - cose utili neonato
+  overlay: Lista Nascita Minimal
+  board: Baby Gear & Lista Nascita
+- id: par-c04
+  tema: Routine serena per addormentare i più piccoli
+  kw:
+  - routine addormentamento
+  - sonno bambini
+  overlay: Routine Sonno Sereno
+  board: Routine & Consigli
+  passi:
+  - Bagno tiepido
+  - Massaggio
+  - Pigiamino
+  - Storie brevi
+  - Buonanotte sempre uguale
+- id: par-c05
+  tema: Pappa baby led weaning senza panico
+  kw:
+  - baby led weaning
+  - prima pappa
+  overlay: Baby-Led Weaning
+  board: Primi Anni di Vita
+- id: par-c06
+  tema: Routine chart per bambini di 3 anni
+  kw:
+  - routine chart bambini
+  - routine 3 anni
+  overlay: Routine Chart 3 Anni
+  board: Routine & Consigli
+- id: par-c07
+  tema: Giocattoli che occupano pochissimo spazio
+  kw:
+  - giochi poco spazio
+  - giochi smart
+  overlay: Poco Spazio, Tanto Gioco
+  board: Camere & Nursery
+- id: par-c08
+  tema: 'Prima settimana con il neonato: aspettative reali'
+  kw:
+  - prima settimana neonato
+  - cura neonato
+  overlay: Prima Settimana, Sei Pronto?
+  board: Primi Anni di Vita
+  passi:
+  - Pulire il cordone
+  - Allattare a richiesta
+  - Sonno per turni
+  - Accettare gli ospiti piano
+  - Chiedere aiuto
+- id: par-c09
+  tema: 'Estate senza telefono: regole di famiglia'
+  kw:
+  - estate senza telefono
+  - limitare schermo
+  overlay: No Phone Summer
+  board: Attività Senza Schermo
+- id: par-c10
+  tema: 'Passeggino: come scegliere quello giusto'
+  kw:
+  - come scegliere passeggino
+  - passeggino guida
+  overlay: Scegliere il Passeggino
+  board: Baby Gear & Lista Nascita
+prodotti:
+- id: par-p01
+  tipo: affiliate
+  titolo: Baby monitor con notte a colori
+  kw:
+  - baby monitor
+  programma: Amazon Associates 3% (Baby)
+  link: https://www.amazon.it/dp/B0FG2DM28V?tag=quattromondi-21
+  board: Baby Gear & Lista Nascita
+  overlay: Notte Serena per Tutti
+  idee:
+  - video HD notturno
+  - due vie audio
+  - allarme temperatura
+- id: par-p02
+  tipo: affiliate
+  titolo: Babylist — lista nascita intelligente
+  kw:
+  - lista nascita babylist
+  programma: Babylist 4$ / registry + 0,8% vendite
+  link: ''
+  board: Baby Gear & Lista Nascita
+  overlay: La Lista che Serve
+  idee:
+  - prezzi multi-store
+  - resi estesi
+  - group gifting
+- id: par-p03
+  tipo: affiliate
+  titolo: 'Kit sensiballeria: cestino attività pronto'
+  kw:
+  - kit sensoriale bambini
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0GK2LLGWR?tag=quattromondi-21
+  board: Attività Senza Schermo
+  overlay: 10 Minuti di Gioco Libero
+  idee:
+  - 5 attività
+  - cassetta inclusa
+  - età 2-5
+- id: par-p04
+  tipo: affiliate
+  titolo: Passeggino leggero compatto
+  kw:
+  - passeggino compatto
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0FK5H11LG?tag=quattromondi-21
+  board: Baby Gear & Lista Nascita
+  overlay: Piegalo con una Mano
+  idee:
+  - 7 kg
+  - bagagliaio a mano
+  - tendina UV
+- id: par-p05
+  tipo: affiliate
+  titolo: Libro routine e sonno per neonati
+  kw:
+  - libro sonno neonati
+  programma: Amazon Associates 5% (Libri IT)
+  link: https://www.amazon.it/dp/8856627701?tag=quattromondi-21
+  board: Routine & Consigli
+  overlay: 'Sonno: la Guida'
+  idee:
+  - metodo gentile
+  - schede per età
+  - 200 pagine
+- id: par-p06
+  tipo: digitale
+  titolo: Diario primo anno di vita — stampabile
+  kw:
+  - diario primo anno neonato
+  programma: Etsy shop (tu)
+  link: ''
+  board: Primi Anni di Vita
+  overlay: 12 Mesi, 1 Diario
+  idee:
+  - 12 tappe
+  - spazio foto
+  - prime parole
+- id: par-p07
+  tipo: digitale
+  titolo: Routine chart illustrato da attaccare
+  kw:
+  - routine chart stampabile
+  programma: Etsy shop (tu)
+  link: ''
+  board: Routine & Consigli
+  overlay: La Routine in un Colpo d'occhio
+  idee:
+  - 6 attività
+  - icone chiare
+  - A3 e A4
+- id: par-p08
+  tipo: digitale
+  titolo: Checklist bagaglio ospedale (3a settimana)
+  kw:
+  - lista bagaglio ospedale
+  programma: Payhip (tu)
+  link: ''
+  board: Primi Anni di Vita
+  overlay: Bagaglio Ospedale ✓
+  idee:
+  - mamma e bebè
+  - divisa e taccuino
+  - print & go
+- id: par-p09
+  tipo: pod
+  titolo: Poster nursery 'Wild & Free'
+  kw:
+  - poster nursery
+  programma: Etsy + Printful
+  link: ''
+  board: Camere & Nursery
+  overlay: Poster per la Nursery
+  idee:
+  - 3 misure
+  - carta giclée
+  - cornice non inclusa
+- id: par-p10
+  tipo: pod
+  titolo: Tutu cotone per piccole ballerine
+  kw:
+  - tutu bambina
+  programma: Etsy + Printify
+  link: ''
+  board: Camere & Nursery
+  overlay: Prima di Ballo
+  idee:
+  - cotone
+  - 2 colori
+  - lavabile
+- id: par-p11
+  tipo: email
+  titolo: Checklist attività screen-free (30 idee gratis)
+  kw:
+  - attività senza schermo gratis
+  programma: MailerLite (landing)
+  link: ''
+  board: Attività Senza Schermo
+  overlay: 30 Idee Senza Schermo
+  idee:
+  - PDF gratuito
+  - per età
+  - materiali di casa
+- id: par-p12
+  tipo: email
+  titolo: Lista nascita minimalista da scaricare
+  kw:
+  - lista nascita gratis
+  programma: MailerLite (landing)
+  link: ''
+  board: Baby Gear & Lista Nascita
+  overlay: La Lista Minimal Gratis
+  idee:
+  - solo l'essenziale
+  - 3 categorie
+  - PDF immediato
+- id: par-p13
+  tipo: affiliate
+  titolo: Luce notturna bimbi space con batterie
+  kw:
+  - luce notturna bambini
+  - lucina cameretta neonato
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B08PKR2SC9?tag=quattromondi-21
+  board: 'Camere & Nursery'
+  overlay: Nanna dolce, luce soffusa
+  idee:
+  - 4 colori luce morbida
+  - 20 ore autonomia batterie incluse
+  - compatta tema spazio
+- id: par-p14
+  tipo: affiliate
+  titolo: Torretta apprendimento montessori legno regolabile
+  kw:
+  - torretta montessori bambini
+  - learning tower legno
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0D53L23TB?tag=quattromondi-21
+  board: Attività Senza Schermo
+  overlay: Piccoli chef in sicurezza
+  idee:
+  - 3 altezze regolabili
+  - stabile anti-ribaltamento
+  - sponda sicurezza 18 mesi-6 anni
+- id: par-p15
+  tipo: affiliate
+  titolo: Tappeto gioco imbottito neonati
+  kw:
+  - tappeto gioco neonato
+  - tappetone cameretta bambini
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B084J5FCZ6?tag=quattromondi-21
+  board: Primi Anni di Vita
+  overlay: Primi movimenti in morbidezza
+  idee:
+  - imbottito per gattonamento
+  - illustrazioni con asole sonaglini
+  - pieghevole lavabile lavatrice
+- id: par-p16
+  tipo: affiliate
+  titolo: Borraccia termica bimbi 460ml con cannuccia
+  kw:
+  - borraccia bambini asilo
+  - borraccia termica inox bambini
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0CZ4727RL?tag=quattromondi-21
+  board: Primi Anni di Vita
+  overlay: Acqua fresca all'asilo
+  idee:
+  - acciaio inox tenuta stagna
+  - caldo 12h freddo 24h 460 ml
+  - cannuccia silicone automatica
+- id: par-p17
+  tipo: affiliate
+  titolo: Set pappa silicone neonato con ventosa
+  kw:
+  - set pappa silicone
+  - piatto ventosa svezzamento
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0CQC72PKG?tag=quattromondi-21
+  board: 'Routine & Consigli'
+  overlay: Pappa serena senza stress
+  idee:
+  - silicone senza BPA
+  - piatto e ciotola con ventosa
+  - bavaglino e posate incluse
+- id: par-p18
+  tipo: affiliate
+  titolo: Una tigre all'ora del tè, albo illustrato
+  kw:
+  - albo illustrato bambini
+  - libro buonanotte
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/8804702486?tag=quattromondi-21
+  board: 'Routine & Consigli'
+  overlay: Una favola ogni sera
+  idee:
+  - classico amato 4,7 stelle
+  - edizione a colori
+  - perfetto rituale nanna
+- id: par-p19
+  tipo: affiliate
+  titolo: Zainetto asilo unicorno con portachiavi
+  kw:
+  - zainetto asilo bambina
+  - zaino infanzia unicorno
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0C97525R6?tag=quattromondi-21
+  board: 'Baby Gear & Lista Nascita'
+  overlay: Pronto per l'asilo!
+  idee:
+  - 7 lt leggero 31x23x7 cm
+  - double-face con portachiavi
+  - spallacci comodi tasca borraccia
+- id: par-p20
+  tipo: affiliate
+  titolo: Termometro ambiente cameretta con igrometro
+  kw:
+  - termometro cameretta neonato
+  - igrometro umidità stanza bambini
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B07WCR5Y4B?tag=quattromondi-21
+  board: 'Camere & Nursery'
+  overlay: Clima perfetto in cameretta
+  idee:
+  - display grandi cifre temperatura umidità
+  - faccina comfort
+  - magnete e gancio refresh 10 sec

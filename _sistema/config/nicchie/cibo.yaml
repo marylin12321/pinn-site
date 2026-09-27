@@ -1,0 +1,417 @@
+# ============================================================
+# NICCHIA: CIBO & RICETTE — contenuti, prodotti, board, design
+# - contenuti: pin di valore (generati sempre, anche senza link)
+# - prodotti: tipo affiliate = link Amazon col tuo tag (SiteStripe, MAI shortener);
+#   digitale/pod/email = tuoi (Etsy/Gumroad/landing) — da compilare quando pronti
+# - handle: account Pinterest dedicato (firma sui pin) — nomi board IDENTICI su Pinterest
+# ============================================================
+nicchia:
+  id: cibo
+  nome: Cibo & Ricette
+  handle: '@coloridigusto'  # account Pinterest dedicato (firma sui pin)
+  lingua: it
+  boards:
+  - Ricette Veloci
+  - Meal Prep & Batch Cooking
+  - Dolci Fatti in Casa
+  - Cene della Settimana
+  - Idee Salute
+design:
+  font_display: ArchivoBlack-Regular
+  font_bold: Poppins-ExtraBold
+  font_body: Lato-Regular
+  font_body_bold: Lato-Bold
+  font_accento: PatrickHand-Regular
+  palette:
+    sfondo: '#FBF3E7'
+    superficie: '#F3E3CE'
+    testo: '#33211A'
+    banda: '#C33B23'
+    accento: '#E08A2E'
+    accento2: '#9A6B4F'
+    chiaro: '#FFFBF4'
+  layout:
+  - fullbleed
+  - split
+  - lista
+  - collage
+media_base_url: https://marylin12321.github.io/pinn-site/pin
+link_valore_default: ''
+utm:
+  attivo: true
+  campagna: cibo
+contenuti:
+- id: cibo-c01
+  copy_custom:
+    titolo: 'Meal prep domenica: 90 minuti e la settimana è pronta'
+    descrizione: 'Scegli 3 ricette, fai una lista unica, taglia tutto insieme e cuoci in parallelo: in 90 minuti hai 5 contenitori pronti. Salva il pin e provalo domenica.'
+    sottotitolo: 'meal prep italiano'
+  foto: p30635719_mealprepcontainersimpilatiri.jpg
+  tema: Meal prep della domenica in 90 minuti
+  kw:
+  - meal prep domenica
+  - meal prep italiano
+  overlay: Meal Prep in 90 Min
+  board: Meal Prep & Batch Cooking
+  passi:
+  - Scegli 3 ricette
+  - Lista unica
+  - Taglia tutto insieme
+  - Cotture in parallelo
+  - 5 contenitori pronti
+- id: cibo-c02
+  tema: Pasta veloce in 15 minuti con 5 ingredienti
+  kw:
+  - pasta veloce
+  - ricette 15 minuti
+  overlay: Pasta in 15 Min
+  board: Ricette Veloci
+- id: cibo-c03
+  tema: Dolci con solo 5 ingredienti
+  kw:
+  - dolci 5 ingredienti
+  - dolci veloci
+  overlay: Dolci a 5 Ingredienti
+  board: Dolci Fatti in Casa
+- id: cibo-c04
+  tema: Colazioni batch da preparare in anticipo
+  kw:
+  - colazioni preparate
+  - colazioni veloci
+  overlay: Colazioni Pronte
+  board: Meal Prep & Batch Cooking
+  passi:
+  - Muffin salati
+  - Porzioni overnight
+  - Porridge in barattolo
+  - Congela il doppio
+  - Il mattino è fatto
+- id: cibo-c05
+  tema: Cene in 30 minuti per tutta la settimana
+  kw:
+  - cene veloci
+  - menu settimanale cene
+  overlay: Cene in 30 Min
+  board: Cene della Settimana
+- id: cibo-c06
+  tema: Contorni sani che piacciono anche ai grandi
+  kw:
+  - contorni sani
+  - ricette verdure
+  overlay: Verdure che Convertono
+  board: Idee Salute
+- id: cibo-c07
+  tema: 'Ricette una pentola: meno stoviglie, più gusto'
+  kw:
+  - ricette una pentola
+  - one pot recipes
+  overlay: Una Sola Pentola
+  board: Ricette Veloci
+  passi:
+  - Soffritto base
+  - Proteina
+  - Verdure dure prima
+  - Liquido
+  - 10 min di riposo
+- id: cibo-c08
+  tema: Piatti pronti da congelare e riscaldare
+  kw:
+  - piatti da congelare
+  - cucina freezer
+  overlay: Freezer a Prova di Fretta
+  board: Meal Prep & Batch Cooking
+- id: cibo-c09
+  tema: Merende scuola senza zucchero in più
+  kw:
+  - merende scuola
+  - merende sane
+  overlay: Merende per la Scuola
+  board: Idee Salute
+- id: cibo-c10
+  tema: Pane fatto in casa senza lievitazione lunga
+  kw:
+  - pane fatto in casa
+  - pane veloce
+  overlay: Pane Senza Attesa
+  board: Dolci Fatti in Casa
+  passi:
+  - Impasto 10 min
+  - Prima lievitazione
+  - Forma
+  - Cottura forte
+  - Riposo in rete
+prodotti:
+- id: cibo-p01
+  copy_custom:
+    titolo: 'Meal prep nel vetro: i contenitori Igluu funzionano?'
+    descrizione: 'Vetro borosilicato in 10 pezzi con coperchi ermetici: forno, microonde e freezer senza pensieri. 4,6★, intorno ai 58€. Vedi com''è fatto →'
+    overlay: 'Vetro, Non Plastica'
+    sottotitolo: 'etichette data'
+  foto: prod-B09YDHRN7H.jpg
+  tipo: affiliate
+  titolo: Contenitori vetro per meal prep
+  kw:
+  - contenitori meal prep
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B09YDHRN7H?tag=quattromondi-21
+  board: Meal Prep & Batch Cooking
+  overlay: Meal Prep Perfetto
+  idee:
+  - vetro borosilicato
+  - 4 porzioni
+  - etichette data
+- id: cibo-p02
+  tipo: affiliate
+  titolo: Air fryer compatta per 2 persone
+  kw:
+  - air fryer ricette
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B08D9HYZMS?tag=quattromondi-21
+  board: Ricette Veloci
+  overlay: Croccante in 10 Min
+  idee:
+  - 4,5 L
+  - pulizia facile
+  - ricetta book incluso
+- id: cibo-p03
+  tipo: affiliate
+  titolo: Coltelli giapponesi da chef 5 pezzi
+  kw:
+  - coltelli cucina
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B078X3HD5Y?tag=quattromondi-21
+  board: Ricette Veloci
+  overlay: Lama Giusta, Tempo Zero
+  idee:
+  - acciaio damasco
+  - manico ergonomico
+  - affilatura lunga
+- id: cibo-p04
+  tipo: affiliate
+  titolo: Set stagioni e barattoli etichettati
+  kw:
+  - barattoli dispensa
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0H4W11CKX?tag=quattromondi-21
+  board: Meal Prep & Batch Cooking
+  overlay: Dispensa da Chef
+  idee:
+  - ermetici
+  - impilabili
+  - design uniforme
+- id: cibo-p05
+  tipo: affiliate
+  titolo: 'Libro: 100 ricette sotto i 20 minuti'
+  kw:
+  - libro ricette veloci
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/8891845612?tag=quattromondi-21
+  board: Ricette Veloci
+  overlay: 100 Ricette Rapide
+  idee:
+  - foto per ricetta
+  - indice per tempo
+  - spesa già calcolata
+- id: cibo-p06
+  tipo: digitale
+  titolo: Meal planner stampabile + lista della spesa
+  kw:
+  - meal planner stampabile
+  programma: Etsy shop (tu)
+  link: ''
+  board: Cene della Settimana
+  overlay: Menu e Spesa Pronti
+  idee:
+  - 4 settimane
+  - PDF + foglio editabile
+  - lista spesa inclusa
+- id: cibo-p07
+  tipo: digitale
+  titolo: Raccolta 30 ricette veloci (PDF)
+  kw:
+  - raccolta ricette PDF
+  programma: Gumroad (tu)
+  link: ''
+  board: Ricette Veloci
+  overlay: 30 Ricette in un PDF
+  idee:
+  - 30 ricette
+  - tempo indicato
+  - ingredienti comuni
+- id: cibo-p08
+  tipo: digitale
+  titolo: Diario ricette della nonna — template stampabile
+  kw:
+  - diario ricette stampabile
+  programma: Etsy shop (tu)
+  link: ''
+  board: Dolci Fatti in Casa
+  overlay: Le Ricette di Casa
+  idee:
+  - 24 pagine
+  - spazio foto
+  - rilegatura facile
+- id: cibo-p09
+  tipo: pod
+  titolo: Apricucina illustrato 'Cucina con amore'
+  kw:
+  - apriscopri cucina
+  programma: Etsy + Printful
+  link: ''
+  board: Idee Salute
+  overlay: Cucina con Amore
+  idee:
+  - cotone pesante
+  - lavabile
+  - regalo cucina
+- id: cibo-p10
+  tipo: pod
+  titolo: Tazza 'But first, coffee'
+  kw:
+  - tazza caffè
+  programma: Etsy + Printify
+  link: ''
+  board: Dolci Fatti in Casa
+  overlay: Prima il Caffè
+  idee:
+  - ceramica 330ml
+  - 2 colori
+  - lavabile
+- id: cibo-p11
+  tipo: email
+  titolo: Menu settimanale + lista spesa gratuita
+  kw:
+  - menu settimanale gratis
+  programma: MailerLite (landing)
+  link: ''
+  board: Cene della Settimana
+  overlay: 'Menu Gratis: Scaricalo'
+  idee:
+  - PDF gratuito
+  - 5 cene
+  - lista inclusa
+- id: cibo-p12
+  tipo: email
+  titolo: 7 colazioni batch da scaricare
+  kw:
+  - colazioni batch gratis
+  programma: MailerLite (landing)
+  link: ''
+  board: Meal Prep & Batch Cooking
+  overlay: 7 Colazioni in un PDF
+  idee:
+  - gratuito
+  - step by step
+  - porzioni indicate
+- id: cibo-p13
+  tipo: affiliate
+  titolo: Set 3 padelle antiaderenti induzione
+  kw:
+  - padelle antiaderenti induzione
+  - set padelle sane
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B07CWDLR71?tag=quattromondi-21
+  board: Cene della Settimana
+  overlay: Cene perfette senza attaccare nulla
+  idee:
+  - antiaderente senza PFOA
+  - 3 misure 20/24/28 cm
+  - manico soft-touch lavastoviglie
+- id: cibo-p14
+  tipo: affiliate
+  titolo: Lunch box bento ermetico 4 scomparti con posate
+  kw:
+  - lunch box bento adulti
+  - schiscetta ufficio ermetica
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B07PDF13WS?tag=quattromondi-21
+  board: 'Meal Prep & Batch Cooking'
+  overlay: Schiscetta sana pronta in 5 minuti
+  idee:
+  - 1200 ml 4 scomparti
+  - ermetico microonde lavastoviglie
+  - posate incluse
+- id: cibo-p15
+  tipo: affiliate
+  titolo: Bilancia cucina digitale acciaio precisione 1g
+  kw:
+  - bilancia cucina digitale precisione
+  - bilancia alimenti dieta
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B06X9NQ8GX?tag=quattromondi-21
+  board: Idee Salute
+  overlay: Pesa tutto con precisione gourmet
+  idee:
+  - portata 5 kg precisione 1 g
+  - display LCD piattaforma inox
+  - tara rapida autospegnimento
+- id: cibo-p16
+  tipo: affiliate
+  titolo: Set 24 pirottini silicone riutilizzabili
+  kw:
+  - stampi silicone muffin
+  - pirottini silicone riutilizzabili
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0C1SFZNQ6?tag=quattromondi-21
+  board: Dolci Fatti in Casa
+  overlay: Muffin perfetti senza carta forno
+  idee:
+  - silicone alimentare senza BPA
+  - 24 pezzi colorati
+  - forno microonde lavastoviglie
+- id: cibo-p17
+  tipo: affiliate
+  titolo: Spiralizzatore verdure acciaio spaghetti light
+  kw:
+  - spiralizzatore verdure zucchine
+  - spaghetti di zucchine ricette
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B07RBNKNB8?tag=quattromondi-21
+  board: Idee Salute
+  overlay: Zucchine spaghetti pronte in minuti
+  idee:
+  - lame inox spaghetti e nastri
+  - low-carb senza glutine
+  - compatto facile da pulire
+- id: cibo-p18
+  tipo: affiliate
+  titolo: Borraccia termica acciaio 500ml freddo-caldo
+  kw:
+  - borraccia termica acciaio
+  - bottiglia termica sport ufficio
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B09FF22G1R?tag=quattromondi-21
+  board: 'Meal Prep & Batch Cooking'
+  overlay: Idratazione sana sempre con te
+  idee:
+  - 24h freddo 12h caldo
+  - acciaio senza BPA
+  - formato borsa palestra ufficio
+- id: cibo-p19
+  tipo: affiliate
+  titolo: Set 3 taglieri legno naturale antiscivolo
+  kw:
+  - set taglieri legno
+  - taglieri cucina professionali
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0B28LB9S9?tag=quattromondi-21
+  board: Ricette Veloci
+  overlay: Taglia veloce come uno chef
+  idee:
+  - 3 misure carne verdure pane
+  - legno delicato sui coltelli
+  - piedini antiscivolo scanalatura succo
+- id: cibo-p20
+  tipo: affiliate
+  titolo: Involucri cera api riutilizzabili zero sprechi
+  kw:
+  - pellicola cera api riutilizzabile
+  - beeswax wrap alimenti
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B07GWFFBKV?tag=quattromondi-21
+  board: 'Meal Prep & Batch Cooking'
+  overlay: Addio pellicola, cibi freschi naturali
+  idee:
+  - cotone e cera api senza plastica
+  - lavabili riutilizzabili 1 anno
+  - 3 formati meal prep avanzi

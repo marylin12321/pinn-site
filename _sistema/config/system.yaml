@@ -1,0 +1,122 @@
+# ============================================================
+# CONFIGURAZIONE DI SISTEMA — regole globali (brief + ricerca settembre 2026)
+# Fonti: policy.pinterest.com, help.pinterest.com, studi Tailwind/Sprout/84Pins 2026.
+# ============================================================
+
+regole:
+  # --- QUOTA GIORNALIERA PER ACCOUNT/NICCHIA ---
+  # Il brief fissa il tetto: 15-20/giorno "mai di più" → pin_giorno_max = 20 (fisso).
+  # La ricerca 2026 mostra che 15-25/giorno è il consiglio RETIRATO dell'era dei re-pin:
+  # - nuovi account in "sandbox fiducia" 60-90 giorni → 3-5 fresh pin/giorno
+  # - casi documentati di sospensione a 28 pin/giorno; le linee guida affiliate
+  #   dicono "use affiliate links in moderation"
+  # → si rispetta il TETTO del brief ma si rampa per fase (fasi sotto).
+  pin_giorno_max: 20              # TETTO ASSOLUTO (brief) — mai superato
+  vendita_giorno_max: 4           # TETTO vendita (brief 80/20 su max 20) — mai superato
+  email_giorno_max: 3             # pin con landing email (non è vendita diretta)
+  righe_csv_max: 200              # limite ufficiale bulk upload Pinterest
+  parole_overlay_max: 7           # overlay immagine (brief: max 5-7 parole)
+  descrizione_min_char: 150       # brief
+  descrizione_max_char: 500       # limite Pinterest (include disclosure)
+  descrizione_target_char: 300    # totale con disclosure; benchmark Tailwind 220-232 (corpo) + #adv (~90)
+  titolo_max_char: 100            # limite ufficiale; i primi ~40 sono i visibili
+  titolo_target_char: 60          # target SEO 40-60
+  min_prodotti_per_nicchia: 20    # brief: diversificare su 20-30+ prodotti
+  max_quota_prodotto: 0.20        # nessun prodotto oltre il 20% delle vendite
+  min_giorni_stesso_link: 3       # gap minimo stesso URL (research: 3-7 giorni)
+  max_board_stesso_pin: 10        # stesso pin su max 10 board
+
+# Ramp progressivo: si entra nella fase corrente modificando "corrente".
+fasi:
+  # Ramp basato sulla ricerca operativa 2026 (straycurls / Simple Pin / Merchize):
+  # account nuovo = 1-2 pin/giorno le prime 2 settimane; 3-4/giorno quando i pin
+  # toccano 1-2K impressions; 5-15/giorno SOLO per i formati già validati.
+  # Vincolo sicurezza: ≤20% dei pin con link commerciale (qui 0% / 20% / 20%).
+  corrente: 1
+  1:                              # prime settimane — warm-up fiducia account
+    pin: 2
+    vendita: 0                    # niente affiliate in warm-up ("in moderation")
+    email: 0
+  2:                              # formati validati (impressions in salita, CTR ≥0,5%)
+    pin: 5
+    vendita: 1
+    email: 1
+  3:                              # scale graduale (tetto assoluto: pin_giorno_max)
+    pin: 10
+    vendita: 2
+    email: 2
+
+generazione:
+  immagine:
+    larghezza: 1000               # specifica ufficiale 2:3
+    altezza: 1500
+  fuso_orario: "Europe/Rome"      # orari inseriti in locale → CSV in UTC (formato ufficiale)
+  orari: ["08:15", "11:40", "14:20", "17:05", "19:30", "21:10"]
+  tentativi_dedup: 6
+
+testo:
+  provider_predefinito: template  # template (zero costo, offline) | openai | ollama
+  openai:
+    base_url: "https://api.openai.com/v1"   # o OpenRouter/Groq/DeepSeek: cambia solo qui
+    model: "gpt-4o-mini"
+    # chiave da env: OPENAI_API_KEY
+  ollama:
+    base_url: "http://localhost:11434"
+    model: "llama3.2"
+
+disclosure:
+  # Obbligatoria: FTC ("#ad"/"paid link") + AGCOM IT (delibera 197/25, FAQ 03/2026:
+  # per un'affiliazione le diciture ammesse sono "Pubblicità"/"ADV"/"Advertising").
+  # Deve stare all'inizio della descrizione e comunque prima di "altro/more".
+  affiliato: "#adv — Contiene link affiliati: potrei ricevere una commissione, senza costi extra per te."
+  affiliato_amazon: "#adv — Come Associato di Amazon ricevo un guadagno dagli acquisti idonei effettuati tramite i miei link."
+  proprio: "#adv — Pubblicità: link diretto al mio shop/prodotto."
+  email: ""
+  valore: ""
+
+affiliazioni:
+  # StoreID Amazon Associates (tracking ID): `verifica` controlla che OGNI link
+  # Amazon nei config lo contenga — un link senza tag = commissioni perse.
+  amazon_tracking_id: "quattromondi-21"
+
+csv:
+  # colonne = template UFFICIALE bulk upload (help.pinterest.com "Bulk upload Pins")
+  colonne: ["Title", "Media URL", "Pinterest board", "Thumbnail", "Description", "Link", "Publish date", "Keywords"]
+  data_formato: "%Y-%m-%dT%H:%M:%S"   # formato ufficiale con orario (UTC)
+  encoding: "utf-8"
+  # Media URL DEVE essere un URL pubblico (niente path locali): impostare
+  # media_base_url per nicchia (opzione a costo zero: GitHub Pages, vedi docs/05).
+
+hosting:
+  # Le immagini dei pin devono stare su un URL pubblico (Pinterest rifiuta URL locali).
+  # Scelta a costo zero: GitHub Pages. Setup una-tantum in docs/05-operazioni.md.
+  # Dopo ogni `genera`, pubblica con:  python3 tools/pubblica_immagini.py
+  # (copia → commit → push in un colpo solo, sostituisce il passaggio manuale).
+  tipo: github_pages
+  repo_locale: "/home/gabriele/pinn-site"              # clone locale del repo Pages
+  sotto_cartella: "pin"        # cartella dentro il repo dove finiscono le immagini
+  # media_base_url atteso in config/nicchie/*.yaml:
+  #   https://<tuoutente>.github.io/<repo>/<sotto_cartella>
+
+utm:
+  attivo: true
+  sorgente: "pinterest"
+  medium: "social"
+  # nota: Pinterest normalizza gli URL eliminando i parametri di tracciamento
+  # (MIQPS 2026) → due link uguali tranne gli UTM = STESSO URL per l'algoritmo.
+  # Per questo vale il vincolo min_giorni_stesso_link.
+
+validazione:
+  # shortener = spam per Pinterest (Community Guidelines) → rifiutati dallo script
+  dominii_vietati:
+    - bit.ly
+    - tinyurl.com
+    - t.co
+    - goo.gl
+    - cutt.ly
+    - rb.gy
+    - is.gd
+    - lnkd.in
+    - shorturl.at
+    - amzn.to
+    - amzn.it

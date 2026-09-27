@@ -1,0 +1,430 @@
+# ============================================================
+# NICCHIA: CASA & ORGANIZZAZIONE — contenuti, prodotti, board, design
+# - contenuti: pin di valore (generati sempre, anche senza link)
+# - prodotti: tipo affiliate = link Amazon col tuo tag (SiteStripe, MAI shortener);
+#   digitale/pod/email = tuoi (Etsy/Gumroad/landing) — da compilare quando pronti
+# - handle: account Pinterest dedicato (firma sui pin) — nomi board IDENTICI su Pinterest
+# ============================================================
+nicchia:
+  id: casa
+  nome: Casa & Organizzazione
+  handle: '@tuttoinordinecasa'  # account Pinterest dedicato (firma sui pin)
+  lingua: it
+  boards:
+  - Organizzazione Pratica
+  - Piccoli Spazi
+  - Idee Arredamento
+  - Pulizie & Routine
+  - DIY Casa
+design:
+  font_display: Poppins-ExtraBold
+  font_bold: Poppins-ExtraBold
+  font_body: Poppins-Regular
+  font_body_bold: Poppins-SemiBold
+  font_accento: PatrickHand-Regular
+  palette:
+    sfondo: '#F4EDE4'
+    superficie: '#E7DCCD'
+    testo: '#2E2A26'
+    banda: '#B5623C'
+    accento: '#7A8B6F'
+    accento2: '#8C7F70'
+    chiaro: '#FFFCF7'
+  layout:
+  - fullbleed
+  - split
+  - lista
+  - collage
+  - mockup
+media_base_url: https://marylin12321.github.io/pinn-site/pin
+link_valore_default: ''
+utm:
+  attivo: true
+  campagna: casa
+contenuti:
+- id: casa-c01
+  copy_custom:
+    titolo: 'Dispensa in ordine in un pomeriggio: 6 passi'
+    descrizione: 'Parti svuotando tutto: solo così vedi cosa hai davvero. Pulisci, classifica per uso, etichetta ogni contenitore e riempi a strati. Salva il pin e parti da un ripiano solo.'
+    sottotitolo: 'Un ripiano alla volta'
+  foto: p5490824_woodenshelveswithglassjarsof.jpg
+  tema: Organizzare la dispensa con i contenitori
+  kw:
+  - organizzazione dispensa
+  - contenitori dispensa
+  overlay: Dispensa Ordinata in 6 Passi
+  board: Organizzazione Pratica
+  passi:
+  - Svuota tutto
+  - Pulisci e asciuga
+  - Classifica per uso
+  - Etichetta
+  - Riempi a strati
+  - Mantieni
+- id: casa-c02
+  tema: Piegare i vestiti negli armadi come nei negozi
+  kw:
+  - armadi ordinati
+  - piega vestiti
+  overlay: Armadi Senza Caos
+  board: Organizzazione Pratica
+- id: casa-c03
+  tema: Ordinare sotto il lavandino una volta per tutte
+  kw:
+  - sotto lavandino
+  - organizzazione cucina
+  overlay: Sotto Lavandino Smart
+  board: Organizzazione Pratica
+  passi:
+  - Togli tutto
+  - Misura lo spazio
+  - Carrelli e vassoi
+  - Prodotti in alto
+  - Etichette
+- id: casa-c04
+  tema: 'Piccoli spazi: 8 angoli morti che puoi riutilizzare'
+  kw:
+  - piccoli spazi
+  - idee casa
+  overlay: 8 Angoli Riutilizzabili
+  board: Piccoli Spazi
+- id: casa-c05
+  tema: Routine pulizie settimanali in 20 minuti al giorno
+  kw:
+  - routine pulizie
+  - pulizie veloci
+  overlay: Pulizie in 20 Min
+  board: Pulizie & Routine
+  passi:
+  - Scegli 3 zone
+  - Timer 20 minuti
+  - Un compito a volta
+  - Niente multitasking
+  - Chiudi con la stessa azione
+- id: casa-c06
+  tema: Scrivania smart working sempre in ordine
+  kw:
+  - scrivania ordinata
+  - smart working casa
+  overlay: Scrivania Pronta
+  board: Idee Arredamento
+- id: casa-c07
+  tema: 'Pulizie di primavera: la checklist completa'
+  kw:
+  - pulizie primavera
+  - checklist pulizie
+  overlay: Checklist Primavera
+  board: Pulizie & Routine
+- id: casa-c08
+  tema: 'Camera da letto minimal: meno oggetti, più respiro'
+  kw:
+  - camera da letto minimal
+  - arredamento camera
+  overlay: Camera che Respira
+  board: Idee Arredamento
+- id: casa-c09
+  tema: Ingresso sempre in ordine con 3 attrezzi
+  kw:
+  - ingresso ordinato
+  - organizzazione ingresso
+  overlay: Ingresso Impeccabile
+  board: Piccoli Spazi
+  passi:
+  - Ganci alla portata
+  - Vassoio per le chiavi
+  - Portaombrelli stretto
+- id: casa-c10
+  tema: Organizzare i cassetti una volta per tutte
+  kw:
+  - cassetti ordinati
+  - organizzazione cassetti
+  overlay: Cassetti Perfetti
+  board: Organizzazione Pratica
+- id: casa-c11
+  tema: Lampade senza fili dove manca la luce
+  kw:
+  - luce sottopensile senza fili
+  - lampade senza elettricista
+  overlay: Luce Senza Fili
+  board: DIY Casa
+  passi:
+  - Scegli i punti bui
+  - Prendi misura
+  - Pulisci la superficie
+  - Incolla e carica
+  - Imposta il sensore
+prodotti:
+- id: casa-p01
+  copy_custom:
+    titolo: 'Contenitori dispensa YASHE: la mia opinione onesta'
+    descrizione: '24 contenitori impilabili in 4 misure con etichette incluse: apri l''anta e vedi tutto. 4,6★ su 5.600+ recensioni, sotto i 40€. Lo trovi qui →'
+    overlay: '24 Contenitori, Zero Caos'
+    sottotitolo: 'etichette incluse'
+  foto: prod-B0CPPQ2L4D.jpg
+  tipo: affiliate
+  titolo: Set contenitori trasparenti per dispensa
+  kw:
+  - contenitori dispensa
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0CPPQ2L4D?tag=quattromondi-21
+  board: Organizzazione Pratica
+  overlay: Dispensa Perfetta
+  idee:
+  - impilabili
+  - misure diverse
+  - etichette incluse
+- id: casa-p02
+  tipo: affiliate
+  titolo: Rete organizer per cassetti
+  kw:
+  - organizzatori cassetti
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0GWQ5JVXD?tag=quattromondi-21
+  board: Organizzazione Pratica
+  overlay: Cassetti in 1 Giorno
+  idee:
+  - montaggio senza viti
+  - tagliabili
+  - multiuso
+- id: casa-p03
+  tipo: affiliate
+  titolo: Mensole a muro per piccoli spazi
+  kw:
+  - mensole a muro
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B00OXNEU5Q?tag=quattromondi-21
+  board: Piccoli Spazi
+  overlay: Muri che Lavorano
+  idee:
+  - insieme coordinato
+  - montaggio guido
+  - style scandinavo
+- id: casa-p04
+  tipo: affiliate
+  titolo: Organizzatore scarpe girevole
+  kw:
+  - organizzatore scarpe
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0G4JZV4WQ?tag=quattromondi-21
+  board: Piccoli Spazi
+  overlay: Scarpe Senza Caos
+  idee:
+  - girevole
+  - 24 paia
+  - zero trapano
+- id: casa-p05
+  tipo: affiliate
+  titolo: Carrello dispense a 3 livelli
+  kw:
+  - carrello dispensa
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B078MGYH57?tag=quattromondi-21
+  board: Organizzazione Pratica
+  overlay: Dispensa Su Rotelle
+  idee:
+  - stretto e alto
+  - 3 livelli
+  - facile da pulire
+- id: casa-p06
+  tipo: digitale
+  titolo: Printable etichette dispensa — 40 modelli
+  kw:
+  - etichette dispensa printabili
+  programma: Etsy shop (tu)
+  link: ''
+  board: Organizzazione Pratica
+  overlay: '40 Etichette Gratis? No: 40 Modelli'
+  idee:
+  - 40 design
+  - PDF subito
+  - A4 e US Letter
+- id: casa-p07
+  tipo: digitale
+  titolo: Checklist pulizie settimanali stampabile
+  kw:
+  - checklist pulizie stampabile
+  programma: Gumroad (tu)
+  link: ''
+  board: Pulizie & Routine
+  overlay: La Checklist Definitiva
+  idee:
+  - settimana intera
+  - spunta e via
+  - stile minimal
+- id: casa-p08
+  tipo: pod
+  titolo: Poster minimal 'Home is a feeling'
+  kw:
+  - poster casa minimal
+  programma: Etsy + Printful
+  link: ''
+  board: Idee Arredamento
+  overlay: Poster che Accoglie
+  idee:
+  - diverse misure
+  - carta giclée
+  - cornice non inclusa
+- id: casa-p09
+  tipo: pod
+  titolo: Tote bag 'Organized life'
+  kw:
+  - tote bag casa
+  programma: Etsy + Printify
+  link: ''
+  board: DIY Casa
+  overlay: Tote Ordinata
+  idee:
+  - cotone pesante
+  - 2 colori
+  - lavabile
+- id: casa-p10
+  tipo: email
+  titolo: 'Guida gratuita: Casa Ordinata in 7 Giorni'
+  kw:
+  - organizzare casa in 7 giorni
+  programma: MailerLite (landing)
+  link: ''
+  board: Organizzazione Pratica
+  overlay: Casa Ordinata in 7 Giorni
+  idee:
+  - PDF gratuito
+  - un'area al giorno
+  - checklist inclusa
+- id: casa-p11
+  tipo: email
+  titolo: Checklist pulizie deep-clean da scaricare
+  kw:
+  - checklist pulizie gratis
+  programma: MailerLite (landing)
+  link: ''
+  board: Pulizie & Routine
+  overlay: Deep Clean Gratis
+  idee:
+  - una tantum
+  - pronta da stampare
+  - zona per zona
+- id: casa-p12
+  tipo: affiliate
+  titolo: Contenitori frigo modulabili
+  kw:
+  - contenitori frigo
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0CKYF2N5W?tag=quattromondi-21
+  board: Organizzazione Pratica
+  overlay: Frigo Sempre Ordine
+  idee:
+  - impilabili
+  - BPA free
+  - si lavano in lavastoviglie
+- id: casa-p13
+  tipo: affiliate
+  titolo: Set spazzole pulizia fughe
+  kw:
+  - spazzole pulizia fughe
+  - pulizia fessure bagno cucina
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0FGTS7WQ8?tag=quattromondi-21
+  board: 'Pulizie & Routine'
+  overlay: Fughe perfette in pochi minuti
+  idee:
+  - testa sottile
+  - setole dure nylon
+  - 5 pezzi
+- id: casa-p14
+  tipo: affiliate
+  titolo: Set panni microfibra pulizia casa
+  kw:
+  - panni microfibra pulizia
+  - panni assorbenti senza aloni
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B08B13G5B4?tag=quattromondi-21
+  board: 'Pulizie & Routine'
+  overlay: Casa brillante senza aloni
+  idee:
+  - 293 GSM alta densità
+  - 12 pezzi 4 colori
+  - riutilizzabili lavatrice
+- id: casa-p15
+  tipo: affiliate
+  titolo: Organizer lavello cucina autosvuotante
+  kw:
+  - organizer lavello cucina
+  - porta spugne lavello
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0D7C8KGQ4?tag=quattromondi-21
+  board: Organizzazione Pratica
+  overlay: Lavello ordinato ogni giorno
+  idee:
+  - vaschetta autosvuotante
+  - 3 scomparti separati
+  - porta detersivo spugne
+- id: casa-p16
+  tipo: affiliate
+  titolo: Appendiabiti parete salvaspazio retrattile
+  kw:
+  - appendiabiti parete ingresso
+  - attaccapanni salvaspazio moderno
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B005M8YWUO?tag=quattromondi-21
+  board: Piccoli Spazi
+  overlay: Ingresso ordinato senza ingombro
+  idee:
+  - 5 ganci retrattili
+  - 2,2 kg per gancio
+  - design 49 cm
+- id: casa-p17
+  tipo: affiliate
+  titolo: Scarpiera salvaspazio estensibile impilabile
+  kw:
+  - scarpiera salvaspazio piccola
+  - scarpiera impilabile ingresso
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0DK7BYSSJ?tag=quattromondi-21
+  board: Piccoli Spazi
+  overlay: Scarpe ordinate in poco spazio
+  idee:
+  - estensibile 44-82 cm
+  - 2 ripiani impilabili
+  - acciaio nero
+- id: casa-p18
+  tipo: affiliate
+  titolo: Organizer armadio sospeso salvaspazio
+  kw:
+  - organizer armadio sospeso
+  - contenitore armadio tessuto ripiani
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0C8HNKW1R?tag=quattromondi-21
+  board: Organizzazione Pratica
+  overlay: Raddoppia lo spazio nell'armadio
+  idee:
+  - 5 ripiani aperti
+  - set di 2 pezzi
+  - ganci metallo robusti
+- id: casa-p19
+  tipo: affiliate
+  titolo: Portaspezie girevole 360 gradi vetro
+  kw:
+  - portaspezie girevole cucina
+  - organizer spezie 360
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0CSY1HZH2?tag=quattromondi-21
+  board: Idee Arredamento
+  overlay: Spezie sempre a portata di mano
+  idee:
+  - rotazione 360 gradi
+  - 20 barattoli vetro 100 ml
+  - coperchi acciaio inox
+- id: casa-p20
+  tipo: affiliate
+  titolo: Barra LED sottopensile con sensore movimento
+  kw:
+  - luce sottopensile cucina sensore
+  - barra led magnetica ricaricabile
+  programma: Amazon Associates
+  link: https://www.amazon.it/dp/B0DV5TDC9N?tag=quattromondi-21
+  board: DIY Casa
+  overlay: Luce automatica dove serve
+  idee:
+  - sensore movimento
+  - ricaricabile USB
+  - magnetica senza fili
