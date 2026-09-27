@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Il menu si sceglie il martedì, non la domenica"
 descrizione: "Trentacinque minuti di programmazione per cinque cene che riescono a fare con quello che c'è in frigo."
 foto: prod-B07RBNKNB8.jpg
 board: Cene della Settimana
 prodotti: [cibo-p06]
-pubblica_dal: 2026-10-09
+kw:
+  - "menu settimanale"
+  - "pianificare i pasti"
+  - "idee menu"
+  - "cena della settimana"
+  - "programmazione pasti"
+pin:
+  - t: "Il menu si sceglie il martedì, non la domenica"
+    d: "Trentacinque minuti di programmazione per cinque cene che riesci a fare con quello che c'è in frigo. Il metodo e i quattro passi."
+  - t: "Perché la programmazione dei pasti fallisce quasi sempre"
+    d: "Non è disciplina: è che si pianifica con le informazioni sbagliate. Ti spiega perché il martedì funziona e che cosa scrivere perché funzioni."
+  - t: "10 idee menu per la settimana con pochi ingredienti"
+    d: "Dieci menu da cinque cene costruiti attorno a pochi ingredienti usati in più piatti, con la lista della spesa unica per non comprare doppi."
+  - t: "Menu settimanale in 35 minuti: quanto costa davvero pianificare"
+    d: "Il tempo che ci metti a pianificare e quanto ne recuperi nei giorni dopo. Con il metodo delle due cene uguali e delle tre diverse."
+  - t: "4 errori nel fare il menu della settimana"
+    d: "Sette cene invece di cinque, comprate prima di aver deciso, nessuna cena che usa gli avanzi: i quattro errori che fanno saltare il piano entro lunedì."
+  - t: "Menu per una settimana con trenta minuti la sera"
+    d: "Se in settimana hai mezz'ora a cena, il menu va progettato diversamente. Cinque cene da assemblare, con la parte da fare in anticipo."
 ---
+
 La programmazione della settimana fallisce quasi sempre per un motivo: si fa quando si ha tempo di pensare, cioè di rado. La domenica pomeriggio è il momento peggiore, perché la testa è già altrove. Il martedì sera, con il frigo ancora fornito e venti minuti liberi, funziona.
 
 ## 1. Cinque cene, non sette

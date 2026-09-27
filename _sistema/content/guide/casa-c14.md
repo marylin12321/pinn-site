@@ -1,10 +1,30 @@
 ---
+
 titolo: "Le zone che non pulisci mai: fughe, griglie, infissi"
 descrizione: "Il metodo delle quattro zone dimenticate e gli attrezzi che le sbloccano in mezz'ora, una volta al mese."
 board: Pulizie & Routine
 prodotti: [casa-p13]
-pubblica_dal: 2026-10-14
+kw:
+  - "come pulire casa"
+  - "pulizia fai da te"
+  - "pulizia della casa"
+  - "pulizia fughe e griglie"
+  - "pulizia mensile casa"
+pin:
+  - t: "Le zone che non pulisci mai: fughe, griglie, infissi"
+    d: "Quattro zone dimenticate, quattro attrezzi che le sbloccano, mezz'ora al mese. La lista per riprendere la manutenzione della casa senza chiamare nessuno."
+  - t: "Perché quelle zone si sporcano sempre più (e non è questione di test)"
+    d: "È questione di polvere che si ferma e di umidità che resta. Ti spiega dove inizia lo sporco invisibile e come toglierlo prima che debordi."
+  - t: "10 modi per pulire le zone difficili senza prodotti forti"
+    d: "Bicarbonato, aceto, sapone vegetale, spugne: dieci soluzioni per le quattro zone difficili, con quello che non usare perché rovina la superficie."
+  - t: "Mezz'ora al mese: il piano di pulizia delle zone dimenticate"
+    d: "Il piano mensile delle quattro zone con i tempi reali e l'ordine che conviene. Pensato per chi rimanda da settimane e poi non sa più da dove cominciare."
+  - t: "4 errori che peggiorano le zone che sporchano di più"
+    d: "Sfregare la griglia con le setole contro, usare aceto sulla pietra, ignorare le guarnizioni degli infissi: i quattro errori che trasformano lo sporco in danno."
+  - t: "Come tenere pulita la casa da soli o senza aiuto"
+    d: "Se vivi da solo o con chi non collabora, la manutenzione non regge. Le quattro abitudini da tenere tu, ordinate per impatto reale sul tempo che ci metti."
 ---
+
 La routine da venti minuti tiene in ordine le superfici che vedi. Poi ci sono quattro zone che restano identiche per anni, perché sono scomode da raggiungere e non danno fastidio. Sono quelle che fanno sembrare una casa trascurata anche quando è pulita.
 
 ## 1. Le fughe e gli angoli

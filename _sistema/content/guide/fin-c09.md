@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Tracciare le spese: il metodo dei 5 minuti la sera"
 descrizione: "Cinque minuti la sera con il diario delle spese: categoria, importo, un commento. In un mese hai il quadro completo delle tue abitudini."
 foto: prod-B0991DBS6C.jpg
 board: Abitudini & Soldi
 prodotti: [fin-p16, fin-p10]
-pubblica_dal: 2026-10-14
+kw:
+  - "tracciare le spese"
+  - "diario delle spese"
+  - "controllare le uscite"
+  - "idee risparmio"
+  - "gestire i soldi"
+pin:
+  - t: "Tracciare le spese: il metodo dei 5 minuti la sera"
+    d: "Cinque minuti a sera con il diario delle spese: categoria, importo, un commento. In un mese hai il quadro completo di dove vanno i soldi."
+  - t: "Perché tenere il conto delle spese cambia i tuoi acquisti"
+    d: "Non è il controllo a frenare: è la consapevolezza. Ti spiega come la traccia mensile cambia le abitudini e che cosa succede alla prima categoria che si gonfia."
+  - t: "6 modi per tracciare le spese senza faticare"
+    d: "Quaderno, foto delle ricevute, foglio, app, carta prepagata, contanti: sei metodi con pro e contro, scegliendo in base a come spendi."
+  - t: "Tracciare le spese: quanto tempo serve davvero"
+    d: "Il conteggio dei minuti reali per il registro in carta e per l'app, con i tempi crescenti e il momento in cui la traccia inizia a valere la pena."
+  - t: "3 errori nel tenere il diario delle spese"
+    d: "Categorie troppo numerose, corsivo il sabato per tutta la settimana, rimandare quando i conti non tornano: i tre errori che fanno mollare il diario."
+  - t: "Tracciare le spese per una settimana e capire dove vanno i soldi"
+    d: "Prima di fare un budget, sette giorni di traccia bastano a chiarire la situazione. Ti spiega che cosa guardare nei dati e le tre domande da farsi."
 ---
+
 Il budget fallisce quasi sempre per un motivo solo: i numeri si aggiornano a fine mese, quando ormai non servono più a niente. Tracciare ogni sera costa cinque minuti e ti permette di correggere mentre il mese è ancora in corsa.
 
 ## 1. Il diario, non il conto

@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Routine chart per bambini di 3 anni"
 descrizione: "Tre anni sono l'età delle domande: cosa facciamo, quando, ogni giorno. Un semplice grafico a icone glielo spiega da solo."
 foto: p3662748_woodentoysinwovenbasket.jpg
 board: Routine & Consigli
 prodotti: [par-p07, par-p11]
-pubblica_dal: 2026-10-30
+kw:
+  - "routine chart bambini"
+  - "grafico routine"
+  - "idee bambini 3 anni"
+  - "routine mattutina"
+  - "tabella attività bambini"
+pin:
+  - t: "Routine chart per bambini di 3 anni: il grafico a icone"
+    d: "Tre anni sono l'età delle domande: che cosa facciamo, quando, ogni giorno. Un semplice grafico a icone glielo spiega da solo, senza spiegare ogni volta."
+  - t: "Perché i bambini di 3 anni chiedono sempre le stesse cose"
+    d: "Non è capriccio: è bisogno di prevedibilità. Ti spiega perché le routine multiple riducono i capricci e in quali momenti servono davvero."
+  - t: "8 idee per routine chart che i bambini usano da soli"
+    d: "Dal grafico settimanale alla tabella del pomeriggio: otto idee con età minima consigliata, che cosa ci metti e in quanto tempo ci mette a stare in piedi."
+  - t: "Routine chart stampabile: quanto costa e dove stamparlo"
+    d: "Il costo reale di un grafico stampato a casa con i fogli che hai, che cosa cambia con la carta adesiva e la differenza rispetto alle app a pagamento."
+  - t: "3 errori nei grafici di routine per bambini"
+    d: "Troppe icone, immagini diseginate invece di fotografie, simboli che cambiano ogni settimana: i tre errori che fanno ignorare il grafico dopo tre giorni."
+  - t: "Routine chart per le transizioni difficili: uscita, cena, fine attività"
+    d: "Il grafico funziona soprattutto nei momenti di passaggio. Ti spiega come dichiarare le transizioni con le immagini e che cosa fare nelle giornate storte."
 ---
+
 A tre anni la memoria lavora bene e le promesse si ricordano: il problema non è che il bambino non capisca, è che noi non gli diamo niente di concreto da ricordare. Un foglio con le icone della giornata risolve quasi tutto.
 
 ## 1. Otto immagini, non trenta

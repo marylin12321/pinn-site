@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Il tagliere che decide la cena: cinque ricette da quindici minuti"
 descrizione: "Un tagliere grande, due coltelli e le combinazioni che trasformano gli stessi ingredienti in cinque cene diverse."
 foto: prod-B07PDF13WS.jpg
 board: Ricette Veloci
 prodotti: [cibo-p19]
-pubblica_dal: 2026-10-01
+kw:
+  - "ricette veloci"
+  - "tagliere"
+  - "cena in 15 minuti"
+  - "idee cena"
+  - "preparare la cena"
+pin:
+  - t: "Il tagliere che decide la cena: cinque ricette da quindici minuti"
+    d: "Un tagliere grande, due coltelli e le combinazioni che trasformano gli stessi ingredienti in cinque cene diverse. Con i cinque piatti e i tempi reali."
+  - t: "Perché la cena si decide male negli ultimi trenta minuti"
+    d: "È una decisione presa affamati, con il frigo aperto. Ti spiega perché preparare il tagliere prima sblocca la cena e che cosa ci metti perché sia veloce da montare."
+  - t: "10 idee cena con gli stessi ingredienti di sempre"
+    d: "Pasta, verdure, proteina, olio: dieci cene diverse dalla stessa base, con che cosa cambia e i tempi reali. Per non comprare niente di nuovo."
+  - t: "Cena in 15 minuti: cosa tenere sulla mensola per riuscirci"
+    d: "Gli attrezzi e gli ingredienti da tenere sempre a portata di mano per arrivare a cena in quindici minuti, con i costi e dove si comprano."
+  - t: "4 errori con il tagliere che ti fanno perdere tempo"
+    d: "Un solo coltello, verdure tagliate a fette sottili, tagliere troppo piccolo: i quattro errori che raddoppiano il tempo di preparazione della cena."
+  - t: "Come usare un tagliere solo e organizzare la cena in padella"
+    d: "Un tagliere, due coltelli e la regola dell'ordine: come preparare la cena in modo che tutto finisca in padella nelle sequenze giuste e non aspetti."
 ---
+
 Il motivo per cui la cena si decide solo all'ultimo minuto è quasi sempre lo stesso: gli ingredienti sono troppo pochi per fare un piano. Il punto di svolta è smettere di ragionare a ricette e ragionare a tagliere, perché cambia la forma dell'ingrediente cambia la cena.
 
 ## 1. Tre taglieri, non uno

@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Piccoli spazi: 8 angoli morti che puoi riutilizzare"
 descrizione: "Sopra il frigo, sotto le scale, dietro la porta: otto zone che di solito restano vuote, con la soluzione giusta per ognuna."
 foto: prod-B0DK7BYSSJ.jpg
 board: Piccoli Spazi
 prodotti: [casa-p03, casa-p16, casa-p19]
-pubblica_dal: 2026-10-06
+kw:
+  - "idee piccoli spazi"
+  - "organizzare casa piccola"
+  - "angoli morti casa"
+  - "idee arredamento piccolo"
+  - "casa piccola organizzata"
+pin:
+  - t: "8 angoli morti che puoi riutilizzare in una casa piccola"
+    d: "Sopra il frigo, sotto le scale, dietra la porta, sopra la scrivania: otto zone che di solito restano vuote, con la soluzione giusta per ognuna e cosa ci metti davvero."
+  - t: "Casa piccola e disordinata? Il problema è dove guardi"
+    d: "Non è che hai poco spazio: è che lo spazio buono è tutto in vista. Ti spiego perché e dove nascondere le cose in una casa piccola senza comprare mobili."
+  - t: "12 idee di arredamento per spazi piccoli, tutte sotto i 30 euro"
+    d: "Ganci, mensole a scomparsa, vassoi: dodici soluzioni economiche per recuperare metri quadrati, ordinate per quello che costano davvero e non per come appaiono in foto."
+  - t: "Una stanza in più senza muri: 6 soluzioni da 40 euro"
+    d: "Mensole sopra il divano, scaffali sopra la porta, un piano estraibile: sei modi per aggiungere superficie utile in una stanza piccola, con costi e tempi di montaggio."
+  - t: "4 errori di arredamento che fanno sembrare la casa più piccola"
+    d: "Mobili alti e larghi, mobili a tutta parete, colori solo in alto: i quattro gesti che accorciano le stanze e le alternative che le allargano di nuovo."
+  - t: "Arredare una casa piccola usando solo quello che hai già"
+    d: "Non serve comprare: si tratta di spostare e cambiare uso. Come rivedere la disposizione di una stanza piccola con i mobili che possiedi già."
 ---
+
 In una casa piccola non manca lo spazio: manca l'idea di dove metterlo. La maggior parte delle superfici inutilizzate è in alto o ai lati, dove non si guarda e quindi non si riempie.
 
 ## 1. Sopra il frigo

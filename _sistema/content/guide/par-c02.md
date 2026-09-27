@@ -1,10 +1,30 @@
 ---
+
 titolo: "Camera montessori: preparare lo spazio giusto"
 descrizione: "Tutto al loro livello, un tappeto, poche cose in vista: come si prepara la stanza di un bambino piccolo senza spendere niente."
 board: Camere & Nursery
 prodotti: [par-p15, par-p14]
-pubblica_dal: 2026-10-19
+kw:
+  - "camera montessori"
+  - "camera bambino"
+  - "arredamento cameretta"
+  - "montessori"
+  - "idee cameretta"
+pin:
+  - t: "Camera montessori: preparare lo spazio giusto"
+    d: "Tutto al loro livello, un tappeto, poche cose in vista: come si prepara la stanza di un bambino piccolo senza spendere niente e senza mobili a misura."
+  - t: "Perché la camera montessori non vuole mobili belli"
+    d: "Il principio è l'indipendenza, non l'estetica. Ti spiega perché i mobili a misura non servono e che cosa mettere al loro posto per farlo da soli."
+  - t: "Camera montessori: 10 idee per arredarla con quello che hai"
+    d: "Dieci soluzioni con mobili e attrezzi già in casa, dalla più economica alla più efficace, con l'età a cui funzionano e i limiti da conoscere."
+  - t: "Arredare una camera montessori: quanto costa davvero"
+    d: "Tre preventivi reali, da zero a seicento euro, con che cosa cambia fra le opzioni e quali acquisti si possono evitare perché servono per una sola fase."
+  - t: "3 errori comuni nelle camere montessori"
+    d: "Mobili troppo alti, cose che cambiano ogni mese, stimoli dappertutto: i tre errori che trasformano l'ambiente in un posto dove il bambino non si concentra."
+  - t: "Camera montessori per chi cambia casa o ha poco spazio"
+    d: "In affitto o in una stanza piccola sembra impossibile. Ti spiega che cosa si può fare davvero, con l'elenco delle rinunce sensate e quelle da evitare."
 ---
+
 L'ambiente montessori non è un arredamento, è una regola: i bambini piccoli imparano muovendosi, quindi devono poter vedere e raggiungere tutto da soli. Si prepara in un pomeriggio e senza comprare quasi niente.
 
 ## 1. Tutto al loro livello

@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Pappa baby led: cominciare senza panico"
 descrizione: "Prima pappa a sei mesi senza colla e senza cibo a pezzi pericolosi: quattro regole e il metodo che funziona."
 foto: prod-B08PKR2SC9.jpg
 board: Primi Anni di Vita
 prodotti: [par-p17, par-p03]
-pubblica_dal: 2026-10-23
+kw:
+  - "pappa baby led"
+  - "svezzamento"
+  - "alimentazione bambini"
+  - "primi alimenti bambino"
+  - "pappa senza colla"
+pin:
+  - t: "Pappa baby led: cominciare senza panico"
+    d: "Prima pappa a sei mesi senza colla e senza cibo a pezzi pericoloso: quattro regole, il metodo che funziona e le tre tappe da non saltare."
+  - t: "Perché iniziare la pappa baby led sembra così difficile"
+    d: "È una transizione nuova, non una sfida. Ti spiega come iniziare senza pressione, che cosa succede nei primi giorni e perché le tappe si saltano di rado."
+  - t: "10 idee per la pappa baby led, dal primo giorno al primo anno"
+    d: "Dieci proposte per tappe, con consistenza, ingredienti e modo di servire. Dal primo assaggio alla pappa completa del primo anno."
+  - t: "Pappa baby led fatta in casa: quanto costa al giorno"
+    d: "Il costo reale di un giorno di pappa fatta in casa, con gli ingredienti usati in più pasti e le tre cose che si possono comprare senza pensarci."
+  - t: "4 errori nell'alimentazione del bebè che iniziano la pappa"
+    d: "Sale e zucchero prima dell'anno, latte come base, alimenti troppo presto, porzioni di adulto: i quattro errori più comuni e come evitarli."
+  - t: "Pappa baby led quando il bambino non vuole mangiare"
+    d: "Rifiutare il cucchiaio e la pappa è normale. Ti spiega le cinque cose da cambiare quando il bebè respinge la pappa e in che momento sentire il pediatra."
 ---
+
 Baby led weaning sembrava complicate perché si sente parlare di regole diverse da quelle del cucchiaio. In pratica sono tre cose: sedersi, mangiare da soli, assaggiare. Il resto è pazienza e una buona idea di cosa tenere in dispensa.
 
 ## 1. Le tre condizioni prima di cominciare

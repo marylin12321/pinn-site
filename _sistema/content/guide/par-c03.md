@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Lista della nascita minimalista: cosa serve davvero"
 descrizione: "Trenta voci, non trecento: la lista nascita che funziona per chi riceve visitatori per sei mesi e usa tutto quello che mette dentro."
 foto: prod-8856627701.jpg
 board: Baby Gear & Lista Nascita
 prodotti: [par-p02, par-p12]
-pubblica_dal: 2026-10-12
+kw:
+  - "lista nascita"
+  - "cosa serve per un neonato"
+  - "attrezzatura neonato"
+  - "idee regalo neonato"
+  - "primo equipaggiamento"
+pin:
+  - t: "Lista della nascita minimalista: cosa serve davvero"
+    d: "Trenta voci, non trecento: la lista che funziona per chi riceve visitatori per sei mesi e usa tutto quello che mette. Con le categorie e i tagli."
+  - t: "Perché la lista nascita si riempie di cose inutili"
+    d: "È cortesia, non bisogno. Ti spiega come dire grazie senza liste e i tre modi per far sapere che cosa serve davvero a parenti e amici."
+  - t: "12 idee regalo per un neonato che non sono oggetti"
+    d: "Servizi, buoni, tempo prestato, cose che servono dopo: dodici idee regalo che i neogenitori apprezzano più di un giocattolo, con il perché."
+  - t: "Lista nascita: quanto costa l'equipaggiamento essenziale"
+    d: "Il conto reale per attrezzare una stanza per un neonato, con le voci obbligatorie, quelle rimandabili e le tre spese da evitare."
+  - t: "3 errori nella lista nascita da parte di nonni e amici"
+    d: "Regalare cose per l'età sbagliata, comprare il lettino prima del posto, non chiedere nulla: i tre errori più comuni e come evitarli con gentilezza."
+  - t: "Lista nascita quando l'equipaggiamento ce l'ha già qualcun altro"
+    d: "Se a casa ci sono già culletta, passeggino e seggiolina la lista cambia del tutto. Ti spiega che cosa chiedere al posto e come dirlo senza sembrare difficile."
 ---
+
 Una lista nascita lunga si riempie di cose che poi nessuno usa. Quella giusta sta fra trenta e quaranta voci, tutte scelte per l'uso quotidiano: è il modo più economico di non comprare doppi.
 
 ## 1. Parti dall'uso, non dall'oggetto

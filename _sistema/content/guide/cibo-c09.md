@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Merende per la scuola: 5 ricette senza zucchero aggiunto"
 descrizione: "Barrette, muffin e rotolini fatti in casa: cinque merende che i bambini mangiano e che non finiscono a mezz'ora."
 foto: 006_healthy-breakfast-bowl.jpg
 board: Idee Salute
 prodotti: [cibo-p14, cibo-p05]
-pubblica_dal: 2026-10-16
+kw:
+  - "merenda per la scuola"
+  - "merende senza zucchero"
+  - "idee merenda bambini"
+  - "ricette merenda"
+  - "merenda sana bambini"
+pin:
+  - t: "Merende per la scuola senza zucchero aggiunto: cinque ricette"
+    d: "Barrette, muffin, rotolini: cinque merende che i bambini mangiano davvero e che non finiscono a mezz'ora. Con i tempi di preparazione e la conservazione."
+  - t: "Perché la merenda dura sempre venti minuti"
+    d: "È tempo di corsa, non fame: se la merenda non ha grassi e fibre, a metà ricadi. Ti spiega cosa preparare perché tenga fino all'uscita."
+  - t: "8 idee merenda da portare a scuola senza frigo"
+    d: "Otto merende che viaggiano bene nello zaino, senza lattuga, senza uova e senza gelso. Con i tempi e la quantità per bambino."
+  - t: "Merende fatte in casa con 3 euro al giorno"
+    d: "La spesa delle merende per cinque giorni, con i costi reali e la quantità per bambino. Quattro ricette da quattro ingredienti, una sola spesa."
+  - t: "3 errori nelle merende fatte in casa"
+    d: "Troppo zucchero che sembra naturale, prodotti che si sgonfiano, contenitore che apre nello zaino: i tre errori che fanno tornare la merenda a casa."
+  - t: "Merende senza zucchero per bambini che le rifiutano"
+    d: "Se il bambino accetta solo le dolci, si può cambiare la forma invece che il contenuto. Cinque strategie e le quantità di zucchero per merenda."
 ---
+
 Ottobre è il mese delle merende scolastiche, e quelle comprate sono tre quarti zucchero. Cinque ricette da preparare la domenica, durata una settimana, senza zuccheri aggiunti: il punto non è la privazione, è che i bambini abbiano fame alle tre.
 
 ## 1. Barrette di dattero e noci

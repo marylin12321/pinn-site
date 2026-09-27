@@ -5,15 +5,20 @@
     <link>https://marylin12321.github.io/pinn-site/guide/</link>
     <description>Guide Dolci Fatti in Casa (Quattro Mondi)</description>
     <language>it-it</language>
-    <lastBuildDate>Thu, 24 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 00:00:00 GMT</lastBuildDate>
     <item>
-      <title>Pane fatto in casa senza lievitazione lunga</title>
-      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c10.html</link>
-      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c10.html</guid>
-      <description>Farina, acqua, lievito istantaneo e forno caldo col vapore: pane vero senza aspettare ore.</description>
-      <pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate>
-      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c10.jpg" type="image/jpeg" />
-      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c10.jpg" medium="image" type="image/jpeg" />
+      <title>Dolci con 5 ingredienti: la formula che funziona sempre</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c03.html</link>
+      <guid isPermaLink="false">https://marylin12321.github.io/pinn-site/covers/guida-cibo-c03.jpg</guid>
+      <description>Base, grasso, zucchero, uovo, aroma: con questi cinque fai torte, biscotti e mug cake. La guida spiega le proporzioni e i tre dolci che escono sempre bene. dolci con pochi ingredienti · dolci facili · ricette dolci veloci</description>
+      <pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c03.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c03.jpg" medium="image" type="image/jpeg" />
+      <category>dolci con pochi ingredienti</category>
+      <category>dolci facili</category>
+      <category>ricette dolci veloci</category>
+      <category>torte facili</category>
+      <category>dolci fatti in casa</category>
     </item>
   </channel>
 </rss>

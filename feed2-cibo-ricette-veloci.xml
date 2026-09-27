@@ -5,15 +5,20 @@
     <link>https://marylin12321.github.io/pinn-site/guide/</link>
     <description>Guide Ricette Veloci (Quattro Mondi)</description>
     <language>it-it</language>
-    <lastBuildDate>Thu, 24 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 00:00:00 GMT</lastBuildDate>
     <item>
-      <title>Pasta veloce in 15 minuti con 5 ingredienti: la formula</title>
-      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c02.html</link>
-      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c02.html</guid>
-      <description>Pasta corta, una proteina, un grasso buono e due sapori: la formula delle cene in 15 minuti.</description>
-      <pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate>
-      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c02.jpg" type="image/jpeg" />
-      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c02.jpg" medium="image" type="image/jpeg" />
+      <title>Il tagliere che decide la cena: cinque ricette da quindici minuti</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c11.html</link>
+      <guid isPermaLink="false">https://marylin12321.github.io/pinn-site/covers/guida-cibo-c11.jpg</guid>
+      <description>Un tagliere grande, due coltelli e le combinazioni che trasformano gli stessi ingredienti in cinque cene diverse. Con i cinque piatti e i tempi reali. ricette veloci · tagliere · cena in 15 minuti</description>
+      <pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c11.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c11.jpg" medium="image" type="image/jpeg" />
+      <category>ricette veloci</category>
+      <category>tagliere</category>
+      <category>cena in 15 minuti</category>
+      <category>idee cena</category>
+      <category>preparare la cena</category>
     </item>
   </channel>
 </rss>

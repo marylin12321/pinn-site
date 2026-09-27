@@ -5,15 +5,20 @@
     <link>https://marylin12321.github.io/pinn-site/guide/</link>
     <description>Guide Idee Salute (Quattro Mondi)</description>
     <language>it-it</language>
-    <lastBuildDate>Thu, 24 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 00:00:00 GMT</lastBuildDate>
     <item>
-      <title>Contorni sani che piacciono anche ai grandi</title>
-      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c06.html</link>
-      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c06.html</guid>
-      <description>Forno in batch, vapore express e crudi marinati: verdure che finiscono davvero, non che avanzano.</description>
-      <pubDate>Thu, 24 Sep 2026 00:00:00 GMT</pubDate>
-      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c06.jpg" type="image/jpeg" />
-      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c06.jpg" medium="image" type="image/jpeg" />
+      <title>Merende per la scuola senza zucchero aggiunto: cinque ricette</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c09.html</link>
+      <guid isPermaLink="false">https://marylin12321.github.io/pinn-site/covers/guida-cibo-c09.jpg</guid>
+      <description>Barrette, muffin, rotolini: cinque merende che i bambini mangiano davvero e che non finiscono a mezz'ora. Con i tempi di preparazione e la conservazione. merenda per la scuola · merende senza zucchero · idee merenda bambini</description>
+      <pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c09.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c09.jpg" medium="image" type="image/jpeg" />
+      <category>merenda per la scuola</category>
+      <category>merende senza zucchero</category>
+      <category>idee merenda bambini</category>
+      <category>ricette merenda</category>
+      <category>merenda sana bambini</category>
     </item>
   </channel>
 </rss>

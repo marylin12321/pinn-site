@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Quattro ore alla settimana: tre entrate che reggono senza pubblicità"
 descrizione: "Tre vie di reddito secondario che non dipendono da follower o pubblicità, con il tempo reale che richiedono ogni settimana."
 foto: prod-8836005187.jpg
 board: Side Income
 prodotti: [fin-p18]
-pubblica_dal: 2026-10-03
+kw:
+  - "entrate extra"
+  - "guadagnare da casa"
+  - "side hustle"
+  - "idee lavoro da casa"
+  - "quattro ore a settimana"
+pin:
+  - t: "Quattro ore alla settimana: tre entrate che reggono"
+    d: "Tre vie di reddito secondario che non dipendono da follower o pubblicità, con il tempo reale che richiedono ogni settimana e quanto portano."
+  - t: "Perché quattro ore alla settimana bastano (se le usi bene)"
+    d: "Dipende da che cosa fai, non da quante ore. Ti spiega perché alcune attività rendono con poco tempo e altre ne richiedono molte di più per partire."
+  - t: "8 entrate extra da quattro ore a settimana"
+    d: "Otto idee con il tempo richiesto, il primo guadagno realistico e che cosa serve per iniziare. La scelta dipende dalle ore e dalle competenze."
+  - t: "Quattro ore a settimana: quanto rendono davvero"
+    d: "Il conto onesto di quattro ore settimanali, con le entrate reali per tipologia e quanto tempo serve per arrivare al primo cliente."
+  - t: "4 errori quando si lavora quattro ore a settimana"
+    d: "Sprecare le ore su cose che richiedono tempo per farsi conoscere, non mettere da parte i guadagni, cambiare attività ogni settimana: i quattro errori."
+  - t: "Come scegliere l'attività extra con poche ore libere"
+    d: "Con quattro ore a settimana alcune attività non sono fattibili. Ti spiega come incrociare il tempo che hai, le competenze e la rapidità del primo guadagno."
 ---
+
 Quasi tutto quello che viene venduto come entrata secondaria ha la stessa caratteristica: funziona finché hai un pubblico. Se non hai un pubblico, non hai un canale, e senza canale non hai nulla. Esiste però un insieme più piccolo di attività che regge sulla disponibilità di ore, non sulla capacità di farsi trovare.
 
 ## 1. La vendita di cose che già possiedi

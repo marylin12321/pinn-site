@@ -1,12 +1,33 @@
 ---
 
+
 titolo: "Luce dove manca: lampade senza fili né elettricista"
 descrizione: "Sottopensile, armadio buio, ingresso: barre LED adesive ricaricabili con sensore, senza forare né chiamare nessuno."
 foto: p8715601_scaffalecucinavasettietichet.jpg
 board: DIY Casa
 prodotti: [casa-p20]
 pubblicato: 2026-09-24
+kw:
+  - "luci senza forare"
+  - "lampade LED"
+  - "barra LED cucina"
+  - "illuminare senza elettricista"
+  - "luci LED ricaricabili"
+pin:
+  - t: "Luce dove manca: le barre LED che si montano senza forare"
+    d: "Sottopensile, armadio, ingresso: quattro punti bui e come illuminarli con barre LED ricaricabili con sensore, senza forare e senza chiamare l'elettricista."
+  - t: "Perché un armadio resta buio anche con la luce accesa"
+    d: "La luce della stanza non arriva dentro. Ti spiega dove posizionare una sorgente perché si veda il contenuto dell'armadio, e quanto spazio serve davanti."
+  - t: "8 soluzioni per illuminare casa senza toccare i muri"
+    d: "Barre, faretti, strisce, lampade da appoggio: otto modi per aggiungere luce dove serve, tutti montabili da soli, con la durata reale della batteria."
+  - t: "Illuminare la cucina spendendo 40 euro"
+    d: "Quanto costa illuminare una cucina con soluzioni fai da te: due barre, un alimentatore, zero impianti. Con i prezzi e i tempi di montaggio."
+  - t: "3 errori quando monti una barra LED a batteria"
+    d: "Non pulire la superficie prima di incollare, mettere le lupe a batteria scarica, incollare sul silicone: i tre errori che fanno cadere o spegnere le barre."
+  - t: "Le luci LED che si incollano bene anche su superfici difficili"
+    d: "Metallo, legno, carta verniciata, materasso: come preparare la superficie perché l'adesivo tenga, e quando conviene abbandonare l'idea del nastro."
 ---
+
 Ci sono punti della casa che restano sempre bui: sotto i pensili, dentro l'armadio, l'angolo dell'ingresso. Risolverli non serve l'elettricista: bastano luci senza fili di oggi.
 
 ## 1. Scegli i punti bui

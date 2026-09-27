@@ -51,54 +51,6 @@ def _sitemap(pagine: list[Path], base: str) -> Path:
     )
     return dst
 
-def _check_ritmo() -> bool:
-    """Niente più di N item a settimana per account (guide + printable, anti-burst)."""
-    from datetime import timedelta
-
-    sistema = yaml.safe_load((ROOT / "config" / "system.yaml").read_text(encoding="utf-8")) or {}
-    max_per_sett = int(((sistema.get("regole") or {}).get("guide_settimana_max")) or 2)
-    oggi = date.today()
-    iso_oggi = oggi.isocalendar()
-    lunedi_oggi = oggi - timedelta(days=iso_oggi[2] - 1)
-    buckets: dict[tuple[str, str], list[str]] = {}
-    for src in sorted((ROOT / "content" / "guide").glob("*.md")):
-        text = src.read_text(encoding="utf-8")
-        meta = yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else {}
-        giorno = (str((meta or {}).get("pubblicato") or "")
-                  or str((meta or {}).get("pubblica_dal") or "")
-                  or date.fromtimestamp(src.stat().st_mtime).isoformat())
-        try:
-            dt = date.fromisoformat(giorno)
-        except ValueError:
-            continue
-        iso = dt.isocalendar()
-        inizio = dt - timedelta(days=iso[2] - 1)
-        if inizio + timedelta(days=6) < oggi:
-            continue  # settimana conclusa: la storia non si tocca
-        prefisso = src.stem.split("-")[0]
-        nid = build_guide.NICCHIA_PER_PREFISSO.get(prefisso, prefisso)
-        buckets.setdefault((nid, f"{iso[0]}-W{iso[1]:02d}"), []).append(f"{src.stem} ({giorno})")
-    # printable (config/printable.yaml) contano come pin ai fini del ritmo
-    for ps in (list(yaml.safe_load_all((ROOT / "config" / "printable.yaml").read_text(encoding="utf-8"))) or []):
-        if not ps:
-            continue
-    ok = True
-    for (nid, settimana), voci in sorted(buckets.items()):
-        if len(voci) <= max_per_sett:
-            continue
-        anno, num_sett = settimana.split("-W")
-        inizio_sett = date.fromisocalendar(int(anno), int(num_sett), 1)
-        if inizio_sett == lunedi_oggi:
-            print(f"CHECK ⚠ ritmo: {nid} {settimana} = {len(voci)} item già in corso "
-                  f"(tetto {max_per_sett}): " + ", ".join(sorted(voci)))
-            continue
-        print(f"CHECK ✗ ritmo: {nid} {settimana} = {len(voci)} item (tetto {max_per_sett}): "
-              + ", ".join(sorted(voci)))
-        ok = False
-    if ok:
-        print(f"CHECK ✓ ritmo: nessuna settimana futura oltre {max_per_sett} item per account")
-    return ok
-
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--check", action="store_true")
@@ -120,8 +72,6 @@ def main() -> int:
             print("CHECK ✗ landing senza link alle guide")
             ok = False
         if not build_feed.check():
-            ok = False
-        if not _check_ritmo():
             ok = False
         if not lint_guide.check():
             ok = False

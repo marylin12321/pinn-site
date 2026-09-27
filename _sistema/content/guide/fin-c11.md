@@ -1,12 +1,32 @@
 ---
 
+
 titolo: "Il debito da trecento euro: perché chiuderlo prima del mutuo"
 descrizione: "Interessi percentuali e ordine di attacco: il piccolo debito al tasso più alto batte quello grande con rata leggera."
 foto: prod-B09QPJY6L2.jpg
 board: Debiti & Debt Payoff
 prodotti: [fin-p02]
-pubblica_dal: 2026-10-10
+kw:
+  - "debiti"
+  - "ripagare debiti"
+  - "piccoli debiti"
+  - "mutuo"
+  - "gestire i soldi"
+pin:
+  - t: "Il debito da trecento euro: perché chiuderlo prima del mutuo"
+    d: "Interessi percentuali e ordine di attacco: il piccolo debito al tasso più alto batte quello grande con rata leggera. Ti spiega il calcolo e l'ordine corretto."
+  - t: "Perché un piccolo debito ad alto tasso fa più danni"
+    d: "Non è la cifra, è l'interesse. Ti spiega come un debito di trecento euro al venti per cento possa costare più di uno di tremila al sei."
+  - t: "5 tipi di debito da chiudere per primi, in ordine"
+    d: "Dal debito di consumo al prestito personale: cinque categorie ordinate per costo reale, e perché chiudere prima le revolving è quasi sempre la mossa migliore."
+  - t: "Debiti: quanto ti costano in interessi, mese per mese"
+    d: "Il calcolo degli interessi su un debito di trecento euro, con l'evoluzione del saldo nei dodici mesi e il punto in cui l'interesse diventa sostenibile."
+  - t: "3 errori con i piccoli debiti che diventano grossi"
+    d: "Pagare solo il minimo sul debito più piccolo, aprire un nuovo debito per saldarlo, non controllare il tasso: i tre errori che fanno moltiplicare la cifra."
+  - t: "Come chiudere un piccolo debito quando manca il cash flow"
+    d: "Se non hai soldi da mettere da parte l'ordine cambia. Ti spiega che cosa fare con le rate minime, come trattare con il creditore e in quale ordine attaccare."
 ---
+
 Quando ci sono due debiti, la maggior parte delle persone sceglie di chiudere prima quello più grande, perché è quello che fa sembrare la situazione più grave. È quasi sempre la scelta sbagliata, e la ragione sta in una parola: percentuale.
 
 ## 1. Il numero che conta è il tasso, non la cifra
