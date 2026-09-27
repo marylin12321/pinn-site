@@ -18,6 +18,9 @@ import re
 from pathlib import Path
 
 import yaml
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+import url_base  # noqa: E402 — radice del sito, fonte unica
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "content" / "guide"
@@ -68,13 +71,8 @@ footer a { color: #6b6259; font-weight: 600; }
 
 
 def _site_base() -> str:
-    """Radice pubblica del sito derivata da media_base_url (…/pin → …/)."""
-    for nid in ["casa", "cibo", "finanza", "parenting"]:
-        cfg = yaml.safe_load((ROOT / "config" / "nicchie" / f"{nid}.yaml").read_text(encoding="utf-8"))
-        base = (cfg.get("media_base_url") or "").strip().rstrip("/")
-        if base:
-            return base.rsplit("/", 1)[0] + "/"
-    return "https://example.com/pinn-site/"
+    """Radice pubblica del sito (unica fonte: config/system.yaml)."""
+    return url_base.site_base(ROOT)
 
 
 def _parse(path: Path) -> tuple[dict, str]:

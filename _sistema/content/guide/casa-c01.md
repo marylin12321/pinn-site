@@ -1,6 +1,8 @@
 ---
+
 titolo: Organizzare la dispensa in 6 passi (senza impazzire)
 descrizione: "Svuota, classifica, etichetta e riempi a strati: il metodo in 6 passi per una dispensa che resta in ordine da sola."
+foto: p8112993_entrywaywovenbenchwithcoatsa.jpg
 board: Organizzazione Pratica
 prodotti: [casa-p01]
 pubblicato: 2026-09-24

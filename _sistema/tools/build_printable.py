@@ -21,6 +21,9 @@ import hashlib, os, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
 import build_guide  # noqa: E402 — CSS inline delle pagine sito
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+import url_base  # noqa: E402 — radice del sito, fonte unica
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "content" / "guide"
@@ -264,13 +267,7 @@ def cover(spec: dict, src_preview: str | None = None) -> str | None:
 
 
 def _site_base() -> str:
-    for nid in ["casa", "cibo", "finanza", "parenting"]:
-        import yaml as _y
-        cfg = _y.safe_load((ROOT / "config" / "nicchie" / f"{nid}.yaml").read_text(encoding="utf-8"))
-        b = (cfg.get("media_base_url") or "").strip().rstrip("/")
-        if b:
-            return b.rsplit("/", 1)[0] + "/"
-    return "https://example.com/pinn-site/"
+    return url_base.site_base(ROOT)
 
 
 def _pagina(spec: dict, preview_png: str) -> None:

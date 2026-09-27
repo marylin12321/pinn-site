@@ -1,6 +1,8 @@
 ---
+
 titolo: "Cash stuffing: il budget in busta che funziona"
 descrizione: "Contanti divisi per categoria a inizio mese: quando la busta è vuota, hai finito. Semplice e infallibile."
+foto: prod-8871525523.jpg
 board: Budget & Risparmio
 prodotti: [fin-p08]
 pubblica_dal: 2026-09-27

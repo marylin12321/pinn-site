@@ -36,7 +36,8 @@ design:
   - lista
   - collage
   - mockup
-media_base_url: https://marylin12321.github.io/pinn-site/pin
+media_base_url: https://marylin12321.github.io/pinn-site
+  # radice del sito: usa hosting.sito_pubblico in config/system.yaml
 link_valore_default: ''
 utm:
   attivo: true

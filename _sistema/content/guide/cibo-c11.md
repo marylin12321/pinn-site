@@ -1,6 +1,8 @@
 ---
+
 titolo: "Il tagliere che decide la cena: cinque ricette da quindici minuti"
 descrizione: "Un tagliere grande, due coltelli e le combinazioni che trasformano gli stessi ingredienti in cinque cene diverse."
+foto: prod-B07PDF13WS.jpg
 board: Ricette Veloci
 prodotti: [cibo-p19]
 pubblica_dal: 2026-10-01

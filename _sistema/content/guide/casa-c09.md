@@ -1,6 +1,8 @@
 ---
+
 titolo: "Ingresso sempre in ordine con 3 attrezzi"
 descrizione: "Ganci alla portata, vassoio per le chiavi, portaombrelli stretto: l'ingresso resta in ordine da solo."
+foto: prod-B078MGYH57.jpg
 board: Piccoli Spazi
 prodotti: [casa-p16]
 pubblicato: 2026-09-24

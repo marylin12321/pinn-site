@@ -1,6 +1,8 @@
 ---
+
 titolo: "Routine serena per addormentare i più piccoli"
 descrizione: "Cinque passi in quest'ordine, sempre gli stessi: perché il sonno si impara dalla sequenza, non dalla promessa di addormentarsi."
+foto: prod-B0GK2LLGWR.jpg
 board: Routine & Consigli
 prodotti: [par-p05, par-p13]
 pubblica_dal: 2026-10-27

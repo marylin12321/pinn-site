@@ -1,6 +1,8 @@
 ---
+
 titolo: "Piegare i vestiti come nei negozi: il metodo verticale"
 descrizione: "Piega in rettangoli e metti in verticale nei cassetti: vedi tutto, niente pile che crollano."
+foto: p8715601_scaffalecucinavasettietichet.jpg
 board: Organizzazione Pratica
 prodotti: [casa-p18]
 pubblica_dal: 2026-09-29

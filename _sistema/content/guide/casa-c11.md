@@ -1,6 +1,8 @@
 ---
+
 titolo: "Luce dove manca: lampade senza fili né elettricista"
 descrizione: "Sottopensile, armadio buio, ingresso: barre LED adesive ricaricabili con sensore, senza forare né chiamare nessuno."
+foto: p8715601_scaffalecucinavasettietichet.jpg
 board: DIY Casa
 prodotti: [casa-p20]
 pubblicato: 2026-09-24

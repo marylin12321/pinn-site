@@ -51,7 +51,7 @@ FONT_USATI = ("Poppins-Regular.ttf", "Poppins-Bold.ttf", "Lato-Regular.ttf")
 # links, csv_export) che il sito non usa più. Di src/ serve solo `pendenze`, la
 # coda di pubblicazione condivisa da feed RSS, CSV e API v5: senza di lei il
 # job `postapi` muore con ModuleNotFoundError.
-MODULI_CI = ("src/pendenze.py",)
+MODULI_CI = ("src/pendenze.py", "src/url_base.py")
 
 
 def _git(repo: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess:
@@ -93,13 +93,19 @@ def main() -> int:
         return 1
     repo_path = Path(str(raw_repo)).expanduser().resolve()
     sotto = (hosting.get("sotto_cartella") or "pin").strip("/")
+    # Le immagini grezze (output/immagini/*.png, 171 MB) NON vengono più
+    # pubblicate. La copia in pin/ serviva all'upload bulk via CSV con
+    # immagini ospitate sul repo, flusso abbandonato: oggi ogni pin usa
+    # covers/guida-<slug>.jpg, che nasce già dentro site/ e pesa 90 KB.
+    # Riattivabile con `hosting.mirrora_immagini: true` in config/system.yaml.
+    specchi_immagini = bool(hosting.get("mirrora_immagini", False))
     if not repo_path.is_dir() or not (repo_path / ".git").exists():
         print(f"ERRORE: {repo_path} non è un clone git valido.\n"
               "  Clone: git clone https://github.com/<tuoutente>/<repo>.git "
               f"{repo_path}", file=sys.stderr)
         return 1
 
-    origine = _sorgenti(args.solo)
+    origine = _sorgenti(args.solo) if specchi_immagini else []
 
     # --- sito: tutto site/ in ricorsiva (index.html, privacy.html, covers/...) → root repo
     # Solo questi path sono gestiti: *.html in root + cartella covers/ (nostre al 100%).
@@ -120,8 +126,9 @@ def main() -> int:
     for root, _dirs, files in os.walk(repo_path):
         for fn in files:
             rel = Path(root, fn).relative_to(repo_path).as_posix()
-            if (rel == "README.md" or rel.startswith(("pin/", ".github/", "_sistema/"))
-                    or Path(rel).parts[0].startswith(".")):
+            if (rel == "README.md" or rel.startswith((".github/", "_sistema/"))
+                    or Path(rel).parts[0].startswith(".")
+                    or (specchi_immagini and rel.startswith(f"{sotto}/"))):
                 continue
             if rel not in gestiti:
                 orfani_sito.append(repo_path / rel)
@@ -184,11 +191,12 @@ def main() -> int:
         return 0
     if n_pendenti:
         print(f"{n_pendenti} commit locali mai pushati (es. push precedente fallito): li invio.")
-    if not origine:
-        print("Solo sito da pubblicare (nessuna immagine reale ancora).")
+    if not origine and not specchi_immagini:
+        print("Specchio immagini spento: pubblico solo sito e sorgenti.")
 
     destinazione = repo_path / sotto
-    destinazione.mkdir(parents=True, exist_ok=True)
+    if specchi_immagini:
+        destinazione.mkdir(parents=True, exist_ok=True)
 
     # --- delta: cosa cambia ---
     da_copiare: list[Path] = []
@@ -206,9 +214,12 @@ def main() -> int:
         print(f"--solo {args.solo}: prune disattivato per sicurezza (solo aggiunte).")
 
     print(f"repo:  {repo_path}")
-    print(f"dest:  {destinazione.relative_to(repo_path)}/")
-    print(f"fonte: {len(origine)} immagini reali · da copiare: {len(da_copiare)} · "
-          f"orfani da rimuovere: {len(da_cancellare)}")
+    if specchi_immagini:
+        print(f"dest:  {destinazione.relative_to(repo_path)}/")
+        print(f"fonte: {len(origine)} immagini reali · da copiare: {len(da_copiare)} · "
+              f"orfani da rimuovere: {len(da_cancellare)}")
+    else:
+        print("dest:  (nessuno specchio immagini: le cover viaggiano in covers/)")
 
     if args.dry_run:
         for p in da_copiare[:10]:
@@ -257,7 +268,8 @@ def main() -> int:
 
     # --- git: add SOLO cartella immagini + file sito (niente file estranei) ---
     # (n_pendenti già calcolato sopra; resta valido: qui in mezzo non si commita)
-    percorsi = [sotto] + [p.relative_to(site_dir).as_posix() for p in site_files]
+    percorsi = ([sotto] if specchi_immagini else []) + \
+               [p.relative_to(site_dir).as_posix() for p in site_files]
     # anche gli orfani vanno stagati (altrimenti le cancellazioni restano locali)
     percorsi += [o.relative_to(repo_path).as_posix() for o in orfani_sito
                  if o.relative_to(repo_path).as_posix() not in percorsi]
@@ -274,10 +286,18 @@ def main() -> int:
     n_avanti = n_pendenti
     if stato.stdout.strip():
         _git(repo_path, "add", *percorsi)
-        msg = (f"pin: immagini ({len(da_copiare)} nuove"
-               f"{', sito aggiornato' if site_nuovi else ''}"
-               f"{', sorgenti' if sorg_diff else ''}, "
-               f"{datetime.now():%Y-%m-%d %H:%M})")
+        cosa = []
+        if specchi_immagini and da_copiare:
+            cosa.append(f"{len(da_copiare)} immagini")
+        if site_nuovi:
+            cosa.append(f"{len(site_nuovi)} pagine")
+        if orfani_sito:
+            cosa.append(f"-{len(orfani_sito)} orfani")
+        if sorg_diff:
+            cosa.append(f"{len(sorg_diff)} sorgenti")
+        if sorgenti_orfani:
+            cosa.append(f"-{len(sorgenti_orfani)} sorgenti")
+        msg = f"pubblica: {', '.join(cosa) or 'sync'} ({datetime.now():%Y-%m-%d %H:%M})"
         _git(repo_path, "commit", "-m", msg)
         print(f"commit: {msg}")
         n_avanti += 1
@@ -312,21 +332,17 @@ def main() -> int:
                 return 1
         print("push ok ✓ (Pages pubblica in ~1 minuto)")
 
-    # --- verifica URL vive ---
+    # --- verifica URL vivi ---
+    # Controlla pagine vere, non nomi di file immagine: le immagini non le
+    # specchiamo più, quindi l'unica cosa che deve rispondere è il sito.
     if args.check:
+        base = url_base.site_base(ROOT)
+        campioni = ["", "covers/guida-casa-c01.jpg", "printable/budget-mensile.pdf",
+                    "feed2-casa-organizzazione-pratica.xml", "sitemap.xml"]
         ok = tot = 0
-        for nid in ({p.name.split("_")[0] for p in origine}):
-            cfg = yaml.safe_load((ROOT / "config" / "nicchie" / f"{nid}.yaml").read_text(
-                encoding="utf-8")) or {}
-            base = (cfg.get("media_base_url") or "").strip()
-            if not base:
-                print(f"  ! {nid}: media_base_url vuoto")
-                continue
-            campione = next((p for p in origine if p.name.startswith(f"{nid}_")), None)
-            if not campione:
-                continue
+        for c in campioni:
+            url = base + c
             tot += 1
-            url = f"{base.rstrip('/')}/{campione.name}"
             try:
                 req = urllib.request.Request(url, method="HEAD",
                                              headers={"User-Agent": "Mozilla/5.0"})
@@ -335,15 +351,17 @@ def main() -> int:
                         ok += 1
                         print(f"  ✓ {url}")
                         continue
-            except Exception as e:  # noqa: BLE001
+            except Exception:  # noqa: BLE001
                 pass
             print(f"  ✗ {url} — non raggiungibile (Pages può richiedere qualche minuto"
-                  f" al primo deploy; verifica il tuo media_base_url)")
-        print(f"URL vive: {ok}/{tot}")
+                  f" al primo deploy)")
+        print(f"URL vivi: {ok}/{tot}")
         if tot and ok < tot:
             return 1
 
-    print("\nProssimo passo:  python3 src/main.py esporta   (i Media URL sono già vivi)")
+    print(f"\nSito pubblicato su {url_base.site_base(ROOT)}")
+    print("Prossimo passo: le guide con pubblica_dal <= oggi sono già nel feed RSS.")
+    print("  (piano B, se RSS non basta:  python3 tools/export_guide_csv.py --dry-run)")
     return 0
 
 

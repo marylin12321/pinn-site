@@ -1,6 +1,8 @@
 ---
+
 titolo: "Merende per la scuola: 5 ricette senza zucchero aggiunto"
 descrizione: "Barrette, muffin e rotolini fatti in casa: cinque merende che i bambini mangiano e che non finiscono a mezz'ora."
+foto: 006_healthy-breakfast-bowl.jpg
 board: Idee Salute
 prodotti: [cibo-p14, cibo-p05]
 pubblica_dal: 2026-10-16

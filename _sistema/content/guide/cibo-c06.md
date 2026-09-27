@@ -1,6 +1,8 @@
 ---
+
 titolo: "Contorni sani che piacciono anche ai grandi"
 descrizione: "Forno in batch, vapore express e crudi marinati: verdure che finiscono davvero, non che avanzano."
+foto: prod-B09YDHRN7H.jpg
 board: Idee Salute
 prodotti: []
 pubblicato: 2026-09-24

@@ -1,6 +1,8 @@
 ---
+
 titolo: "Il debito da trecento euro: perché chiuderlo prima del mutuo"
 descrizione: "Interessi percentuali e ordine di attacco: il piccolo debito al tasso più alto batte quello grande con rata leggera."
+foto: prod-B09QPJY6L2.jpg
 board: Debiti & Debt Payoff
 prodotti: [fin-p02]
 pubblica_dal: 2026-10-10

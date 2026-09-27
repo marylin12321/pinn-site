@@ -1,6 +1,8 @@
 ---
+
 titolo: "Pasta veloce in 15 minuti con 5 ingredienti: la formula"
 descrizione: "Pasta corta, una proteina, un grasso buono e due sapori: la formula delle cene in 15 minuti."
+foto: 001_pasta-dish-top-view.jpg
 board: Ricette Veloci
 prodotti: [cibo-p13]
 pubblicato: 2026-09-24

@@ -95,9 +95,23 @@ hosting:
   # (copia → commit → push in un colpo solo, sostituisce il passaggio manuale).
   tipo: github_pages
   repo_locale: "/home/gabriele/pinn-site"              # clone locale del repo Pages
-  sotto_cartella: "pin"        # cartella dentro il repo dove finiscono le immagini
-  # media_base_url atteso in config/nicchie/*.yaml:
-  #   https://<tuoutente>.github.io/<repo>/<sotto_cartella>
+
+  # Le immagini grezze NON vengono pubblicate: ogni pin usa la cover
+  # covers/guida-<slug>.jpg, che build_sito genera dentro site/ e che
+  # pubblica_immagini copia in covers/ (90 KB per pin invece di 2 MB).
+  # Era il resto del flusso "CSV bulk con immagini ospitate sul repo",
+  # abbandonato il 24/09/2026: pin/ occupava 119 MB del repo pubblico
+  # senza che nessuna pagina, feed o CSV lo referenziasse.
+  # Se un giorno servisse (es. Pinterest rifiutasse le cover JPEG):
+  #   metti specchio_immagini: true e la cartella viene ricreata col nome qui sotto.
+  specchio_immagini: false
+  sotto_cartella: "pin"        # usata solo se specchio_immagini: true
+
+  # Radice pubblica del sito: L'UNICA fonte per URL di guide, pin, feed,
+  # printable e sitemap (letta da src/url_base.py). Prima era sparso in
+  # ogni config/nicchie/*.yaml come media_base_url e sei moduli se ne ricavavano
+  # la radice togliendo l'ultimo pezzo dell'URL.
+  sito_pubblico: "https://marylin12321.github.io/pinn-site/"
 
 utm:
   attivo: true

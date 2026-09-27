@@ -1,6 +1,8 @@
 ---
+
 titolo: "Il menu si sceglie il martedì, non la domenica"
 descrizione: "Trentacinque minuti di programmazione per cinque cene che riescono a fare con quello che c'è in frigo."
+foto: prod-B07RBNKNB8.jpg
 board: Cene della Settimana
 prodotti: [cibo-p06]
 pubblica_dal: 2026-10-09

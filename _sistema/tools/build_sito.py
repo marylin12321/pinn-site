@@ -19,6 +19,8 @@ from pathlib import Path
 import yaml
 
 sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+import url_base  # noqa: E402
 import build_guide
 import build_landing
 import build_feed
@@ -30,13 +32,8 @@ SITE = ROOT / "site"
 
 
 def _site_base() -> str:
-    """Radice sito derivata dai media_base_url (…/pin → …/)."""
-    for nid in ["casa", "cibo", "finanza", "parenting"]:
-        cfg = yaml.safe_load((ROOT / "config" / "nicchie" / f"{nid}.yaml").read_text(encoding="utf-8"))
-        base = (cfg.get("media_base_url") or "").strip().rstrip("/")
-        if base:
-            return base.rsplit("/", 1)[0] + "/"
-    return "https://example.com/pinn-site/"
+    """Radice pubblica del sito (unica fonte: config/system.yaml)."""
+    return url_base.site_base(ROOT)
 
 
 def _sitemap(pagine: list[Path], base: str) -> Path:

@@ -1,6 +1,8 @@
 ---
+
 titolo: "Uscire dal paycheck to paycheck: il primo piano"
 descrizione: "Mini-fondo da 500 euro, tre abbonamenti tagliati, un giorno senza spese: il piano per smettere di vivere di stipendio in stipendio."
+foto: prod-B09L6XM9C9.jpg
 board: Abitudini & Soldi
 prodotti: [fin-p16]
 pubblicato: 2026-09-24

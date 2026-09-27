@@ -1,6 +1,8 @@
 ---
+
 titolo: "Sotto il lavandino in ordine una volta per tutte"
 descrizione: "Togli tutto, misura, carrelli e vassoi: il sottolavello smette di essere un buco nero."
+foto: prod-B0D7C8KGQ4.jpg
 board: Organizzazione Pratica
 prodotti: [casa-p15]
 pubblica_dal: 2026-09-26

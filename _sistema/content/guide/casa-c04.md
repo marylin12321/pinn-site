@@ -1,6 +1,8 @@
 ---
+
 titolo: "Piccoli spazi: 8 angoli morti che puoi riutilizzare"
 descrizione: "Sopra il frigo, sotto le scale, dietro la porta: otto zone che di solito restano vuote, con la soluzione giusta per ognuna."
+foto: prod-B0DK7BYSSJ.jpg
 board: Piccoli Spazi
 prodotti: [casa-p03, casa-p16, casa-p19]
 pubblica_dal: 2026-10-06

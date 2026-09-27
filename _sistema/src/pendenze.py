@@ -22,6 +22,7 @@ from __future__ import annotations
 from datetime import date, datetime
 from pathlib import Path
 
+import url_base
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -46,16 +47,8 @@ def _meta(path: Path) -> dict:
 
 
 def base_url() -> str:
-    """Radice pubblica del sito (…/pinn-site/) derivata dai config."""
-    for nid in ("casa", "cibo", "finanza", "parenting"):
-        p = ROOT / "config" / "nicchie" / f"{nid}.yaml"
-        if not p.exists():
-            continue
-        cfg = yaml.safe_load(p.read_text(encoding="utf-8")) or {}
-        b = (cfg.get("media_base_url") or "").strip().rstrip("/")
-        if b:
-            return b.rsplit("/", 1)[0] + "/"
-    return "https://example.com/pinn-site/"
+    """Radice pubblica del sito (unica fonte: config/system.yaml)."""
+    return url_base.site_base(ROOT)
 
 
 def handle(nid: str) -> str:

@@ -1,6 +1,8 @@
 ---
+
 titolo: "Lista della nascita minimalista: cosa serve davvero"
 descrizione: "Trenta voci, non trecento: la lista nascita che funziona per chi riceve visitatori per sei mesi e usa tutto quello che mette dentro."
+foto: prod-8856627701.jpg
 board: Baby Gear & Lista Nascita
 prodotti: [par-p02, par-p12]
 pubblica_dal: 2026-10-12

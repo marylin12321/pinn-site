@@ -1,6 +1,8 @@
 ---
+
 titolo: "Piatti pronti da congelare e riscaldare"
 descrizione: "Come surgelare senza che diventi un blocco unico: contenitori giusti, date scritte, e da freezer a piatto in 12 minuti."
+foto: p30895274_rusticartisanbreadwithscorin.jpg
 board: Meal Prep & Batch Cooking
 prodotti: [cibo-p01, cibo-p04]
 pubblica_dal: 2026-10-09

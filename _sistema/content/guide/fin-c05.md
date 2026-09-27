@@ -1,6 +1,8 @@
 ---
+
 titolo: "Sfida del risparmio in 52 settimane: come funziona"
 descrizione: "1 euro la prima settimana, 52 l'ultima: 1.378 euro in un anno senza accorgertene. Con varianti per partire leggeri."
+foto: prod-8844087448.jpg
 board: Printable Finanziari
 prodotti: [fin-p19]
 pubblicato: 2026-09-24

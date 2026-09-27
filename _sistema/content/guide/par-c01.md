@@ -1,6 +1,8 @@
 ---
+
 titolo: "Festa dei nonni senza schermo: 5 attività da 2 a 4 anni"
 descrizione: "Il 2 ottobre i bambini hanno tre anni di ricordi davanti e nessuno schermo in mano: cinque attività che funzionano davvero."
+foto: prod-B0GK2LLGWR.jpg
 board: Attività Senza Schermo
 prodotti: [par-p11, par-p18]
 pubblica_dal: 2026-10-01

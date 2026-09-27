@@ -1,6 +1,8 @@
 ---
+
 titolo: "Side income: 7 idee lecite da casa per iniziare"
 descrizione: "Dalle ripetizioni ai template digitali: sette strade oneste per una seconda entrata, con una regola d'oro."
+foto: prod-8871527747.jpg
 board: Side Income
 prodotti: []
 pubblicato: 2026-09-24

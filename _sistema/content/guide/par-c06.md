@@ -1,6 +1,8 @@
 ---
+
 titolo: "Routine chart per bambini di 3 anni"
 descrizione: "Tre anni sono l'età delle domande: cosa facciamo, quando, ogni giorno. Un semplice grafico a icone glielo spiega da solo."
+foto: p3662748_woodentoysinwovenbasket.jpg
 board: Routine & Consigli
 prodotti: [par-p07, par-p11]
 pubblica_dal: 2026-10-30

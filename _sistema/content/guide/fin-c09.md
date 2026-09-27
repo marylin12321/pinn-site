@@ -1,6 +1,8 @@
 ---
+
 titolo: "Tracciare le spese: il metodo dei 5 minuti la sera"
 descrizione: "Cinque minuti la sera con il diario delle spese: categoria, importo, un commento. In un mese hai il quadro completo delle tue abitudini."
+foto: prod-B0991DBS6C.jpg
 board: Abitudini & Soldi
 prodotti: [fin-p16, fin-p10]
 pubblica_dal: 2026-10-14

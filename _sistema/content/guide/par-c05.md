@@ -1,6 +1,8 @@
 ---
+
 titolo: "Pappa baby led: cominciare senza panico"
 descrizione: "Prima pappa a sei mesi senza colla e senza cibo a pezzi pericolosi: quattro regole e il metodo che funziona."
+foto: prod-B08PKR2SC9.jpg
 board: Primi Anni di Vita
 prodotti: [par-p17, par-p03]
 pubblica_dal: 2026-10-23

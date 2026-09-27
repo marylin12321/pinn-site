@@ -1,6 +1,8 @@
 ---
+
 titolo: "Metodo 50/30/20: il budget mensile che funziona davvero"
 descrizione: "50% bisogni, 30% desideri, 20% risparmio: come dividere lo stipendio ogni mese senza tabelle complicate."
+foto: prod-B09L6XM9C9.jpg
 board: Budget & Risparmio
 prodotti: [fin-p07]
 pubblicato: 2026-09-24

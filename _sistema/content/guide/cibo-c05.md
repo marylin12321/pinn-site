@@ -1,6 +1,8 @@
 ---
+
 titolo: "Cene in 30 minuti per tutta la settimana: lo schema"
 descrizione: "Cinque sere, cinque formule fisse: niente più ore davanti al frigo aperto a chiedersi cosa cucinare."
+foto: p30895274_rusticartisanbreadwithscorin.jpg
 board: Cene della Settimana
 prodotti: [cibo-p02]
 pubblicato: 2026-09-24

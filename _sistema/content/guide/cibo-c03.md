@@ -1,6 +1,8 @@
 ---
+
 titolo: "Dolci con 5 ingredienti: la formula che funziona sempre"
 descrizione: "Base, grasso, zucchero, uovo, aroma: con questi cinque fai torte, biscotti e mug cake."
+foto: prod-B07GWFFBKV.jpg
 board: Dolci Fatti in Casa
 prodotti: [cibo-p16]
 pubblica_dal: 2026-10-02

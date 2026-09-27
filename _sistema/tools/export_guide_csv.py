@@ -24,6 +24,8 @@ from datetime import date, datetime
 from pathlib import Path
 
 import yaml
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+import url_base  # noqa: E402 — radice del sito, fonte unica
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "content" / "guide"
@@ -45,12 +47,7 @@ def _slug(board: str) -> str:
 
 
 def _base() -> str:
-    for nid in ["casa", "cibo", "finanza", "parenting"]:
-        cfg = yaml.safe_load((ROOT / "config" / "nicchie" / f"{nid}.yaml").read_text(encoding="utf-8"))
-        b = (cfg.get("media_base_url") or "").strip().rstrip("/")
-        if b:
-            return b.rsplit("/", 1)[0] + "/"
-    return "https://example.com/pinn-site/"
+    return url_base.site_base(ROOT)
 
 
 def _meta(path: Path) -> dict:

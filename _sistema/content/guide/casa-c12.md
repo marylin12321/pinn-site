@@ -1,6 +1,8 @@
 ---
+
 titolo: "Il guardaroba in sei borse: dividi, etichetta, chiudi"
 descrizione: "Un pomeriggio e il guardaroba smette di essere un mucchio: sei borse di tessuto, tre categorie, un'etichetta per ognuna."
+foto: prod-B0CPPQ2L4D.jpg
 board: DIY Casa
 prodotti: [casa-p09]
 pubblica_dal: 2026-09-30

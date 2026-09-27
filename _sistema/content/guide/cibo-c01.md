@@ -1,6 +1,8 @@
 ---
+
 titolo: "Meal prep della domenica in 90 minuti: metodo completo"
 descrizione: "Tre ricette, una lista unica, cotture in parallelo: in 90 minuti prepari 5 giorni di pranzi e cene."
+foto: prod-B0H4W11CKX.jpg
 board: Meal Prep & Batch Cooking
 prodotti: [cibo-p01]
 pubblicato: 2026-09-24
