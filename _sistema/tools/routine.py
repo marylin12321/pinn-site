@@ -3,6 +3,7 @@
 
   python3 tools/routine.py              # verifica → build → pubblica → controlli
   python3 tools/routine.py --no-push    # tutto tranne il push (prova)
+  python3 tools/routine.py --link       # + salute dei 49 link Amazon (lento, ~1 min)
 
 Cosa fa, in ordine:
   1. verifica config (blocca tutto se BLOCCANTE in modalità reale)
@@ -11,6 +12,7 @@ Cosa fa, in ordine:
   4. pubblica_immagini (commit + push)
   5. controlli live (landing, sitemap, un feed per nicchia)
   6. coda guide: quante programmate restano e quando si esauriscono
+  --link aggiunge il controllo di tutti i link Amazon (products KO = soldi persi)
 
 Exit code: 0 tutto ok · 1 bloccante/errore (cron notifica).
 Log: stdout (ridirigi su file in cron).
@@ -80,6 +82,8 @@ def _coda_guide() -> tuple[int, str]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--no-push", action="store_true")
+    ap.add_argument("--link", action="store_true",
+                    help="controlla anche tutti i link Amazon (lento)")
     args = ap.parse_args()
 
     print("== 1/6 verifica ==")
@@ -130,6 +134,11 @@ def main() -> int:
     print(f"  guide programmate in coda: {n} (fino al {fino_a})")
     if n < 3:
         print("  ⚠️ coda quasi esaurita: chiedimi nuove guide!")
+    if args.link:
+        print("== controllo link Amazon ==")
+        _run(["tools/check_link.py"])  # non blocca la routine: si legge il report
+    else:
+        print("  (per i link Amazon: python3 tools/routine.py --link)")
     print("\nROUTINE OK ✓")
     return 0
 
