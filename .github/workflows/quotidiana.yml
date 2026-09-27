@@ -35,15 +35,28 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Dipendenze
-        run: pip install pyyaml
+      - name: Dipendenze di sistema
+        # poppler-utils serve solo se in CI nasce un printable NUOVO (serve a
+        # pdftoppm per l'anteprima). Quelli già esistenti vengono riutilizzati.
+        # google-chrome è già nell'immagine del runner.
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils
+
+      - name: Dipendenze Python
+        # pillow serve alle cover dei printable (1000x1500), pyyaml al build.
+        run: pip install --quiet pyyaml pillow
 
       - name: Prepara l'albero di build
         run: |
           mkdir -p build/site
           cp -r _sistema/tools _sistema/config _sistema/content build/
+          cp -r _sistema/assets build/            # solo i font (156 KB)
           cp privacy.html build/site/
           cp -r covers build/site/covers
+          # i printable già costruiti: senza questo, build_printable li
+          # rigenererebbe da zero (e fallirebbe: serve google-chrome)
+          cp -r printable build/site/printable
 
       - name: Build (landing + guide pubblicabili + feed + sitemap)
         working-directory: build
@@ -88,7 +101,7 @@ jobs:
           python-version: '3.12'
 
       - name: Dipendenze
-        run: pip install pyyaml
+        run: pip install --quiet pyyaml
 
       - name: Posta pin in coda (API v5)
         if: >-

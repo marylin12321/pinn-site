@@ -311,16 +311,29 @@ def _pagina(spec: dict, preview_png: str) -> None:
 
 
 def genera() -> list[dict]:
-    """Build di TUTTI i printable: PDF + preview + cover + pagina sito."""
+    """Build di TUTTI i printable: PDF + preview + cover + pagina sito.
+
+    Il PDF e la preview sono gli unici artefatti che richiedono i tool di
+    sistema (google-chrome + pdftoppm): si generano solo se mancano, altrimenti
+    vengono riutilizzati. Cover e pagina invece si rigenerano sempre: dipendono
+    solo dalla preview e dal testo in config, e servono a tenere allineati i
+    copy senza dover ricostruire i PDF.
+
+    Questo è ciò che permette alla pipeline GitHub di ricostruire il sito senza
+    tool di sistema: in CI i printable esistenti vengono copiati nell'albero di
+    build e quindi risultano già pronti.
+    """
     specs = _carica()
     for spec in specs:
         r = build(spec)
-        if r:
-            c = cover(spec, r["png"])
-            _pagina(spec, r["png"])
-            print(f"  ✓ {spec['slug']}: {Path(r['pdf']).name} · preview · cover={'✓' if c else '—'} · pagina ✓")
-        else:
-            print(f"  {spec['slug']}: già pronto")
+        png = Path(r["png"]) if r else PRI / f"{spec['slug']}_preview.png"
+        if not png.exists():
+            print(f"  {spec['slug']}: nessuna preview, salto")
+            continue
+        c = cover(spec, str(png))
+        _pagina(spec, str(png))
+        stato = f"{Path(r['pdf']).name} · preview" if r else "pdf riutilizzato"
+        print(f"  ✓ {spec['slug']}: {stato} · cover={'✓' if c else '—'} · pagina ✓")
     print(f"printable generati: {len(specs)}")
     return specs
 

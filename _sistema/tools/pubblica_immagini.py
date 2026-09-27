@@ -130,6 +130,16 @@ def main() -> int:
             dst = repo_path / rel
             if not dst.exists() or dst.read_bytes() != p.read_bytes():
                 sorg_diff.append((p, rel))
+    # Anche i font servono in CI: le cover dei printable le disegna PIL e
+    # l'unico font usato da tutto il sistema e' Poppins-Bold (156 KB).
+    # Gli sfondi pesanti (16 MB di foto) restano fuori: le cover delle guide
+    # si generano in locale e in CI si riusano le JPEG gia' committate.
+    for _p in sorted((ROOT / "assets" / "fonts").glob("*.ttf")):
+        _rel = Path("_sistema") / "assets" / "fonts" / _p.name
+        _dst = repo_path / _rel
+        if not _dst.exists() or _dst.read_bytes() != _p.read_bytes():
+            sorg_diff.append((_p, _rel))
+
     sorgenti_orfani: list[Path] = []
     if (repo_path / "_sistema").exists():
         for root, dirs, files in os.walk(repo_path / "_sistema"):
