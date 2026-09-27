@@ -46,6 +46,13 @@ ESTENSIONI = (".png", ".jpg", ".jpeg", ".webp")
 # pubblico senza motivo: gli altri non sono usati da nessun template.
 FONT_USATI = ("Poppins-Regular.ttf", "Poppins-Bold.ttf", "Lato-Regular.ttf")
 
+# Moduli di src/ necessari alla CI. `src/` non viene spedito per intero: contiene
+# la CLI legacy di generazione pin (main, textgen, scheduler, stato, verifica,
+# links, csv_export) che il sito non usa più. Di src/ serve solo `pendenze`, la
+# coda di pubblicazione condivisa da feed RSS, CSV e API v5: senza di lei il
+# job `postapi` muore con ModuleNotFoundError.
+MODULI_CI = ("src/pendenze.py",)
+
 
 def _git(repo: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess:
     r = subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True)
@@ -135,13 +142,21 @@ def main() -> int:
             dst = repo_path / rel
             if not dst.exists() or dst.read_bytes() != p.read_bytes():
                 sorg_diff.append((p, rel))
-    # Anche i font servono in CI: le cover dei printable le disegna PIL e
-    # l'unico font usato da tutto il sistema e' Poppins-Bold (156 KB).
-    # Gli sfondi pesanti (16 MB di foto) restano fuori: le cover delle guide
-    # si generano in locale e in CI si riusano le JPEG gia' committate.
+    # Anche i font servono in CI: le cover dei printable le disegna PIL e i
+    # template caricano i tre font di FONT_USATI. Gli sfondi pesanti (16 MB di
+    # foto) restano fuori: le cover delle guide si generano in locale e in CI
+    # si riusano le JPEG gia' committate.
     for _nome in FONT_USATI:
         _p = ROOT / "assets" / "fonts" / _nome
         _rel = Path("_sistema") / "assets" / "fonts" / _p.name
+        _dst = repo_path / _rel
+        if not _dst.exists() or _dst.read_bytes() != _p.read_bytes():
+            sorg_diff.append((_p, _rel))
+    # ... e i moduli di cui la CI ha bisogno: la coda di pubblicazione,
+    # senza la quale il job postapi muore con ModuleNotFoundError.
+    for _rel_s in MODULI_CI:
+        _p = ROOT / _rel_s
+        _rel = Path("_sistema") / _rel_s
         _dst = repo_path / _rel
         if not _dst.exists() or _dst.read_bytes() != _p.read_bytes():
             sorg_diff.append((_p, _rel))
