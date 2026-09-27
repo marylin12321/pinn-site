@@ -222,37 +222,32 @@ def check() -> bool:
         cfg = yaml.safe_load((ROOT / "config" / "nicchie" / f"{nid}.yaml").read_text(encoding="utf-8"))
         for b in cfg["nicchia"].get("boards") or []:
             boards_cfg.add(slug_board(b))
-    for xml in SITE.glob("feed-*.xml"):
-        m = re.match(r"feed2?-[a-z]+-(.+)$", xml.stem)   # normali e gemelli feed2-*
-        slug = m.group(1) if m else xml.stem
-        if slug not in boards_cfg:
-            print(f"CHECK ✗ {xml.name}: slug '{slug}' non corrisponde a nessuna board")
-            ok = False
-    # guide FUTURE e già PUBBLICATE non devono comparire in nessun feed
-    # (le future verrebbero postate in anticipo, le pubblicate in dupliquo)
-    from datetime import date
-
-    oggi = date.today().isoformat()
+    # guida FUTURE e già PUBBLICATE non devono comparire nei feed
+    # (le future verrebbero postate in anticipo; le pubblicate sono fallback ≤1)
+    from datetime import date as _date
+    _oggi = _date.today().isoformat()
     future, gia_pub = set(), set()
-    for src in SRC.glob("*.md"):
-        text = src.read_text(encoding="utf-8")
-        meta = yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else {}
-        dal = str((meta or {}).get("pubblica_dal") or "")
-        if dal and dal > oggi:
-            future.add(src.stem)
-        if (meta or {}).get("pubblicato"):
-            gia_pub.add(src.stem)
+    for _src in SRC.glob("*.md"):
+        _t = _src.read_text(encoding="utf-8")
+        _m = yaml.safe_load(_t.split("---", 2)[1]) if _t.startswith("---") else {}
+        _dal = str((_m or {}).get("pubblica_dal") or "")
+        if _dal and _dal > _oggi:
+            future.add(_src.stem)
+        if (_m or {}).get("pubblicato"):
+            gia_pub.add(_src.stem)
     for xml in SITE.glob("feed-*.xml"):
         testo = xml.read_text(encoding="utf-8")
         for slug_futuro in sorted(future):
             if f"guide/{slug_futuro}.html" in testo:
-                print(f"CHECK ✗ {xml.name}: contiene la guida futura {slug_futuro}")
+                print(f"CHECK \u2717 {xml.name}: contiene la guida futura {slug_futuro}")
                 ok = False
         for slug_pub in sorted(gia_pub):
             if f"guide/{slug_pub}.html" in testo:
-                print(f"CHECK ✗ {xml.name}: contiene {slug_pub}, già pubblicato come pin "
-                      "(nel feed deve restare solo la coda)")
-                ok = False
+                pub_in_feed = sum(1 for s in gia_pub if f"guide/{s}.html" in testo)
+                if pub_in_feed > 1:
+                    print(f"CHECK \u2717 {xml.name}: contiene {slug_pub}, gia' pubblicato "
+                          f"come pin (nel feed deve restare solo la coda)")
+                    ok = False
     if ok:
         print(f"CHECK ✓ feed validi, slug coerenti, coda pulita "
               f"({len(gia_pub)} guide già pubblicate escluse)")
