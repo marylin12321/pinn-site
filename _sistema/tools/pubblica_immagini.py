@@ -72,6 +72,57 @@ def _sorgenti(solo: str | None) -> list[Path]:
         and (solo is None or p.name.startswith(f"{solo}_"))
     )
 
+def _verifica_ci(repo_path: Path) -> int:
+    """Ricostruisce il sito come farà la pipeline, in una dir temporanea.
+
+    Non è un doppione del workflow: entrambi chiamano tools/prepara_ci.py, che
+    è l'unico elenco di cosa serve all'albero di build. Serve a scoprire qui,
+    prima del push, che una sorgente mancante farebbe fallire il run delle 08:15
+    (è successo due volte: pendenze.py e url_base.py mancanti dalla copia).
+    """
+    import shutil
+    import tempfile
+    sys.path.insert(0, str(ROOT / "tools"))
+    import prepara_ci
+    tmp = Path(tempfile.mkdtemp(prefix="verifica-ci-"))
+    try:
+        n = prepara_ci.prepara(repo_path, tmp / "build")
+        if n < 0:
+            return 1
+        r = subprocess.run([sys.executable, "tools/build_sito.py", "--check"],
+                           cwd=tmp / "build", capture_output=True, text=True, timeout=900)
+        if r.returncode != 0:
+            print("VERIFICA CI FALLITA: il build sulle sole sorgenti spedite non va a buon fine.")
+            print("  (è questo che farà la pipeline stanotte alle 08:15)")
+            for l in (r.stdout + r.stderr).strip().splitlines()[-15:]:
+                print("   ", l)
+            return 1
+        # e deve produrre esattamente il sito locale, né più né meno file:
+        # se i due divergono, la pipeline stanotte publicherebbe qualcosa di
+        # diverso da quello che ho verificato adesso.
+        def _appaio(base: Path) -> dict[str, Path]:
+            return {q.relative_to(base).as_posix(): q
+                    for q in base.rglob("*") if q.is_file()}
+
+        ci, locale = _appaio(tmp / "build" / "site"), _appaio(ROOT / "site")
+        solo_ci = sorted(set(ci) - set(locale))
+        solo_locale = sorted(set(locale) - set(ci))
+        diversi = sorted(k for k in set(ci) & set(locale) if ci[k].read_bytes() != locale[k].read_bytes())
+        if solo_ci or solo_locale or diversi:
+            print("VERIFICA CI: il sito ricostruito dalla CI non coincide con il locale.")
+            for etichetta, lista in (("solo nella CI", solo_ci), ("solo in locale", solo_locale),
+                                     ("contenuti diversi", diversi)):
+                if lista:
+                    print(f"  {etichetta}: {len(lista)}")
+                    for k in lista[:6]:
+                        print("     ", k)
+            return 1
+        print(f"verifica CI ✓ ({n} file di sorgenti, build pulito e identico al locale)")
+        return 0
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -80,7 +131,11 @@ def main() -> int:
     ap.add_argument("--no-push", action="store_true", help="commit ma niente push")
     ap.add_argument("--no-prune", action="store_true", help="non cancellare file orfani nel repo")
     ap.add_argument("--dry-run", action="store_true", help="mostra il piano senza modificare nulla")
-    ap.add_argument("--check", action="store_true", help="fa un HEAD sulle media_base_url alla fine")
+    ap.add_argument("--check", action="store_true", help="fa un HEAD sugli URL del sito alla fine")
+    ap.add_argument("--no-verifica-ci", action="store_true",
+                    help="salta il build di prova con le sole sorgenti spedite "
+                         "(ci mette un minuto, serve a non scoprire di notte "
+                         "che la pipeline è rotta)")
     args = ap.parse_args()
 
     sistema = yaml.safe_load((ROOT / "config" / "system.yaml").read_text(encoding="utf-8")) or {}
@@ -265,6 +320,10 @@ def main() -> int:
             p.unlink()
         print(f"copiati {len(da_copiare)} file" + (f", rimossi {len(da_cancellare)} orfani"
                                                   if da_cancellare else ""))
+
+    if not args.dry_run and not args.no_verifica_ci:
+        if _verifica_ci(repo_path) != 0:
+            return 1
 
     # --- git: add SOLO cartella immagini + file sito (niente file estranei) ---
     # (n_pendenti già calcolato sopra; resta valido: qui in mezzo non si commita)

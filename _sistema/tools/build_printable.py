@@ -254,9 +254,17 @@ def cover(spec: dict, src_preview: str | None = None) -> str | None:
 def _site_base() -> str:
     return url_base.site_base(ROOT)
 
-def _pagina(spec: dict, preview_png: str) -> None:
-    """Scrive site/printable/<slug>.html (landing con anteprima + download)."""
+def _pagina(spec: dict) -> None:
+    """Scrive site/printable/<slug>.html (landing con anteprima + download).
+
+    Nota: l'`src` dell'anteprima è un URL del sito, mai il percorso del file in
+    locale. Prima arrivava qui la path assoluta (`/home/gabriele/Desktop/...`) e
+    finiva nel markup: sette pagine pubblicate con l'immagine rotta, invisibile
+    in locale perché lì il path esiste. L'ho visto solo perché la verifica della
+    pipeline ricostruisce il sito in una directory temporanea e confronta i byte.
+    """
     base = _site_base()
+    anteprima_url = f"{base}printable/{spec['slug']}_preview.png"
     pdf_url = f"{base}printable/{spec['slug']}.pdf"
     guida_url = spec.get("guida_url") or f"{base}guide/{spec.get('guida','')}.html"
     prodotti = ""
@@ -277,7 +285,7 @@ def _pagina(spec: dict, preview_png: str) -> None:
 <div class="card">
 <h1>{spec['titolo']}</h1>
 <p class="dek">{spec['sottotitolo']}</p>
-<img src="{preview_png}" alt="{spec['titolo']}" style="width:100%;border-radius:14px;margin:14px 0">
+<img src="{anteprima_url}" alt="{spec['titolo']}" style="width:100%;border-radius:14px;margin:14px 0">
 <a class="pbtn" href="{pdf_url}" download="">Scarica il PDF gratis (A4)</a>
 <div class="advbox">{spec.get('descrizione','')}</div>
 <h2>Nel PDF</h2><ul>{''.join(f'<li>{b}</li>' for b in spec.get('contiene',[]))}</ul>
@@ -311,7 +319,7 @@ def genera() -> list[dict]:
             print(f"  {spec['slug']}: nessuna preview, salto")
             continue
         c = cover(spec, str(png))
-        _pagina(spec, str(png))
+        _pagina(spec)
         stato = f"{Path(r['pdf']).name} · preview" if r else "pdf riutilizzato"
         print(f"  ✓ {spec['slug']}: {stato} · cover={'✓' if c else '—'} · pagina ✓")
     print(f"printable generati: {len(specs)}")

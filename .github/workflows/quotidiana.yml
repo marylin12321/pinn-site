@@ -51,7 +51,12 @@ jobs:
         run: |
           mkdir -p build/site
           cp -r _sistema/tools _sistema/config _sistema/content build/
-          cp -r _sistema/assets build/            # solo i font (156 KB)
+          # src/ contiene i due moduli di cui il build ha bisogno:
+          # url_base (radice del sito) e pendenze (coda di pubblicazione,
+          # usata dal job postapi). Gli altri file di src/ sono la CLI
+          # legacy di generazione pin e non vengono spediti.
+          cp -r _sistema/src build/
+          cp -r _sistema/assets build/            # solo i 3 font in uso
           cp privacy.html build/site/
           cp -r covers build/site/covers
           # i printable già costruiti: senza questo, build_printable li
