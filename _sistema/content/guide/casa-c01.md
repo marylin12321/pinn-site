@@ -3,6 +3,7 @@ titolo: Organizzare la dispensa in 6 passi (senza impazzire)
 descrizione: "Svuota, classifica, etichetta e riempi a strati: il metodo in 6 passi per una dispensa che resta in ordine da sola."
 board: Organizzazione Pratica
 prodotti: [casa-p01]
+pubblicato: 2026-09-24
 ---
 Il problema della dispensa non è lo spazio: è che non sai più cosa hai. Barattoli doppi, bustine aperte, scadenze misteriose. Si sistema in un pomeriggio, con un metodo preciso.
 

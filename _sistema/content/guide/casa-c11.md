@@ -3,6 +3,7 @@ titolo: "Luce dove manca: lampade senza fili né elettricista"
 descrizione: "Sottopensile, armadio buio, ingresso: barre LED adesive ricaricabili con sensore, senza forare né chiamare nessuno."
 board: DIY Casa
 prodotti: [casa-p20]
+pubblicato: 2026-09-24
 ---
 Ci sono punti della casa che restano sempre bui: sotto i pensili, dentro l'armadio, l'angolo dell'ingresso. Risolverli non serve l'elettricista: bastano luci senza fili di oggi.
 

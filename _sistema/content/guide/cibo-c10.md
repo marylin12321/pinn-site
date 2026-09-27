@@ -3,6 +3,7 @@ titolo: "Pane fatto in casa senza lievitazione lunga"
 descrizione: "Farina, acqua, lievito istantaneo e forno caldo col vapore: pane vero senza aspettare ore."
 board: Dolci Fatti in Casa
 prodotti: []
+pubblicato: 2026-09-24
 ---
 Il pane fatto in casa sembra un progetto della domenica, ma con il metodo diretto è una cosa da sera qualunque: niente biga, niente ore di attesa.
 

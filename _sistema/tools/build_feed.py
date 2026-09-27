@@ -75,8 +75,9 @@ def genera() -> list[Path]:
         text = src.read_text(encoding="utf-8")
         meta = yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else {}
         board = (meta or {}).get("board", "")
-        dal = str((meta or {}).get("pubblica_dal") or "")
-        if board and not (dal and dal > oggi):
+        # tutti i board con guide entrano nel gruppo (anche se la coda è vuota:
+        # serve a riscrivere il feed e cancellare i vecchi item già pubblicati)
+        if board:
             gruppi.setdefault((nid, board), []).append(src)
     scritti: list[Path] = []
     # Difesa anti-burst: se un feed viene ricollegato, Pinterest riscanterebbe
@@ -90,10 +91,16 @@ def genera() -> list[Path]:
         # ordine RSS corretto: dal più RECENTE al più vecchio (i lettori leggono dall'alto,
         # Pinterest prende di fatto il primo item → deve sempre essere l'ultimo rilascio)
         voci: list[tuple[float, Path, dict]] = []
+        scartate = 0
         for src in files:
             text = src.read_text(encoding="utf-8")
             meta = yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else {}
             dal = str((meta or {}).get("pubblica_dal") or "")
+            gia = str((meta or {}).get("pubblicato") or "")
+            # già pubblicato = pin già su Pinterest: resta online ma FUORI dal feed
+            if gia or (dal and dal > oggi):
+                scartate += 1
+                continue
             if dal:
                 # data di rilascio reale, non la mtime (creata giorni prima)
                 ts = datetime.fromisoformat(dal).replace(tzinfo=timezone.utc).timestamp()
@@ -102,13 +109,10 @@ def genera() -> list[Path]:
             voci.append((ts, src, meta or {}))
         voci.sort(key=lambda v: (v[0], v[1].name), reverse=True)
         mostrati = [v for v in voci if v[0] >= taglio][:MAX_ITEM_PER_FEED]
-        if not mostrati:
-            mostrati = voci[:1]  # feed mai vuoto: meglio 1 item vecchio che nessuno
         if len(mostrati) < len(voci):
             print(f"  {nid}/{board}: {len(voci)} item in coda → nel feed i {len(mostrati)} "
                   f"più recenti (finestra {FINESTRA_GIORNI}gg, tetto {MAX_ITEM_PER_FEED})")
         voci = mostrati
-
         items = []
         ultimo = 0.0
         for ts, src, meta in voci:
@@ -146,7 +150,17 @@ def genera() -> list[Path]:
         dst = SITE / f"feed-{nid}-{slug_board(board)}.xml"
         dst.write_text(xml, encoding="utf-8")
         scritti.append(dst)
-    print(f"feed: {len(scritti)} file (uno per bacheca con guide)")
+        # Gemella "feed2-*": stesso contenuto, URL NUOVO. Se Pinterest non riprende
+        # i feed collegati (li ha svuotati e poi ha smesso), si ricollega questo:
+        # URL nuovo = validazione da zero. Attenzione: togli il feed vecchio.
+        gemello = SITE / f"feed2-{nid}-{slug_board(board)}.xml"
+        gemello.write_text(xml, encoding="utf-8")
+        scritti.append(gemello)
+        stato = (f"{len(items)} item in coda" if items
+                 else "coda vuota (tutto già pubblicato o in programma)")
+        if scartate or not items:
+            print(f"  {nid}/{board}: {stato}, {scartate} esclusi")
+    print(f"feed: {len(scritti)} file ({len(scritti) // 2} board + gemelli feed2 per il ricollegamento)")
     return scritti
 
 
@@ -157,8 +171,8 @@ def check() -> bool:
             root = ET.parse(str(xml)).getroot()
             items = root.findall("./channel/item")
             if not items:
-                print(f"CHECK ✗ {xml.name}: nessun item")
-                ok = False
+                # feed vuoto = legittimo: è la coda, e la coda è vuota.
+                # (Pinterest non ha nulla da postare, il feed resta valido)
                 continue
             for it in items:
                 for tag in ("title", "link", "description"):
@@ -184,29 +198,39 @@ def check() -> bool:
         for b in cfg["nicchia"].get("boards") or []:
             boards_cfg.add(slug_board(b))
     for xml in SITE.glob("feed-*.xml"):
-        slug = xml.stem.split("-", 2)[-1]
+        m = re.match(r"feed2?-[a-z]+-(.+)$", xml.stem)   # normali e gemelli feed2-*
+        slug = m.group(1) if m else xml.stem
         if slug not in boards_cfg:
             print(f"CHECK ✗ {xml.name}: slug '{slug}' non corrisponde a nessuna board")
             ok = False
-    # guide FUTURE non devono comparire in nessun feed (Pinterest le posterebbe subito)
+    # guide FUTURE e già PUBBLICATE non devono comparire in nessun feed
+    # (le future verrebbero postate in anticipo, le pubblicate in dupliquo)
     from datetime import date
 
     oggi = date.today().isoformat()
-    future = set()
+    future, gia_pub = set(), set()
     for src in SRC.glob("*.md"):
         text = src.read_text(encoding="utf-8")
         meta = yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else {}
         dal = str((meta or {}).get("pubblica_dal") or "")
         if dal and dal > oggi:
             future.add(src.stem)
+        if (meta or {}).get("pubblicato"):
+            gia_pub.add(src.stem)
     for xml in SITE.glob("feed-*.xml"):
         testo = xml.read_text(encoding="utf-8")
         for slug_futuro in sorted(future):
             if f"guide/{slug_futuro}.html" in testo:
                 print(f"CHECK ✗ {xml.name}: contiene la guida futura {slug_futuro}")
                 ok = False
+        for slug_pub in sorted(gia_pub):
+            if f"guide/{slug_pub}.html" in testo:
+                print(f"CHECK ✗ {xml.name}: contiene {slug_pub}, già pubblicato come pin "
+                      "(nel feed deve restare solo la coda)")
+                ok = False
     if ok:
-        print("CHECK ✓ feed validi, slug board coerenti, niente guide future")
+        print(f"CHECK ✓ feed validi, slug coerenti, coda pulita "
+              f"({len(gia_pub)} guide già pubblicate escluse)")
     return ok
 
 

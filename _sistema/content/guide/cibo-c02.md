@@ -3,6 +3,7 @@ titolo: "Pasta veloce in 15 minuti con 5 ingredienti: la formula"
 descrizione: "Pasta corta, una proteina, un grasso buono e due sapori: la formula delle cene in 15 minuti."
 board: Ricette Veloci
 prodotti: [cibo-p13]
+pubblicato: 2026-09-24
 ---
 La pasta veloce non è una ricetta: è una formula. Pasta corta + proteina + grasso buono + due sapori. Impari le combinazioni una volta e non guardi più l'orologio.
 

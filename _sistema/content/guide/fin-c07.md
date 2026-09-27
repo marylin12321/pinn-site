@@ -3,6 +3,7 @@ titolo: "Side income: 7 idee lecite da casa per iniziare"
 descrizione: "Dalle ripetizioni ai template digitali: sette strade oneste per una seconda entrata, con una regola d'oro."
 board: Side Income
 prodotti: []
+pubblicato: 2026-09-24
 ---
 Seconda entrata non significa secondo lavoro full-time. Significa una cosa sola fatta bene per novanta giorni. Ecco sette strade oneste.
 

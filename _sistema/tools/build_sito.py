@@ -72,8 +72,9 @@ def _check_ritmo() -> bool:
     for src in sorted((ROOT / "content" / "guide").glob("*.md")):
         text = src.read_text(encoding="utf-8")
         meta = yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else {}
-        giorno = str((meta or {}).get("pubblica_dal") or "") or date.fromtimestamp(
-            src.stat().st_mtime).isoformat()
+        giorno = (str((meta or {}).get("pubblicato") or "")
+                  or str((meta or {}).get("pubblica_dal") or "")
+                  or date.fromtimestamp(src.stat().st_mtime).isoformat())
         try:
             dt = date.fromisoformat(giorno)
         except ValueError:

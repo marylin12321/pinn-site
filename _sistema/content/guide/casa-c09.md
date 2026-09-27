@@ -3,6 +3,7 @@ titolo: "Ingresso sempre in ordine con 3 attrezzi"
 descrizione: "Ganci alla portata, vassoio per le chiavi, portaombrelli stretto: l'ingresso resta in ordine da solo."
 board: Piccoli Spazi
 prodotti: [casa-p16]
+pubblicato: 2026-09-24
 ---
 L'ingresso è piccolo ma decide l'umore di tutta la casa. Bastano tre attrezzi messi nei punti giusti e smette di essere un deposito.
 

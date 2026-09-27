@@ -3,6 +3,7 @@ titolo: "Scrivania smart working sempre in ordine"
 descrizione: "Zone di lavoro, cavi nascosti e chiusura serale: la scrivania resta ordinata anche lavorando da casa."
 board: Idee Arredamento
 prodotti: []
+pubblicato: 2026-09-24
 ---
 Lavorare in mezzo al caos stanca il doppio. La scrivania da smart working ha bisogno di tre cose: zone chiare, cavi invisibili e una chiusura serale.
 

@@ -3,6 +3,7 @@ titolo: "Snowball o avalanche: quale metodo per ripagare i debiti"
 descrizione: "Elenca i debiti, attacca il primo con tutto quello che hai, paga il minimo sugli altri: snowball o avalanche a confronto."
 board: Debiti & Debt Payoff
 prodotti: [fin-p19]
+pubblicato: 2026-09-24
 ---
 Due metodi, un obiettivo: chiudere i debiti uno alla volta invece di pagarli tutti un po'. La differenza sta nell'ordine di attacco.
 

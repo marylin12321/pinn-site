@@ -3,6 +3,7 @@ titolo: "Routine pulizie: 20 minuti al giorno e casa sempre in ordine"
 descrizione: "Tre zone, un timer, un compito alla volta: la routine da 20 minuti che tiene tutta la casa in ordine."
 board: Pulizie & Routine
 prodotti: [casa-p14]
+pubblicato: 2026-09-24
 ---
 Non serve il weekend dedicato alle pulizie. Serve un metodo da venti minuti che ripeti ogni giorno, sempre uguale, senza pensarci.
 

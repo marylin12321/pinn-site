@@ -3,6 +3,7 @@ titolo: "Contorni sani che piacciono anche ai grandi"
 descrizione: "Forno in batch, vapore express e crudi marinati: verdure che finiscono davvero, non che avanzano."
 board: Idee Salute
 prodotti: []
+pubblicato: 2026-09-24
 ---
 Il contorno è quello che avanza sempre. Non perché le verdure non piacciano: perché sono preparate senza un metodo. Eccone tre che funzionano.
 
