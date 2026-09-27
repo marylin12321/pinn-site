@@ -107,9 +107,17 @@ def genera() -> list[Path]:
             meta = yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else {}
             dal = str((meta or {}).get("pubblica_dal") or "")
             gia = str((meta or {}).get("pubblicato") or "")
-            if dal:
-                ts = datetime.fromisoformat(dal).replace(tzinfo=timezone.utc).timestamp()
+            # La data del item è pubblica_dal, o pubblicato per le guide già
+            # in coda. NON il mtime del file: in CI actions/checkout riscrive
+            # tutti i file con l'orario del checkout, quindi il feed si
+            # rigenererebbe diverso ogni giorno e la pipeline committerebbe
+            # solo timestamp (misurato il 27/09/2026, primo run della bot).
+            data = dal or gia
+            if data:
+                ts = datetime.fromisoformat(data).replace(tzinfo=timezone.utc).timestamp()
             else:
+                print(f"  ! {src.stem}: né pubblica_dal né pubblicato, uso il mtime "
+                      f"(il feed non sarà riproducibile finché manca la data)")
                 ts = src.stat().st_mtime
             # già pubblicato = pin già su Pinterest: resta online ma FUORI dal feed
             if gia:

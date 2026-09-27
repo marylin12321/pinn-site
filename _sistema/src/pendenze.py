@@ -78,7 +78,11 @@ def coda(nid: str | None = None) -> list[dict]:
             continue  # ancora in programma
         if not (ROOT / "site" / "guide" / f"{slug}.html").exists():
             continue  # pagina non ancora online: non si linka il 404
-        ts = (datetime.fromisoformat(dal).timestamp() if dal else src.stat().st_mtime)
+        # pubblica_dal, o pubblicato se la guida è già stata pinnata. MAI il
+        # mtime del file: in CI i file vengono riscritti col clock del runner e
+        # la coda risulterebbe diversa a ogni build.
+        data = dal or str(meta.get("pubblicato") or "")
+        ts = datetime.fromisoformat(data).timestamp() if data else src.stat().st_mtime
         out.append((ts, {
             "slug": slug, "nicchia": nicchia, "board": board,
             "titolo": str(meta.get("titolo", slug)),
