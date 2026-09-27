@@ -4,21 +4,23 @@
     <title>Quattro Mondi — Meal Prep &amp; Batch Cooking</title>
     <link>https://marylin12321.github.io/pinn-site/guide/</link>
     <description>Guide Meal Prep &amp; Batch Cooking (Quattro Mondi)</description>
-    <item>
-      <title>Meal prep della domenica in 90 minuti: metodo completo</title>
-      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c01.html</link>
-      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c01.html</guid>
-      <description>Tre ricette, una lista unica, cotture in parallelo: in 90 minuti prepari 5 giorni di pranzi e cene.</description>
-      <pubDate>Thu, 24 Sep 2026 07:41:28 GMT</pubDate>
-      <enclosure url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" type="image/jpeg" />
-      <media:content url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" medium="image" type="image/jpeg" />
-    </item>
+    <language>it-it</language>
+    <lastBuildDate>Sat, 26 Sep 2026 00:00:00 GMT</lastBuildDate>
     <item>
       <title>Colazioni pronte per 5 giorni: il metodo batch</title>
       <link>https://marylin12321.github.io/pinn-site/guide/cibo-c04.html</link>
       <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c04.html</guid>
       <description>Muffin salati, overnight e porridge in barattolo: colazione pronta in 2 minuti ogni mattina.</description>
       <pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" medium="image" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Meal prep della domenica in 90 minuti: metodo completo</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c01.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c01.html</guid>
+      <description>Tre ricette, una lista unica, cotture in parallelo: in 90 minuti prepari 5 giorni di pranzi e cene.</description>
+      <pubDate>Thu, 24 Sep 2026 07:41:28 GMT</pubDate>
       <enclosure url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" type="image/jpeg" />
       <media:content url="https://marylin12321.github.io/pinn-site/covers/cibo.jpg" medium="image" type="image/jpeg" />
     </item>
