@@ -22,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import build_guide
 import build_landing
 import build_feed
+import lint_guide
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -124,6 +125,8 @@ def main() -> int:
         if not build_feed.check():
             ok = False
         if not _check_ritmo():
+            ok = False
+        if not lint_guide.check():
             ok = False
         for g in guide:
             html = g.read_text(encoding="utf-8")

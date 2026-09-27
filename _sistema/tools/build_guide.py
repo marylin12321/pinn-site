@@ -42,6 +42,11 @@ ul { margin: 8px 0; padding-left: 22px; }
 li { margin: 4px 0; }
 .pill { display: inline-block; background: #F4F1EA; border-radius: 999px; padding: 5px 12px;
         font-size: 12.5px; font-weight: 700; color: #6b6259; }
+img.hero { display: block; width: 100%; height: auto; border-radius: 14px; margin: 14px 0 4px; }
+.gitem { display: flex; gap: 13px; align-items: center; margin: 12px 0; }
+.gitem img { width: 56px; height: 84px; object-fit: cover; border-radius: 9px; flex: none; }
+.gitem a { font-weight: 600; color: #2E2A26; text-decoration: none; font-size: 15.5px; }
+.gitem a:hover { text-decoration: underline; }
 details.prods { margin-top: 22px; border: 1px solid #E7DECD; border-radius: 14px; overflow: hidden; }
 details.prods summary { cursor: pointer; list-style: none; display: flex;
                         align-items: center; justify-content: space-between;
@@ -60,6 +65,16 @@ a.pbtn { display: inline-block; margin-top: 8px; background: #4F6146; color: #ff
 footer { text-align: center; font-size: 12.5px; color: #8a827a; margin-top: 26px; }
 footer a { color: #6b6259; font-weight: 600; }
 """
+
+
+def _site_base() -> str:
+    """Radice pubblica del sito derivata da media_base_url (…/pin → …/)."""
+    for nid in ["casa", "cibo", "finanza", "parenting"]:
+        cfg = yaml.safe_load((ROOT / "config" / "nicchie" / f"{nid}.yaml").read_text(encoding="utf-8"))
+        base = (cfg.get("media_base_url") or "").strip().rstrip("/")
+        if base:
+            return base.rsplit("/", 1)[0] + "/"
+    return "https://example.com/pinn-site/"
 
 
 def _parse(path: Path) -> tuple[dict, str]:
@@ -150,6 +165,24 @@ def genera() -> list[Path]:
         descr = meta.get("descrizione", "")
         board = meta.get("board", "")
         prods = _prodotti(nid, meta.get("prodotti") or [])
+        # cover della guida (generata da build_cover_guide.py): se c'è, la pagina
+        # ha anche immagine in evidenza e card social — chi arriva da un link
+        # esterno vede subito di cosa si tratta
+        ha_cover = (DST.parent / "covers" / f"guida-{slug}.jpg").exists()
+        base = _site_base()
+        social = ""
+        if ha_cover:
+            social = (
+                '<meta property="og:type" content="article">\n'
+                f'<meta property="og:title" content="{_html.escape(titolo)} — Quattro Mondi">\n'
+                f'<meta property="og:description" content="{_html.escape(descr)}">\n'
+                f'<meta property="og:url" content="{base}guide/{slug}.html">\n'
+                f'<meta property="og:image" content="{base}covers/guida-{slug}.jpg">\n'
+                '<meta name="twitter:card" content="summary_large_image">'
+            )
+        hero = (f'<img class="hero" src="../covers/guida-{slug}.jpg" '
+                f'alt="{_html.escape(titolo)}" width="1000" height="1500" loading="eager">'
+                ) if ha_cover else ""
         pagina = f"""<!DOCTYPE html>
 <html lang="it">
 <head>
@@ -158,6 +191,7 @@ def genera() -> list[Path]:
 <title>{_html.escape(titolo)} — Quattro Mondi</title>
 <meta name="description" content="{_html.escape(descr)}">
 <meta name="theme-color" content="#F4F1EA">
+{social}
 <style>{CSS}</style>
 </head>
 <body>
@@ -167,6 +201,7 @@ def genera() -> list[Path]:
 <span class="pill">{_html.escape(board)}</span>
 <h1>{_html.escape(titolo)}</h1>
 <p class="dek">{_html.escape(descr)}</p>
+{hero}
 {_render_md(body)}
 {prods}
 <div class="advbox">Questa pagina contiene link affiliati Amazon (#adv): se acquisti tramite questi link ricevo una commissione, senza costi extra per te.</div>
@@ -183,10 +218,17 @@ def genera() -> list[Path]:
         fatte.append(dst)
         indice.append((nid, slug, titolo, board))
     # indice guide
+    def _thumb(slug: str) -> str:
+        if (DST.parent / "covers" / f"guida-{slug}.jpg").exists():
+            return (f'<img src="../covers/guida-{slug}.jpg" alt="" width="112" height="168" '
+                    f'loading="lazy">')
+        return ""
+
     blocchi = []
     for nid in sorted({n for n, _, _, _ in indice}):
         items = "\n".join(
-            f'<p><a href="./{s}.html">{_html.escape(t)}</a><br><span class="pill">{_html.escape(b)}</span></p>'
+            f'<div class="gitem">{_thumb(s)}<div><a href="./{s}.html">{_html.escape(t)}</a>'
+            f'<br><span class="pill">{_html.escape(b)}</span></div></div>'
             for n, s, t, b in indice if n == nid
         )
         blocchi.append(f"<h2>{nid.capitalize()}</h2>\n{items}")
