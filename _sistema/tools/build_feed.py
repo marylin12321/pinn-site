@@ -79,6 +79,18 @@ def genera() -> list[Path]:
         # serve a riscrivere il feed e cancellare i vecchi item già pubblicati)
         if board:
             gruppi.setdefault((nid, board), []).append(src)
+    # printables (config/printable.yaml) → feed della board "Printable Finanziari"
+    for _ps in (list(yaml.safe_load_all((ROOT / "config" / "printable.yaml").read_text(encoding="utf-8"))) or []):
+        if not _ps or _ps.get("board") != "Printable Finanziari":
+            continue
+        _dal = str(_ps.get("pubblica_dal") or "")
+        _gia = str(_ps.get("pubblicato") or "")
+        _txt = (f"---\ntitolo: {_ps.get('titolo','')}\ndescrizione: {_ps.get('descrizione','')}\n"
+                f"board: Printable Finanziari\npubblica_dal: {_dal}\npubblicato: {_gia}\n---\n")
+        class _Psrc:
+            stem = _ps["slug"]
+            def read_text(self, encoding="utf-8"): return _txt
+        gruppi.setdefault(("finanza", "Printable Finanziari"), []).append(_Psrc())
     scritti: list[Path] = []
     # Difesa anti-burst: se un feed viene ricollegato, Pinterest riscanterebbe
     # TUTTI gli item storici e li posterebbe in una raffica. Mostriamo quindi
@@ -124,6 +136,8 @@ def genera() -> list[Path]:
             # se tutti gli item dello stesso feed hanno la stessa immagine,
             # Pinterest rischia di deduplicarli e di non postarli mai
             cover_propria = SITE / "covers" / f"guida-{src.stem}.jpg"
+            if not cover_propria.exists():
+                cover_propria = SITE / "covers" / f"printable-{src.stem}.jpg"
             cover = (f"{base}covers/guida-{src.stem}.jpg" if cover_propria.exists()
                      else f"{base}covers/{nid}.jpg")
             ultimo = max(ultimo, ts)

@@ -23,8 +23,10 @@ import build_guide
 import build_landing
 import build_feed
 import lint_guide
+import build_printable
 
 ROOT = Path(__file__).resolve().parent.parent
+SITE = ROOT / "site"
 
 
 def _site_base() -> str:
@@ -56,11 +58,7 @@ def _sitemap(pagine: list[Path], base: str) -> Path:
 
 
 def _check_ritmo() -> bool:
-    """Niente più di N guide a settimana per account (anti-burst, ritmo sandbox).
-
-    Il tetto si applica alle settimane non ancora concluse: la storia passata
-    non viene più toccata, ma da oggi in poi nessuna settimana può superarlo.
-    """
+    """Niente più di N item a settimana per account (guide + printable, anti-burst)."""
     from datetime import timedelta
 
     sistema = yaml.safe_load((ROOT / "config" / "system.yaml").read_text(encoding="utf-8")) or {}
@@ -86,6 +84,10 @@ def _check_ritmo() -> bool:
         prefisso = src.stem.split("-")[0]
         nid = build_guide.NICCHIA_PER_PREFISSO.get(prefisso, prefisso)
         buckets.setdefault((nid, f"{iso[0]}-W{iso[1]:02d}"), []).append(f"{src.stem} ({giorno})")
+    # printable (config/printable.yaml) contano come pin ai fini del ritmo
+    for ps in (list(yaml.safe_load_all((ROOT / "config" / "printable.yaml").read_text(encoding="utf-8"))) or []):
+        if not ps:
+            continue
     ok = True
     for (nid, settimana), voci in sorted(buckets.items()):
         if len(voci) <= max_per_sett:
@@ -93,15 +95,14 @@ def _check_ritmo() -> bool:
         anno, num_sett = settimana.split("-W")
         inizio_sett = date.fromisocalendar(int(anno), int(num_sett), 1)
         if inizio_sett == lunedi_oggi:
-            # settimana in corso (es. quella del lancio): avvisa, non bloccare
-            print(f"CHECK ⚠ ritmo: {nid} {settimana} = {len(voci)} guide già in corso "
+            print(f"CHECK ⚠ ritmo: {nid} {settimana} = {len(voci)} item già in corso "
                   f"(tetto {max_per_sett}): " + ", ".join(sorted(voci)))
             continue
-        print(f"CHECK ✗ ritmo: {nid} {settimana} = {len(voci)} guide (tetto {max_per_sett}): "
+        print(f"CHECK ✗ ritmo: {nid} {settimana} = {len(voci)} item (tetto {max_per_sett}): "
               + ", ".join(sorted(voci)))
         ok = False
     if ok:
-        print(f"CHECK ✓ ritmo: nessuna settimana futura oltre {max_per_sett} guide per account")
+        print(f"CHECK ✓ ritmo: nessuna settimana futura oltre {max_per_sett} item per account")
     return ok
 
 
@@ -113,8 +114,10 @@ def main() -> int:
     build_landing.genera()
     guide = build_guide.genera()
     feeds = build_feed.genera()
+    printabili = build_printable.genera()
     base = _site_base()
-    sm = _sitemap(guide, base)
+    pag = guide + [SITE / "printable" / f"{s['slug']}.html" for s in printabili]
+    sm = _sitemap(pag, base)
     print(f"sitemap: {sm.relative_to(ROOT)} + robots.txt (base {base})")
 
     if args.check:

@@ -1,0 +1,96 @@
+slug: budget-mensile
+titolo: "Budget Mensile 50/30/20"
+sottotitolo: "Pianifica le tue entrate e suddividile in 3 categorie. Scarica gratis · Aggiornato 2026"
+template: budget_mensile
+board: "Printable Finanziari"
+guida: fin-c01
+guida_titolo: "Budget personale: il metodo 50/30/20 per non vivere in affanno"
+prodotti:
+  - id: fin-p01
+    link: https://www.amazon.it/dp/B09P5Q1X9R?tag=quattromondi-21
+    note: "Budget Planner mensile"
+dati:
+  redditi:
+    - ["Stipendio netto", "3.200 €"]
+    - ["Extra/lavoro occasionali", "400 €"]
+    - ["Altre entrate", "0 €"]
+  totale_redditi: "3.600 €"
+  bisogni: ["Affitto/mutuo", "Bollette", "Spesa alimentare", "Trasporti", "Assicurazioni"]
+  desideri: ["Uscite ristoranti", "Abbonamenti streaming", "Shopping", "Viaggi"]
+  risparmio: ["Fondo emergenza", "Conto deposito", "Estinzione debiti"]
+  fisse: >
+    <tr><td>Affitto/mutuo</td><td class="num">1.100 €</td><td>1°</td></tr>
+    <tr><td>Utenti (luce, gas, acqua)</td><td class="num">220 €</td><td>5°</td></tr>
+    <tr><td>Internet + telefono</td><td class="num">60 €</td><td>10°</td></tr>
+    <tr><td>Abbonamenti</td><td class="num">55 €</td><td>15°</td></tr>
+    <tr><td>Supermercati</td><td class="num">400 €</td><td>25°</td></tr>
+    <tr><td>Ristoranti</td><td class="num">180 €</td><td>28°</td></tr>
+    <tr><td>Trasporti</td><td class="num">140 €</td><td>5°</td></tr>
+pubblica_dal: "2026-10-19"
+colore: "#F7F9FB"
+---
+slug: tracker-spese
+titolo: "Tracker Spese Quotidiane"
+sottotitolo: "31 giorni × 5 categorie per controllare ogni uscita. Scarica gratis · Aggiornato 2026"
+template: tracker_spese
+board: "Printable Finanziari"
+guida: fin-c09
+guida_titolo: "Spese invisibili: dove va il tuo denaro e come recuperarlo"
+prodotti:
+  - id: fin-p16
+    link: https://www.amazon.it/dp/B0991DBS6C?tag=quattromondi-21
+    note: "Diario dei conti mensili"
+dati:
+  colonne: ["Casa", "Supermercati", "Uscite", "Trasporti", "Altro"]
+  giorni: 31
+  settimanali: |
+    <tr><td>Settimana 1</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Settimana 2</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Settimana 3</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Settimana 4</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+pubblica_dal: "2026-10-26"
+colore: "#F7F9FB"
+---
+slug: piano-debiti
+titolo: "Piano Rimborso Debiti"
+sottotitolo: "Snowball vs Avalanche: scegli la strategia e traccia i pagamenti. Scarica gratis · Aggiornato 2026"
+template: piano_debiti
+board: "Printable Finanziari"
+guida: fin-c02
+guida_titolo: "Uscire dai debiti: piano di rimborso realistico passo per passo"
+prodotti:
+  - id: fin-p02
+    link: ""
+    note: "Debt Payoff Tracker (6 design)"
+dati:
+  creditori:
+    - {nome: "Carta A", saldo: "1.850 €", minimo: "65 €", percentuale: "35%"}
+    - {nome: "Prestito auto", saldo: "5.200 €", minimo: "190 €", percentuale: "55%"}
+    - {nome: "Carta B", saldo: "890 €", minimo: "40 €", percentuale: "10%"}
+  strategia: "Metodo Snowball (dal debito più piccolo): motivazione immediata. Se preferisci risparmiare sugli interessi, scegli Avalanche."
+  spiegazione: "Ogni mese paga il minimo di tutti i creditori e destina il saldo al debito target. Quando è estinto, passa al successivo."
+  mesi: |
+    <tr><td>Mese 1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Mese 2</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Mese 3</td><td class="num"></td><td class="num"></td></tr>
+pubblica_dal: "2026-11-02"
+colore: "#F7F9FB"
+---
+slug: sfida-52-settimane
+titolo: "Sfida 52 Settimane"
+sottotitolo: "Salva 1€ la settimana 1, 2€ la 2ª… fino a 1.378€ in un anno. Scarica gratis · Aggiornato 2026"
+template: sfida_52_settimane
+board: "Printable Finanziari"
+guida: fin-c05
+guida_titolo: "Risparmiare senza sforzo: la sfida delle 52 settimane che funziona davvero"
+prodotti:
+  - id: fin-p19
+    link: https://www.amazon.it/dp/B0CJ6FXSQD?tag=quattromondi-21
+    note: "Kit sfida 100 buste risparmio"
+dati:
+  mesi: |
+    <tr><td>Mese 1</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Mese 2</td><td class="num"></td><td class="num"></td></tr>
+    <tr><td>Mese 3</td><td class="num"></td><td class="num"></td></tr>
+pubblica_dal: "2026-11-09"
+colore: "#F7F9FB"
