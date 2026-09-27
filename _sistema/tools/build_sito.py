@@ -12,29 +12,27 @@ le URL non cambiano mai (stabilità per i pin già pubblicati).
 from __future__ import annotations
 
 import argparse
-import sys
 from datetime import date
+import sys
 from pathlib import Path
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).parent))
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-import url_base  # noqa: E402
 import build_guide
 import build_landing
 import build_feed
 import lint_guide
 import build_printable
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+import url_base  # noqa: E402 — radice del sito, fonte unica
+
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
-
 
 def _site_base() -> str:
     """Radice pubblica del sito (unica fonte: config/system.yaml)."""
     return url_base.site_base(ROOT)
-
 
 def _sitemap(pagine: list[Path], base: str) -> Path:
     oggi = date.today().isoformat()
@@ -52,7 +50,6 @@ def _sitemap(pagine: list[Path], base: str) -> Path:
         f"User-agent: *\nAllow: /\nSitemap: {base}sitemap.xml\n", encoding="utf-8"
     )
     return dst
-
 
 def _check_ritmo() -> bool:
     """Niente più di N item a settimana per account (guide + printable, anti-burst)."""
@@ -102,7 +99,6 @@ def _check_ritmo() -> bool:
         print(f"CHECK ✓ ritmo: nessuna settimana futura oltre {max_per_sett} item per account")
     return ok
 
-
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--check", action="store_true")
@@ -138,7 +134,6 @@ def main() -> int:
         print(f"CHECK ✓ sito completo: landing + {len(guide)} guide + sitemap" if ok else "CHECK FALLITO")
         return 0 if ok else 1
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

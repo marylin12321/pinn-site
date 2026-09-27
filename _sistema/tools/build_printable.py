@@ -18,10 +18,11 @@ Le anteprime e le cover entrano nella build del sito (build_sito.py).
 from __future__ import annotations
 
 import hashlib, os, shutil, subprocess, sys, tempfile
+import sys
 from pathlib import Path
 
 import build_guide  # noqa: E402 — CSS inline delle pagine sito
-import sys
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 import url_base  # noqa: E402 — radice del sito, fonte unica
 
@@ -32,11 +33,9 @@ COV = SITE / "covers"
 PRI = SITE / "printable"
 YAML_PATH = ROOT / "config" / "printable.yaml"
 
-
 def _carica() -> list[dict]:
     import yaml
     return [d for d in yaml.safe_load_all(YAML_PATH.read_text(encoding="utf-8")) if d] or []
-
 
 def _font() -> str:
     for f in ("Poppins-Regular.ttf", "Lato-Regular.ttf"):
@@ -44,7 +43,6 @@ def _font() -> str:
         if p.exists():
             return str(p)
     return ""
-
 
 # ---------------------------------------------------------------- template
 def _css() -> str:
@@ -75,7 +73,6 @@ p  {{ margin:0 0 1.5mm 0; }}
 .foot {{ margin-top:4mm; border-top:0.8pt solid #C8D2DC; padding-top:1.5mm; font-size:7.6pt; color:#5A6B7B; }}
 """
 
-
 def _html(titolo: str, sottotitolo: str, corpo: str) -> str:
     return f"""<!doctype html><html lang="it"><head><meta charset="utf-8">
 <title>{titolo}</title><style>{_css()}</style></head><body>
@@ -84,7 +81,6 @@ def _html(titolo: str, sottotitolo: str, corpo: str) -> str:
 {corpo}
 <div class="foot">© TuttoInOrdine · guida correlata: <a href="{{GUIDA}}">{{GUIDAT}}</a></div>
 </body></html>"""
-
 
 def _tpl_budget(data: dict) -> str:
     redditi = "".join(f'<tr><td>{n}</td><td class="num">{v}</td></tr>' for n, v in data.get("redditi", []))
@@ -103,7 +99,6 @@ def _tpl_budget(data: dict) -> str:
 {data.get("fisse","")}</table>
 <h2>Note</h2><div class="area"></div>""")
 
-
 def _tpl_tracker(data: dict) -> str:
     colonne = "".join(f"<th>{c}</th>" for c in data.get("colonne", []))
     righe = "".join(
@@ -116,7 +111,6 @@ def _tpl_tracker(data: dict) -> str:
 <table class="tabella"><tr><th>Settimana</th><th style="text-align:right">Speso €</th><th style="text-align:right">Budget €</th><th style="text-align:right">Differenza</th></tr>
 {data.get("settimanali","")}</table>
 <h2>Da pagare questa settimana</h2><div class="area"></div>""")
-
 
 def _tpl_debiti(data: dict) -> str:
     creditori = "".join(
@@ -133,7 +127,6 @@ def _tpl_debiti(data: dict) -> str:
 <table class="tabella"><tr><th>Mese</th><th style="text-align:right">Totale pagato €</th><th style="text-align:right">Debito residuo €</th></tr>
 {data.get("mesi","")}</table>""")
 
-
 def _tpl_sfida(data: dict) -> str:
     caselle = "".join(f'<td><div class="input"></div></td>' for _ in range(52))
     return _html(data["titolo"], data["sottotitolo"], f"""
@@ -144,7 +137,6 @@ def _tpl_sfida(data: dict) -> str:
 <table class="tabella"><tr><th>Mese</th><th style="text-align:right">Versato €</th><th style="text-align:right">Totale €</th></tr>
 {data.get("mesi","")}</table>
 <h2>Obiettivo finale</h2><div class="area"></div>""")
-
 
 def _tpl_calcolatore(data: dict) -> str:
     obiettivo = data.get("obiettivo", "10.000 €")
@@ -161,7 +153,6 @@ def _tpl_calcolatore(data: dict) -> str:
 <h2>Da dove arriva il denaro?</h2>
 <div class="area"></div>""")
 
-
 def _tpl_buste(data: dict) -> str:
     etichette = "".join(
         f'<div class="riga"><div><b>{n}</b></div><div class="input"></div>'
@@ -175,7 +166,6 @@ def _tpl_buste(data: dict) -> str:
 <table class="tabella"><tr><th>Busta</th><th style="text-align:right">Assegnato €</th><th style="text-align:right">Speso €</th></tr>
 {data.get("riepilogo","")}</table>""")
 
-
 def _tpl_agenda(data: dict) -> str:
     giorni = "".join(
         f'<tr><td>{d}</td><td class="num"><div class="input"></div></td>'
@@ -188,13 +178,11 @@ def _tpl_agenda(data: dict) -> str:
 {giorni}</table>
 <h2>Note</h2><div class="area"></div>""")
 
-
 _TEMPLATES = {"budget_mensile": _tpl_budget, "tracker_spese": _tpl_tracker,
               "piano_debiti": _tpl_debiti, "sfida_52_settimane": _tpl_sfida,
               "calcolatore_obiettivo": _tpl_calcolatore,
               "cash_stuffing_buste": _tpl_buste,
               "agenda_finanziaria": _tpl_agenda}
-
 
 # ---------------------------------------------------------------- build
 def _render(spec: dict) -> str:
@@ -206,7 +194,6 @@ def _render(spec: dict) -> str:
     data.setdefault("sottotitolo", spec["sottotitolo"])
     corpo = fn(data)
     return _html(spec["titolo"], spec["sottotitolo"], corpo.replace("{{GUIDA}}", spec.get("guida_url","")).replace("{{GUIDAT}}", spec.get("guida_titolo","")))
-
 
 def build(spec: dict, force: bool = False) -> dict | None:
     slug = spec["slug"]
@@ -232,7 +219,6 @@ def build(spec: dict, force: bool = False) -> dict | None:
         return {"slug": slug, "pdf": str(pdf), "png": str(png)}
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
-
 
 def cover(spec: dict, src_preview: str | None = None) -> str | None:
     """Genera covers/printable-<slug>.jpg (mockup printable 1000×1500)."""
@@ -265,10 +251,8 @@ def cover(spec: dict, src_preview: str | None = None) -> str | None:
     bg.save(out, "JPEG", quality=88)
     return str(out)
 
-
 def _site_base() -> str:
     return url_base.site_base(ROOT)
-
 
 def _pagina(spec: dict, preview_png: str) -> None:
     """Scrive site/printable/<slug>.html (landing con anteprima + download)."""
@@ -306,7 +290,6 @@ def _pagina(spec: dict, preview_png: str) -> None:
     dst.parent.mkdir(parents=True, exist_ok=True)
     dst.write_text(html, encoding="utf-8")
 
-
 def genera() -> list[dict]:
     """Build di TUTTI i printable: PDF + preview + cover + pagina sito.
 
@@ -334,7 +317,6 @@ def genera() -> list[dict]:
     print(f"printable generati: {len(specs)}")
     return specs
 
-
 def main() -> int:
     import argparse
     ap = argparse.ArgumentParser()
@@ -355,7 +337,6 @@ def main() -> int:
         ok += 1
     print(f"\nprintable generati: {ok}")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

@@ -19,11 +19,12 @@ from __future__ import annotations
 import argparse
 import email.utils
 import re
-import sys
 import xml.etree.ElementTree as ET
+import sys
 from pathlib import Path
 
 import yaml
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 import url_base  # noqa: E402 — radice del sito, fonte unica
 
@@ -34,7 +35,6 @@ SITE = ROOT / "site"
 # anti-burst: nel feed stanno solo gli item recenti (vedi genera())
 FINESTRA_GIORNI = 45
 MAX_ITEM_PER_FEED = 4
-
 
 def slug_board(board: str) -> str:
     """Slug stile Pinterest: minuscole, spazi→trattini, & e speciali via.
@@ -49,14 +49,11 @@ def slug_board(board: str) -> str:
     s = re.sub(r"[^a-z0-9 ]", "", s)
     return re.sub(r"\s+", "-", s.strip())
 
-
 def _site_base() -> str:
     return url_base.site_base(ROOT)
 
-
 def _esc(s: str) -> str:
     return (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
 
 def genera() -> list[Path]:
     base = _site_base()
@@ -193,7 +190,6 @@ def genera() -> list[Path]:
     print(f"feed: {len(scritti)} file ({len(scritti) // 2} board + gemelli feed2 per il ricollegamento)")
     return scritti
 
-
 def check() -> bool:
     ok = True
     for xml in sorted(SITE.glob("feed-*.xml")):
@@ -258,7 +254,6 @@ def check() -> bool:
               f"({len(gia_pub)} guide già pubblicate escluse)")
     return ok
 
-
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--check", action="store_true")
@@ -267,7 +262,6 @@ def main() -> int:
     if args.check and not check():
         return 1
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

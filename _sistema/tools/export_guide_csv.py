@@ -19,11 +19,12 @@ from __future__ import annotations
 
 import argparse
 import csv
-import sys
 from datetime import date, datetime
+import sys
 from pathlib import Path
 
 import yaml
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 import url_base  # noqa: E402 — radice del sito, fonte unica
 
@@ -33,7 +34,6 @@ OUT = ROOT / "output" / "csv" / "guide"
 NICCHIA = {"casa": "casa", "cibo": "cibo", "fin": "finanza", "par": "parenting"}
 COLONNE = ["Title", "Media URL", "Pinterest board", "Thumbnail", "Description",
            "Link", "Publish date", "Keywords"]
-
 
 def _slug(board: str) -> str:
     import re
@@ -45,15 +45,12 @@ def _slug(board: str) -> str:
     s = re.sub(r"[^a-z0-9 ]", "", s)
     return re.sub(r"\s+", "-", s.strip())
 
-
 def _base() -> str:
     return url_base.site_base(ROOT)
-
 
 def _meta(path: Path) -> dict:
     t = path.read_text(encoding="utf-8")
     return yaml.safe_load(t.split("---", 2)[1]) if t.startswith("---") else {}
-
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__,
@@ -125,7 +122,6 @@ def main() -> int:
     print(f"caricali da Pinterest → Crea pin in blocco → Carica CSV (un file per volta)")
     print(f"dopo l'upload:  python3 tools/export_guide_csv.py --prese   (svuota la coda)")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())

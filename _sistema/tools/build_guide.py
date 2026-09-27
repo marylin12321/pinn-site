@@ -15,10 +15,11 @@ from __future__ import annotations
 
 import html as _html
 import re
+import sys
 from pathlib import Path
 
 import yaml
-import sys
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 import url_base  # noqa: E402 — radice del sito, fonte unica
 
@@ -69,11 +70,9 @@ footer { text-align: center; font-size: 12.5px; color: #8a827a; margin-top: 26px
 footer a { color: #6b6259; font-weight: 600; }
 """
 
-
 def _site_base() -> str:
     """Radice pubblica del sito (unica fonte: config/system.yaml)."""
     return url_base.site_base(ROOT)
-
 
 def _parse(path: Path) -> tuple[dict, str]:
     text = path.read_text(encoding="utf-8")
@@ -83,11 +82,9 @@ def _parse(path: Path) -> tuple[dict, str]:
         meta = yaml.safe_load(fm) or {}
     return meta, text.strip()
 
-
 def _inline(s: str) -> str:
     s = _html.escape(s)
     return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", s)
-
 
 def _render_md(text: str) -> str:
     out, in_list = [], False
@@ -112,7 +109,6 @@ def _render_md(text: str) -> str:
         out.append("</ul>")
     return "\n".join(out)
 
-
 def _prodotti(nid: str, ids: list) -> str:
     cfg = yaml.safe_load((ROOT / "config" / "nicchie" / f"{nid}.yaml").read_text(encoding="utf-8"))
     by_id = {p.get("id"): p for p in cfg.get("prodotti", [])}
@@ -135,7 +131,6 @@ def _prodotti(nid: str, ids: list) -> str:
         return ""
     return (f'<details class="prods"><summary><span>🛒 Prodotti citati · {len(cards)}</span>'
             f'<span>▾</span></summary>{"".join(cards)}</details>')
-
 
 def genera() -> list[Path]:
     """Rende le guide PUBBLICABILI oggi; ritorna le pagine scritte.
@@ -259,7 +254,6 @@ def genera() -> list[Path]:
     )
     print(f"guide: {len(fatte)} pagine + indice ({programmate} programmate per dopo)")
     return fatte
-
 
 if __name__ == "__main__":
     genera()

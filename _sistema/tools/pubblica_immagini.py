@@ -30,12 +30,15 @@ import argparse
 import os
 import shutil
 import subprocess
-import sys
 import urllib.request
 from datetime import datetime
+import sys
 from pathlib import Path
 
 import yaml
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+import url_base  # noqa: E402 — radice del sito, fonte unica
 
 ROOT = Path(__file__).resolve().parent.parent
 IMMAGINI = ROOT / "output" / "immagini"
@@ -53,13 +56,11 @@ FONT_USATI = ("Poppins-Regular.ttf", "Poppins-Bold.ttf", "Lato-Regular.ttf")
 # job `postapi` muore con ModuleNotFoundError.
 MODULI_CI = ("src/pendenze.py", "src/url_base.py")
 
-
 def _git(repo: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess:
     r = subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True)
     if check and r.returncode != 0:
         raise RuntimeError(f"git {' '.join(args)}: {r.stderr.strip() or r.stdout.strip()}")
     return r
-
 
 def _sorgenti(solo: str | None) -> list[Path]:
     """Solo i file immagine REALI (esclusa la cartella demo/)."""
@@ -70,7 +71,6 @@ def _sorgenti(solo: str | None) -> list[Path]:
         if p.is_file() and p.suffix.lower() in ESTENSIONI
         and (solo is None or p.name.startswith(f"{solo}_"))
     )
-
 
 def main() -> int:
     ap = argparse.ArgumentParser(
@@ -363,7 +363,6 @@ def main() -> int:
     print("Prossimo passo: le guide con pubblica_dal <= oggi sono già nel feed RSS.")
     print("  (piano B, se RSS non basta:  python3 tools/export_guide_csv.py --dry-run)")
     return 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
