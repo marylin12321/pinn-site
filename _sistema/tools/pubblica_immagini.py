@@ -54,7 +54,14 @@ FONT_USATI = ("Poppins-Regular.ttf", "Poppins-Bold.ttf", "Lato-Regular.ttf")
 # links, csv_export) che il sito non usa più. Di src/ serve solo `pendenze`, la
 # coda di pubblicazione condivisa da feed RSS, CSV e API v5: senza di lei il
 # job `postapi` muore con ModuleNotFoundError.
-MODULI_CI = ("src/pendenze.py", "src/url_base.py", "src/verifica.py")
+# Moduli di src/ che la pipeline usa. Solo questi quattro: il resto della
+# cartella (immagini.py) serve a generare le cover, che in CI si riusano già
+# fatte, e la CLI legacy è in archivio/.
+#   pendenze  coda di pubblicazione (feed, CSV, API)  → serve al job postapi
+#   url_base  radice del sito, fonte unica degli URL
+#   verifica  pre-flight della configurazione
+#   util      helper di filesystem/config, da cui dipende verifica
+MODULI_CI = ("src/pendenze.py", "src/url_base.py", "src/verifica.py", "src/util.py")
 
 def _git(repo: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess:
     r = subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True)
@@ -77,26 +84,36 @@ def _verifica_ci(repo_path: Path) -> int:
 
     Non è un doppione del workflow: entrambi chiamano tools/prepara_ci.py, che
     è l'unico elenco di cosa serve all'albero di build. Serve a scoprire qui,
-    prima del push, che una sorgente mancante farebbe fallire il run delle 08:15
-    (è successo due volte: pendenze.py e url_base.py mancanti dalla copia).
+    prima del push, che una sorgente mancante farebbe fallire il run delle 08:15.
+
+    I passi sono gli stessi del job `build`, in ordine: pre-flight e poi build.
+    Se i due elenchi divergono, il gate verifica meno di quanto gira davvero:
+    è successo il 27/09/2026, quando il gate dava verde e il run notturno si
+    fermava sul pre-flight perché mancava src/util.py.
     """
     import shutil
     import tempfile
     sys.path.insert(0, str(ROOT / "tools"))
     import prepara_ci
+    # gli stessi comandi del job `build`, nell'ordine in cui il workflow li esegue
+    PASSI_CI = (
+        ("pre-flight configurazione", ["src/verifica.py"]),
+        ("build del sito", ["tools/build_sito.py", "--check"]),
+    )
     tmp = Path(tempfile.mkdtemp(prefix="verifica-ci-"))
     try:
         n = prepara_ci.prepara(repo_path, tmp / "build")
         if n < 0:
             return 1
-        r = subprocess.run([sys.executable, "tools/build_sito.py", "--check"],
-                           cwd=tmp / "build", capture_output=True, text=True, timeout=900)
-        if r.returncode != 0:
-            print("VERIFICA CI FALLITA: il build sulle sole sorgenti spedite non va a buon fine.")
-            print("  (è questo che farà la pipeline stanotte alle 08:15)")
-            for l in (r.stdout + r.stderr).strip().splitlines()[-15:]:
-                print("   ", l)
-            return 1
+        for nome, cmd in PASSI_CI:
+            r = subprocess.run([sys.executable, *cmd], cwd=tmp / "build",
+                               capture_output=True, text=True, timeout=900)
+            if r.returncode != 0:
+                print(f"VERIFICA CI FALLITA al passo «{nome}»: la pipeline di stanotte "
+                      f"si fermerebbe qui.")
+                for l in (r.stdout + r.stderr).strip().splitlines()[-15:]:
+                    print("   ", l)
+                return 1
         # e deve produrre esattamente il sito locale, né più né meno file:
         # se i due divergono, la pipeline stanotte publicherebbe qualcosa di
         # diverso da quello che ho verificato adesso.
@@ -117,7 +134,8 @@ def _verifica_ci(repo_path: Path) -> int:
                     for k in lista[:6]:
                         print("     ", k)
             return 1
-        print(f"verifica CI ✓ ({n} file di sorgenti, build pulito e identico al locale)")
+        print(f"verifica CI ✓ ({n} file di sorgenti, "
+              f"{' + '.join(nome for nome, _ in PASSI_CI)}: ok, sito identico al locale)")
         return 0
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
