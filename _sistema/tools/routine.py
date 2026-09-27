@@ -7,7 +7,7 @@
   python3 tools/routine.py --api        # + posta i pin della coda via API v5
 
 Cosa fa, in ordine:
-  1. verifica config (blocca tutto se BLOCCANTE in modalità reale)
+  1. verifica config (blocca tutto se c'è un BLOCCANTE)
   2. cover guide (immagini uniche per ogni guida → pin RSS non deduplicati)
   3. build_sito --check (landing + guide pubblicabili oggi + feed + sitemap)
   4. pubblica_immagini (commit + push)
@@ -92,7 +92,10 @@ def main() -> int:
     args = ap.parse_args()
 
     print("== 1/6 verifica ==")
-    if _run(["src/main.py", "verifica"]) != 0:
+    # src/verifica.py: era `src/main.py verifica`, cioè un comando della CLI
+    # legacy archiviata il 27/09/2026. Il controllo in sé vale ancora (handle,
+    # board, link prodotto, hosting) e adesso gira anche in CI.
+    if _run(["src/verifica.py"]) != 0:
         print("BLOCCANTE in verifica: routine fermata prima di pubblicare.")
         return 1
 

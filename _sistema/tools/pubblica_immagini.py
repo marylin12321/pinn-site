@@ -54,7 +54,7 @@ FONT_USATI = ("Poppins-Regular.ttf", "Poppins-Bold.ttf", "Lato-Regular.ttf")
 # links, csv_export) che il sito non usa più. Di src/ serve solo `pendenze`, la
 # coda di pubblicazione condivisa da feed RSS, CSV e API v5: senza di lei il
 # job `postapi` muore con ModuleNotFoundError.
-MODULI_CI = ("src/pendenze.py", "src/url_base.py")
+MODULI_CI = ("src/pendenze.py", "src/url_base.py", "src/verifica.py")
 
 def _git(repo: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess:
     r = subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True)
