@@ -143,8 +143,54 @@ def _tpl_sfida(data: dict) -> str:
 <h2>Obiettivo finale</h2><div class="area"></div>""")
 
 
+def _tpl_calcolatore(data: dict) -> str:
+    obiettivo = data.get("obiettivo", "10.000 €")
+    mesi = "".join(
+        f'<tr><td>{m}</td><td class="num"><div class="input"></div></td>'
+        f'<td class="num"></td><td class="num"></td></tr>'
+        for m in data.get("mesi_lista", ["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"]))
+    return _html(data["titolo"], data["sottotitolo"], f"""
+<h2>Obiettivo: {obiettivo}</h2>
+<div class="blocco"><p>Versa ogni mese fino a raggiungere l'obiettivo. Traccia il progresso.</p></div>
+<h2>Tracker mensile</h2>
+<table class="tabella"><tr><th>Mese</th><th style="text-align:right">Versato €</th><th style="text-align:right">Totale €</th><th style="text-align:right">%</th></tr>
+{mesi}</table>
+<h2>Da dove arriva il denaro?</h2>
+<div class="area"></div>""")
+
+
+def _tpl_buste(data: dict) -> str:
+    etichette = "".join(
+        f'<div class="riga"><div><b>{n}</b></div><div class="input"></div>'
+        f'<div class="input"></div></div>'
+        for n in data.get("etichette", ["Affitto","Bollette","Spesa","Risparmio","Libero","Altro"]))
+    return _html(data["titolo"], data["sottotitolo"], f"""
+<h2>Cash stuffing: 6 buste</h2>
+<p>Stampa, ritaglia, scrivi l'importo. Metti i contanti in ogni busta e usa solo quella.</p>
+{etichette}
+<h2>Riepilogo mensile</h2>
+<table class="tabella"><tr><th>Busta</th><th style="text-align:right">Assegnato €</th><th style="text-align:right">Speso €</th></tr>
+{data.get("riepilogo","")}</table>""")
+
+
+def _tpl_agenda(data: dict) -> str:
+    giorni = "".join(
+        f'<tr><td>{d}</td><td class="num"><div class="input"></div></td>'
+        f'<td class="num"><div class="input"></div></td><td class="num"></td></tr>'
+        for d in data.get("giorni_lista", ["Lun","Mar","Mer","Gio","Ven","Sab","Dom"]))
+    return _html(data["titolo"], data["sottotitolo"], f"""
+<h2>Agenda finanziaria mensile</h2>
+<p>Una riga per ogni giorno: entra, esce, saldo. Scrivi qui sotto.</p>
+<table class="tabella"><tr><th>Giorno</th><th style="text-align:right">Entrata €</th><th style="text-align:right">Uscita €</th><th style="text-align:right">Saldo</th></tr>
+{giorni}</table>
+<h2>Note</h2><div class="area"></div>""")
+
+
 _TEMPLATES = {"budget_mensile": _tpl_budget, "tracker_spese": _tpl_tracker,
-              "piano_debiti": _tpl_debiti, "sfida_52_settimane": _tpl_sfida}
+              "piano_debiti": _tpl_debiti, "sfida_52_settimane": _tpl_sfida,
+              "calcolatore_obiettivo": _tpl_calcolatore,
+              "cash_stuffing_buste": _tpl_buste,
+              "agenda_finanziaria": _tpl_agenda}
 
 
 # ---------------------------------------------------------------- build

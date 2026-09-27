@@ -4,6 +4,9 @@ name: Sito giornaliero
 # Ricostruisce landing + guide + feed + sitemap dalle sorgenti (_sistema/) e
 # pusha: le guide la cui data `pubblica_dal` è arrivata compaiono da sole,
 # con la loro cover, e Pinterest le ritira via RSS entro 24h.
+# API v5 (se configurata): dopo il build posta i pin della coda in automatico,
+# anche a PC spento. Basta aggiungere il secret PINTEREST_TOKEN_FINANZA (e
+# gli altri) in Settings → Secrets and variables → Actions.
 # Avvio: ogni giorno alle 08:15 (IT) + manuale dalla tab "Actions".
 
 on:
@@ -50,5 +53,45 @@ jobs:
             exit 0
           fi
           git commit -m "build automatico: $(date -u +%F) (guide, feed, sitemap)"
+          git pull --rebase origin main
+          git push
+
+  postapi:
+    # Posta i pin della coda via Pinterest API v5 (solo se i secret sono impostati).
+    # Gira dopo il build → le pagine e le cover appena pushati sono già live.
+    needs: build
+    if: secrets.PINTEREST_TOKEN_FINANZA != '' || secrets.PINTEREST_TOKEN_CASA != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Dipendenze
+        run: pip install pyyaml
+
+      - name: Posta pin in coda (API v5)
+        env:
+          PINTEREST_TOKEN_CASA: ${{ secrets.PINTEREST_TOKEN_CASA }}
+          PINTEREST_TOKEN_CIBO: ${{ secrets.PINTEREST_TOKEN_CIBO }}
+          PINTEREST_TOKEN_FINANZA: ${{ secrets.PINTEREST_TOKEN_FINANZA }}
+          PINTEREST_TOKEN_PARENTING: ${{ secrets.PINTEREST_TOKEN_PARENTING }}
+        run: |
+          mkdir -p build
+          cp -r _sistema/tools _sistema/config _sistema/content build/
+          cp -r covers build/site/covers
+          cd build
+          python3 tools/pinterest_api.py --posta --tutte --max 1
+          cd ..
+          git config user.name "pinbot"
+          git config user.email "pinbot@localhost"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nessun pin segnato: niente commit."
+            exit 0
+          fi
+          git commit -m "api: marca guide pubblicate (pubblicato: YYYY-MM-DD)"
           git pull --rebase origin main
           git push

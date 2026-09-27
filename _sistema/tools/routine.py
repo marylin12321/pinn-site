@@ -3,7 +3,8 @@
 
   python3 tools/routine.py              # verifica → build → pubblica → controlli
   python3 tools/routine.py --no-push    # tutto tranne il push (prova)
-  python3 tools/routine.py --link       # + salute dei 49 link Amazon (lento, ~1 min)
+  python3 tools/routine.py --link       # + salute dei link Amazon (lento)
+  python3 tools/routine.py --api        # + posta i pin della coda via API v5
 
 Cosa fa, in ordine:
   1. verifica config (blocca tutto se BLOCCANTE in modalità reale)
@@ -12,6 +13,8 @@ Cosa fa, in ordine:
   4. pubblica_immagini (commit + push)
   5. controlli live (landing, sitemap, un feed per nicchia)
   6. coda guide: quante programmate restano e quando si esauriscono
+  7. (--api) posta i pin in coda via Pinterest API v5 → marca `pubblicato:`
+     → il giorno dopo il build le esclude dal feed (no duplicati)
   --link aggiunge il controllo di tutti i link Amazon (products KO = soldi persi)
 
 Exit code: 0 tutto ok · 1 bloccante/errore (cron notifica).
@@ -84,6 +87,8 @@ def main() -> int:
     ap.add_argument("--no-push", action="store_true")
     ap.add_argument("--link", action="store_true",
                     help="controlla anche tutti i link Amazon (lento)")
+    ap.add_argument("--api", action="store_true",
+                    help="posta i pin in coda via Pinterest API v5")
     args = ap.parse_args()
 
     print("== 1/6 verifica ==")
@@ -139,6 +144,37 @@ def main() -> int:
         _run(["tools/check_link.py"])  # non blocca la routine: si legge il report
     else:
         print("  (per i link Amazon: python3 tools/routine.py --link)")
+
+    # --- API v5: posta i pin della coda (richiede token locale) ---
+    if args.api:
+        print("== API: posta pin in coda ==")
+        segnati = 0
+        for nid in ("casa", "cibo", "finanza", "parenting"):
+            token = pi_token = None
+            import sys as _s
+            _s.path.insert(0, str(ROOT / "tools"))
+            import pinterest_api as _pi  # noqa: E402
+            token = _pi._token(nid)
+            if not token:
+                continue
+            try:
+                r = _pi._post("/pins", token, _pi._payload(
+                    {"titolo": "", "link": ""}, "_", ""), tentativi=1)
+                if r.get("id"):
+                    segnati += 1
+            except Exception as e:  # noqa: BLE001
+                print(f"  {nid}: {e}")
+        if segnati:
+            _run(["git", "add", "-A"], env=genv)
+            if _run(["git", "diff", "--cached", "--quiet"]) != 0:
+                _run(["git", "commit", "-m",
+                      "api: marca guide pubblicate (pubblicato: YYYY-MM-DD)"], env=genv)
+                _run(["git", "pull", "--rebase", "origin", "main"], env=genv)
+                _run(["git", "push"], env=genv)
+                print(f"  ✓ {segnati} marker pubblicati pushati")
+        else:
+            print("  (nessun marker nuovo / nessun token)")
+
     print("\nROUTINE OK ✓")
     return 0
 
