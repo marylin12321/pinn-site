@@ -68,18 +68,35 @@ def _check_url(url: str) -> bool:
 
 
 def _coda_guide() -> tuple[int, str]:
-    """Guide future programmate (pubblica_dal > oggi): quante e fino a quando."""
-    oggi = date.today().isoformat()
-    future = []
-    for src in sorted(SRC.glob("*.md")):
-        text = src.read_text(encoding="utf-8")
-        meta = yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else {}
-        dal = str((meta or {}).get("pubblica_dal") or "")
-        if dal and dal > oggi:
-            future.append(dal)
-    if not future:
+    """Scorte di pin: quanti restano da sfilare e fino a che data.
+
+    Non conta più le guide con `pubblica_dal` (il ritmo non lo governa più: lo
+    scheduler assegna un pin al giorno per board a partire da un'ancora fissa).
+    Qui interessa la profondità della coda, perché è quella che dice quando il
+    ritmo quotidiano si ferma da solo.
+    """
+    from datetime import timedelta
+    import build_feed
+
+    sistema = yaml.safe_load((ROOT / "config" / "system.yaml").read_text(encoding="utf-8")) or {}
+    per_giorno = int((sistema.get("regole") or {}).get("pin_per_feed_giorno") or 1)
+    ancora = date.fromisoformat(str((sistema.get("pubblicazione") or {}).get("pin_ancora")
+                                    or date.today().isoformat()))
+    oggi = date.today()
+    gruppi, _ = build_feed._raccogli(build_feed._site_base())
+    # il mese di copertura è limitato dal board con la coda più corta: finché
+    # un board ha ancora pin, tutti i board escono, ma il mese si chiude quando
+    # finisce il più corto.
+    giorni = []
+    for pins in gruppi.values():
+        if not pins:
+            continue
+        ultimo = build_feed._piano(pins, ancora, ancora + timedelta(days=9999), per_giorno)
+        if ultimo:
+            giorni.append(ultimo[-1]["giorno"])
+    if not giorni:
         return 0, "nessuna"
-    return len(future), max(future)
+    return sum(len(v) for v in gruppi.values()), min(giorni).isoformat()
 
 
 def main() -> int:
@@ -137,9 +154,9 @@ def main() -> int:
         print("Alcuni URL non rispondono (magari Pages sta ancora pubblicando).")
         return 1
 
-    print("== 6/6 coda guide ==")
+    print("== 6/6 scorte di pin ==")
     n, fino_a = _coda_guide()
-    print(f"  guide programmate in coda: {n} (fino al {fino_a})")
+    print(f"  pin in coda: {n} · il board più corto finisce il {fino_a}")
     if n < 3:
         print("  ⚠️ coda quasi esaurita: chiedimi nuove guide!")
     if args.link:

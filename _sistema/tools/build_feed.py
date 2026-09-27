@@ -252,7 +252,10 @@ def genera() -> list[Path]:
     sistema = yaml.safe_load((ROOT / "config" / "system.yaml").read_text(encoding="utf-8")) or {}
     regole = sistema.get("regole") or {}
     pub = sistema.get("pubblicazione") or {}
-    per_giorno = int(regole.get("pin_per_feed_giorno") or 1)
+    # max(1, …): sotto 1 non si può scendere (è un divisore, e ogni feed deve
+    # pubblicare qualcosa). Uno 0 o un negativo in config diventano 1, non uno
+    # ZeroDivisionError.
+    per_giorno = max(1, int(regole.get("pin_per_feed_giorno") or 1))
     ancora = date.fromisoformat(str(pub.get("pin_ancora") or date.today().isoformat()))
     oggi = date.today()
     gruppi, banchina = _raccogli(base)

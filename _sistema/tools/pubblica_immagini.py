@@ -439,7 +439,8 @@ def main() -> int:
             return 1
 
     print(f"\nSito pubblicato su {url_base.site_base(ROOT)}")
-    print("Prossimo passo: le guide con pubblica_dal <= oggi sono già nel feed RSS.")
+    print("Prossimo passo: ogni feed espone il pin di oggi per la sua board.")
+    print("  Non serve scrivere pubblicato: lo scheduler ruota da solo, un pin al giorno.")
     print("  (piano B, se RSS non basta:  python3 tools/export_guide_csv.py --dry-run)")
     return 0
 
