@@ -5,7 +5,16 @@
     <link>https://marylin12321.github.io/pinn-site/guide/</link>
     <description>Guide Organizzazione Pratica (Quattro Mondi)</description>
     <language>it-it</language>
-    <lastBuildDate>Sat, 26 Sep 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2026 08:06:54 GMT</lastBuildDate>
+    <item>
+      <title>Organizzare la dispensa in 6 passi (senza impazzire)</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/casa-c01.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/casa-c01.html</guid>
+      <description>Svuota, classifica, etichetta e riempi a strati: il metodo in 6 passi per una dispensa che resta in ordine da sola.</description>
+      <pubDate>Sun, 27 Sep 2026 08:06:54 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-casa-c01.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-casa-c01.jpg" medium="image" type="image/jpeg" />
+    </item>
     <item>
       <title>Sotto il lavandino in ordine una volta per tutte</title>
       <link>https://marylin12321.github.io/pinn-site/guide/casa-c03.html</link>
@@ -14,15 +23,6 @@
       <pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
       <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-casa-c03.jpg" type="image/jpeg" />
       <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-casa-c03.jpg" medium="image" type="image/jpeg" />
-    </item>
-    <item>
-      <title>Organizzare la dispensa in 6 passi (senza impazzire)</title>
-      <link>https://marylin12321.github.io/pinn-site/guide/casa-c01.html</link>
-      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/casa-c01.html</guid>
-      <description>Svuota, classifica, etichetta e riempi a strati: il metodo in 6 passi per una dispensa che resta in ordine da sola.</description>
-      <pubDate>Thu, 24 Sep 2026 07:32:17 GMT</pubDate>
-      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-casa-c01.jpg" type="image/jpeg" />
-      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-casa-c01.jpg" medium="image" type="image/jpeg" />
     </item>
   </channel>
 </rss>
