@@ -83,7 +83,7 @@ def _account(token: str) -> dict:
 def _boards(token: str) -> dict[str, str]:
     """{nome board: board_id} dell'account del token."""
     out: dict[str, str] = {}
-    pagina = _get("/boards?page_size=100", token, "id,name")
+    pagina = _get("/boards?page_size=25", token, "id,name")
     for b in pagina.get("items", []):
         out[b["name"]] = b["id"]
     return out

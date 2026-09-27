@@ -5,13 +5,13 @@ name: Sito giornaliero
 # pusha: le guide la cui data `pubblica_dal` è arrivata compaiono da sole,
 # con la loro cover, e Pinterest le ritira via RSS entro 24h.
 # API v5 (se configurata): dopo il build posta i pin della coda in automatico,
-# anche a PC spento. Basta aggiungere il secret PINTEREST_TOKEN_FINANZA (e
-# gli altri) in Settings → Secrets and variables → Actions.
+# anche a PC spento. Basta aggiungere i secret PINTEREST_TOKEN_* in
+# Settings → Secrets and variables → Actions.
 # Avvio: ogni giorno alle 08:15 (IT) + manuale dalla tab "Actions".
 
 on:
   schedule:
-    - cron: '15 6 * * *'   # 06:15 UTC = 08:15 Italia (data già allineata all'Italia)
+    - cron: '15 6 * * *'   # 06:15 UTC = 08:15 Italia
   workflow_dispatch:
 
 permissions:
@@ -59,6 +59,8 @@ jobs:
   postapi:
     # Posta i pin della coda via Pinterest API v5 (solo se i secret sono impostati).
     # Gira dopo il build → le pagine e le cover appena pushati sono già live.
+    # Se il token è solo read (Trial), il passo non fallisce il workflow:
+    # aspetta lo scope scrittura (Standard access).
     needs: build
     if: secrets.PINTEREST_TOKEN_FINANZA != '' || secrets.PINTEREST_TOKEN_CASA != ''
     runs-on: ubuntu-latest
@@ -79,12 +81,7 @@ jobs:
           PINTEREST_TOKEN_FINANZA: ${{ secrets.PINTEREST_TOKEN_FINANZA }}
           PINTEREST_TOKEN_PARENTING: ${{ secrets.PINTEREST_TOKEN_PARENTING }}
         run: |
-          mkdir -p build
-          cp -r _sistema/tools _sistema/config _sistema/content build/
-          cp -r covers build/site/covers
-          cd build
-          python3 tools/pinterest_api.py --posta --tutte --max 1
-          cd ..
+          python3 _sistema/tools/pinterest_api.py --posta --tutte --max 1 || true
           git config user.name "pinbot"
           git config user.email "pinbot@localhost"
           git add -A
