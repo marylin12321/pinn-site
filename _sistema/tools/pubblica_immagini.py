@@ -233,6 +233,8 @@ def main() -> int:
     # sorgenti per la pipeline GitHub (pathspec valido solo se la cartella c'è)
     if (repo_path / "_sistema").exists():
         percorsi.append("_sistema")
+    if (repo_path / ".github").exists():
+        percorsi.append(".github")  # workflow della pipeline quotidiana
     stato = _git(repo_path, "status", "--porcelain", *percorsi, check=False)
     if stato.returncode != 0:
         # MAI interpretare un errore git come "tutto pulito" (salterebbe il push in silenzio)

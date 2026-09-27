@@ -1,0 +1,54 @@
+name: Sito giornaliero
+
+# Pipeline quotidiana: gira sui server GitHub anche con il PC spento.
+# Ricostruisce landing + guide + feed + sitemap dalle sorgenti (_sistema/) e
+# pusha: le guide la cui data `pubblica_dal` è arrivata compaiono da sole,
+# con la loro cover, e Pinterest le ritira via RSS entro 24h.
+# Avvio: ogni giorno alle 08:15 (IT) + manuale dalla tab "Actions".
+
+on:
+  schedule:
+    - cron: '15 6 * * *'   # 06:15 UTC = 08:15 Italia (data già allineata all'Italia)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Dipendenze
+        run: pip install pyyaml
+
+      - name: Prepara l'albero di build
+        run: |
+          mkdir -p build/site
+          cp -r _sistema/tools _sistema/config _sistema/content build/
+          cp privacy.html build/site/
+          cp -r covers build/site/covers
+
+      - name: Build (landing + guide pubblicabili + feed + sitemap)
+        working-directory: build
+        run: python3 tools/build_sito.py --check
+
+      - name: Copia l'output nella root e push
+        run: |
+          cp -r build/site/. .
+          rm -rf build
+          git config user.name "pinbot"
+          git config user.email "pinbot@localhost"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nessun cambiamento: niente commit."
+            exit 0
+          fi
+          git commit -m "build automatico: $(date -u +%F) (guide, feed, sitemap)"
+          git pull --rebase origin main
+          git push
