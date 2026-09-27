@@ -5,16 +5,7 @@
     <link>https://marylin12321.github.io/pinn-site/guide/</link>
     <description>Guide Budget &amp; Risparmio (Quattro Mondi)</description>
     <language>it-it</language>
-    <lastBuildDate>Sun, 27 Sep 2026 08:06:54 GMT</lastBuildDate>
-    <item>
-      <title>Metodo 50/30/20: il budget mensile che funziona davvero</title>
-      <link>https://marylin12321.github.io/pinn-site/guide/fin-c01.html</link>
-      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/fin-c01.html</guid>
-      <description>50% bisogni, 30% desideri, 20% risparmio: come dividere lo stipendio ogni mese senza tabelle complicate.</description>
-      <pubDate>Sun, 27 Sep 2026 08:06:54 GMT</pubDate>
-      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-fin-c01.jpg" type="image/jpeg" />
-      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-fin-c01.jpg" medium="image" type="image/jpeg" />
-    </item>
+    <lastBuildDate>Sun, 27 Sep 2026 00:00:00 GMT</lastBuildDate>
     <item>
       <title>Cash stuffing: il budget in busta che funziona</title>
       <link>https://marylin12321.github.io/pinn-site/guide/fin-c04.html</link>
@@ -23,6 +14,15 @@
       <pubDate>Sun, 27 Sep 2026 00:00:00 GMT</pubDate>
       <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-fin-c04.jpg" type="image/jpeg" />
       <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-fin-c04.jpg" medium="image" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Metodo 50/30/20: il budget mensile che funziona davvero</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/fin-c01.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/fin-c01.html</guid>
+      <description>50% bisogni, 30% desideri, 20% risparmio: come dividere lo stipendio ogni mese senza tabelle complicate.</description>
+      <pubDate>Thu, 24 Sep 2026 07:41:28 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-fin-c01.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-fin-c01.jpg" medium="image" type="image/jpeg" />
     </item>
   </channel>
 </rss>

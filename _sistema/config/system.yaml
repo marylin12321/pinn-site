@@ -25,6 +25,7 @@ regole:
   max_quota_prodotto: 0.20        # nessun prodotto oltre il 20% delle vendite
   min_giorni_stesso_link: 3       # gap minimo stesso URL (research: 3-7 giorni)
   max_board_stesso_pin: 10        # stesso pin su max 10 board
+  guide_settimana_max: 2         # guide pubblicabili per account per settimana (ritmo sandbox)
 
 # Ramp progressivo: si entra nella fase corrente modificando "corrente".
 fasi:

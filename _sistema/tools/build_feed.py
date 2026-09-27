@@ -29,6 +29,10 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "content" / "guide"
 SITE = ROOT / "site"
 
+# anti-burst: nel feed stanno solo gli item recenti (vedi genera())
+FINESTRA_GIORNI = 45
+MAX_ITEM_PER_FEED = 4
+
 
 def slug_board(board: str) -> str:
     """Slug stile Pinterest: minuscole, spazi→trattini, & e speciali via.
@@ -75,6 +79,13 @@ def genera() -> list[Path]:
         if board and not (dal and dal > oggi):
             gruppi.setdefault((nid, board), []).append(src)
     scritti: list[Path] = []
+    # Difesa anti-burst: se un feed viene ricollegato, Pinterest riscanterebbe
+    # TUTTI gli item storici e li posterebbe in una raffica. Mostriamo quindi
+    # solo gli ultimi (finestra + tetto): i pin vecchi esistono già, le guide
+    # restano online alle stesse URL.
+    import time
+
+    taglio = time.time() - FINESTRA_GIORNI * 86400
     for (nid, board), files in sorted(gruppi.items()):
         # ordine RSS corretto: dal più RECENTE al più vecchio (i lettori leggono dall'alto,
         # Pinterest prende di fatto il primo item → deve sempre essere l'ultimo rilascio)
@@ -90,6 +101,13 @@ def genera() -> list[Path]:
                 ts = src.stat().st_mtime
             voci.append((ts, src, meta or {}))
         voci.sort(key=lambda v: (v[0], v[1].name), reverse=True)
+        mostrati = [v for v in voci if v[0] >= taglio][:MAX_ITEM_PER_FEED]
+        if not mostrati:
+            mostrati = voci[:1]  # feed mai vuoto: meglio 1 item vecchio che nessuno
+        if len(mostrati) < len(voci):
+            print(f"  {nid}/{board}: {len(voci)} item in coda → nel feed i {len(mostrati)} "
+                  f"più recenti (finestra {FINESTRA_GIORNI}gg, tetto {MAX_ITEM_PER_FEED})")
+        voci = mostrati
 
         items = []
         ultimo = 0.0
