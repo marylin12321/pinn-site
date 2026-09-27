@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# residui di build locale (non devono mai finire nel repo del sito)
+build/
+output/
+*.tmp
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
