@@ -8,6 +8,8 @@ name: Sito giornaliero
 # anche a PC spento. Basta aggiungere i secret PINTEREST_TOKEN_* in
 # Settings → Secrets and variables → Actions.
 # Avvio: ogni giorno alle 08:15 (IT) + manuale dalla tab "Actions".
+# Niente trigger su `push`: il build committa e pusha, quindi un `on: push`
+# si auto-alimenterebbe all'infinito. L'unicoingresso esterno è il cron.
 
 on:
   schedule:
@@ -16,6 +18,12 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  # un solo run alla volta: se il run di ieri è ancora vivo, questo aspetta
+  # invece di spingere due build in concorrenza sullo stesso branch
+  group: quotidiana
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -57,13 +65,21 @@ jobs:
           git push
 
   postapi:
-    # Posta i pin della coda via Pinterest API v5 (solo se i secret sono impostati).
-    # Gira dopo il build → le pagine e le cover appena pushati sono già live.
-    # Se il token è solo read (Trial), il passo non fallisce il workflow:
-    # aspetta lo scope scrittura (Standard access).
+    # Posta i pin della coda via Pinterest API v5.
+    #
+    # NB: il contesto `secrets` NON esiste in un `if:` a livello di job (GitHub
+    # rifiuta il file: "Unrecognized named-value: 'secrets'"). Va spostato a
+    # livello di step, dove può leggere la `env` del job, che invece le vede.
+    #
+    # Se il token è solo read (Trial) il passo non deve far fallire il run:
+    # aspetta lo scope pins:write (Standard access) e intanto l'RSS fa il suo lavoro.
     needs: build
-    if: secrets.PINTEREST_TOKEN_FINANZA != '' || secrets.PINTEREST_TOKEN_CASA != ''
     runs-on: ubuntu-latest
+    env:
+      PINTEREST_TOKEN_CASA: ${{ secrets.PINTEREST_TOKEN_CASA }}
+      PINTEREST_TOKEN_CIBO: ${{ secrets.PINTEREST_TOKEN_CIBO }}
+      PINTEREST_TOKEN_FINANZA: ${{ secrets.PINTEREST_TOKEN_FINANZA }}
+      PINTEREST_TOKEN_PARENTING: ${{ secrets.PINTEREST_TOKEN_PARENTING }}
     steps:
       - uses: actions/checkout@v4
 
@@ -75,11 +91,9 @@ jobs:
         run: pip install pyyaml
 
       - name: Posta pin in coda (API v5)
-        env:
-          PINTEREST_TOKEN_CASA: ${{ secrets.PINTEREST_TOKEN_CASA }}
-          PINTEREST_TOKEN_CIBO: ${{ secrets.PINTEREST_TOKEN_CIBO }}
-          PINTEREST_TOKEN_FINANZA: ${{ secrets.PINTEREST_TOKEN_FINANZA }}
-          PINTEREST_TOKEN_PARENTING: ${{ secrets.PINTEREST_TOKEN_PARENTING }}
+        if: >-
+          ${{ env.PINTEREST_TOKEN_CASA != '' || env.PINTEREST_TOKEN_CIBO != ''
+           || env.PINTEREST_TOKEN_FINANZA != '' || env.PINTEREST_TOKEN_PARENTING != '' }}
         run: |
           python3 _sistema/tools/pinterest_api.py --posta --tutte --max 1 || true
           git config user.name "pinbot"
