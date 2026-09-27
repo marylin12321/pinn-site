@@ -104,24 +104,35 @@ def genera() -> list[Path]:
         # Pinterest prende di fatto il primo item → deve sempre essere l'ultimo rilascio)
         voci: list[tuple[float, Path, dict]] = []
         scartate = 0
+        pubblicate: list[tuple[float, Path, dict]] = []
         for src in files:
             text = src.read_text(encoding="utf-8")
             meta = yaml.safe_load(text.split("---", 2)[1]) if text.startswith("---") else {}
             dal = str((meta or {}).get("pubblica_dal") or "")
             gia = str((meta or {}).get("pubblicato") or "")
-            # già pubblicato = pin già su Pinterest: resta online ma FUORI dal feed
-            if gia or (dal and dal > oggi):
-                scartate += 1
-                continue
             if dal:
-                # data di rilascio reale, non la mtime (creata giorni prima)
                 ts = datetime.fromisoformat(dal).replace(tzinfo=timezone.utc).timestamp()
             else:
                 ts = src.stat().st_mtime
+            # già pubblicato = pin già su Pinterest: resta online ma FUORI dal feed
+            if gia:
+                scartate += 1
+                pubblicate.append((ts, src, meta or {}))
+                continue
+            if dal and dal > oggi:
+                scartate += 1
+                continue  # ancora in programma
             voci.append((ts, src, meta or {}))
         voci.sort(key=lambda v: (v[0], v[1].name), reverse=True)
+        pubblicate.sort(key=lambda v: (v[0], v[1].name), reverse=True)
         mostrati = [v for v in voci if v[0] >= taglio][:MAX_ITEM_PER_FEED]
-        if len(mostrati) < len(voci):
+        # se il feed sarebbe vuoto, include l'ultimo pubblicato: il feed non
+        # deve mai essere vuoto (Pinterest rifiuta "no articles"), e il pin
+        # è già esistente → non verrà ri-creato.
+        if not mostrati and pubblicate:
+            mostrati = [pubblicate[0]]
+            scartate -= 1
+        if len(mostrati) < len(voci) + len(pubblicate):
             print(f"  {nid}/{board}: {len(voci)} item in coda → nel feed i {len(mostrati)} "
                   f"più recenti (finestra {FINESTRA_GIORNI}gg, tetto {MAX_ITEM_PER_FEED})")
         voci = mostrati

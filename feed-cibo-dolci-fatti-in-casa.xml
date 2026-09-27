@@ -5,7 +5,15 @@
     <link>https://marylin12321.github.io/pinn-site/guide/</link>
     <description>Guide Dolci Fatti in Casa (Quattro Mondi)</description>
     <language>it-it</language>
-    <lastBuildDate>Thu, 01 Jan 1970 00:00:00 GMT</lastBuildDate>
-
+    <lastBuildDate>Sun, 27 Sep 2026 09:06:55 GMT</lastBuildDate>
+    <item>
+      <title>Pane fatto in casa senza lievitazione lunga</title>
+      <link>https://marylin12321.github.io/pinn-site/guide/cibo-c10.html</link>
+      <guid isPermaLink="true">https://marylin12321.github.io/pinn-site/guide/cibo-c10.html</guid>
+      <description>Farina, acqua, lievito istantaneo e forno caldo col vapore: pane vero senza aspettare ore.</description>
+      <pubDate>Sun, 27 Sep 2026 09:06:55 GMT</pubDate>
+      <enclosure url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c10.jpg" type="image/jpeg" />
+      <media:content url="https://marylin12321.github.io/pinn-site/covers/guida-cibo-c10.jpg" medium="image" type="image/jpeg" />
+    </item>
   </channel>
 </rss>
